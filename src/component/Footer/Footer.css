@@ -1,0 +1,36 @@
+footer {
+    
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+  
+  .footer-wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 2rem;
+  }
+  .footer-content {
+    border: 1px solid;
+    padding: 1rem;
+  }
+  .footer-heading {
+    font-size: 1.3rem;
+    font-family: sans-serif;
+  }
+  .Copyright {
+    text-align: center;
+    background-color: rgba(54, 54, 54, 0.815);
+    padding: 2rem;
+    font-size: 1.3rem;
+    color: #fff;
+  }
+  
+  @media screen and (min-width: 767px) {
+    .footer-wrapper {
+      grid-template-columns: 33% 33% 33%;
+    }
+  }
+  

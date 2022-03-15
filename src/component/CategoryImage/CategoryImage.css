@@ -1,0 +1,14 @@
+.category-image-wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0rem 0 2rem 0;
+  }
+  
+  .category-image-box{
+    max-width: 20rem;
+    max-height: 20rem;
+  }
+  .category-image-box img{
+      border-radius: 0;
+  }

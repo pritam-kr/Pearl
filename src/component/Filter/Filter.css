@@ -1,0 +1,37 @@
+.clear-filler {
+  width: fit-content;
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+ 
+.sidebar-fillers {
+  background-color: var(--background-color);
+  padding: 1em;
+  height: max-content; 
+}
+
+.sidebar-box {
+  margin-bottom: 2em;
+  border-bottom: 0.5px solid var(--border-color);
+}
+.sidebar-box .large-heading {
+  margin-bottom: 0.5em;
+}
+.sidebar-box ul li {
+  margin-bottom: 0.5em;
+}
+.label {
+  margin-left: 0.5em;
+}
+
+.range-input {
+  padding: 0;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 976px) {
+  .sidebar-fillers{
+    display: none;
+  }
+}

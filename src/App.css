@@ -1,1 +1,164 @@
- 
+ /*All Common CSS properties */
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  :root {
+    --heading-color: #201e28;
+    --border-color: #33333333;
+    --body-background: #f7f7f7;
+    --common-box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 5%);
+    --primary-color: #201e28;
+    --primary-hover: #201e28e5;
+    --input-background: #c2c4c573;
+    --bg-footer: #505050;
+    --background-color: #fff;
+    --heart-icon-hover: #c50505;
+    --wishlist-color: #7a7a7a;
+    --paragraph-font-family: "Source Sans Pro", sans-serif;
+    --heading-font-family: "Janson Text", Times, "Times New Roman", serif;
+    ;
+    --discount-color: #3333336e;
+  }
+  
+  
+  html {
+    font-size: 67%;
+    scroll-behavior: smooth;
+  }
+  
+  @media screen and (max-width: 767px) {
+    html {
+      font-size: 60%;
+    }
+  }
+  
+  ::placeholder {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: medium;
+  }
+  
+  .icons {
+    font-size: 2rem;
+  }
+  
+  
+   .btn{
+     border-radius: 0;
+   }
+   
+  .section-heading {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 3rem;
+    font-family: var(--heading-font-family);
+  }
+  
+  .large-heading {
+    font-family: var(--heading-font-family);
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+  
+  .paragraph {
+    font-weight: 400;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 1.9rem;
+    line-height: 2rem;
+  }
+  
+  .product-description {
+    line-height: 2rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin: 0;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+  }
+  
+  li, p {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+  }
+  
+  label {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+  }
+  
+  .btn {
+    font-weight: 400;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+  }
+  
+  .category-title {
+    font-weight: 400;
+    font-family: var(--heading-font-family);
+  }
+  
+  .product-title {
+    font-weight: 400;
+    font-family: var(--heading-font-family);
+  }
+  
+  .page-title {
+    padding: 1.5rem 0
+  }
+  
+  .card-footer {
+    padding: 0;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    line-height: 3.1rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  
+  .font-bold {
+    font-weight: 600;
+  }
+  
+  .thin {
+    font-weight: 300;
+  }
+  
+  .discount-price {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    text-decoration: line-through;
+    color: var(--discount-color);
+  }
+  
+  .cart-icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .product-price {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    font-family: var(--heading-font-family);
+  }
+  
+  .wishlist-badge {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 10px;
+    cursor: pointer;
+    color: var(--wishlist-color);
+  }
+  
+  
+  .form-heading {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: var(--heading-font-family);
+  }
+  
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="range"] {
+    accent-color: var(--primary-color);
+  }
