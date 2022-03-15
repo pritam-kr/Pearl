@@ -1,0 +1,15 @@
+
+  .login-form-container .form {
+    background-color: var(--background-color);
+    margin: 0 0.5em;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .btn-submit {
+    border-radius: 0;
+  }
+  
+  .input {
+    border-radius: 0;
+  }

@@ -1,0 +1,28 @@
+.badge {
+  background-color: var(--primary-color);
+}
+
+.badge-card {
+  border-radius: 0;
+  background-color: #fff;
+  border: 0.5px solid var(--border-color);
+  box-shadow: none;
+}
+
+.badge-card img {
+  max-height: 18rem;
+  border-bottom: 0.5px solid var(--border-color);
+  object-fit: cover;
+  border-radius: 0;
+  height: auto;
+}
+
+.product-card {
+  max-height: 45rem;
+  max-width: 25rem;
+}
+
+.badge-card .card-content{
+  padding: .5rem 1rem;
+  text-align: left;
+}
