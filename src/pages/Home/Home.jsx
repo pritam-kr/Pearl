@@ -39,14 +39,12 @@ const Home = () => {
                   Lorem ipsum dolor sit amet consectetue adipisicing elit.
                   Impedit perspiciatis
                 </p>
-                <a href="">
                   <Link to="/allproducts">
                     {" "}
                     <button className="btn btn-primary-outline btn-shop">
                       Shop Now
                     </button>
                   </Link>
-                </a>
               </div>
             </div>
           </div>
@@ -55,7 +53,7 @@ const Home = () => {
 
       <div className="main-container">
         <div className="section product-section">
-          <h1 class="center section-heading">New Arrivals</h1>
+          <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
             <ProductCard />
@@ -66,8 +64,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div class="section category-section">
-          <h1 class="center section-heading">Category</h1>
+        <div className="section category-section">
+          <h1 className="center section-heading">Category</h1>
 
           <div className="category-image-wrapper">
             <CategoryImage />
@@ -78,55 +76,55 @@ const Home = () => {
             <CategoryImage />
           </div>
 
-          <div class="category-wrapper">
-            <div class="category add-box-one">
+          <div className="category-wrapper">
+            <div className="category add-box-one">
               <img
                 src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647265604/21_sskl2v.jpg"
-                class="responsive-images"
+                className="responsive-images"
               />
-              <div class="category-content center" id="category-content">
-                <h1 class="category-title">Platinum Necklace</h1>
-                <a href="./Pages/products.html">
+              <div className="category-content center" id="category-content">
+                <h1 className="category-title">Platinum Necklace</h1>
+                 
                   {" "}
                   <Link to="/allproducts">
-                    <button class="btn btn-buy">Shop Now</button>{" "}
+                    <button className="btn btn-buy">Shop Now</button>{" "}
                   </Link>{" "}
-                </a>
+               
               </div>
             </div>
-            <div class="category add-box-two">
+            <div className="category add-box-two">
               <img
                 src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647265605/22_vnj51r.jpg"
-                class="responsive-images"
+                className="responsive-images"
               />
 
-              <div class="category-content center" id="category-content">
-                <h1 class="category-title">Platinum Rings</h1>
-                <a href="./Pages/products.html">
+              <div className="category-content center" id="category-content">
+                <h1 className="category-title">Platinum Rings</h1>
+                 
                   {" "}
                   <Link to="/allproducts">
                     {" "}
-                    <button class="btn btn-buy">Shop Now</button>
+                    <button className="btn btn-buy">Shop Now</button>
                   </Link>{" "}
-                </a>
+                 
               </div>
             </div>
-            <div class="category add-box-three" id="add-box-three">
+            <div className="category add-box-three" id="add-box-three">
               <img
                 src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647266147/19_zwqhmg.jpg"
-                class="responsive-images"
+                className="responsive-images"
                 id="mouse-hover"
               />
 
-              <div class="category-content center" id="category-content">
-                <h1 class="category-title">Platinum Earrings</h1>
-                <a href="./Pages/products.html">
+              <div className="category-content center" id="category-content">
+                <h1 className="category-title">Platinum Earrings</h1>
+                 
                   {" "}
                   <Link to="/allproducts">
                     {" "}
-                    <button class="btn btn-buy">Shop Now</button>{" "}
+                    <button className="btn btn-buy">Shop Now</button>{" "}
                   </Link>{" "}
-                </a>
+               
               </div>
             </div>
           </div>
