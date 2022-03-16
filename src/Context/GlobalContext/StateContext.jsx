@@ -1,72 +1,89 @@
-import { createContext, useContext, useReducer, useEffect, useState } from "react"
-import axios from "axios"
-import { uniqueCategory } from "../../utils/uniqueCategory"
-import { sortByPrice } from "../../utils/sortByPrice"
-import { stateReducerFun } from "../GlobalContext/StateReducer"
+import {
+    createContext,
+    useContext,
+    useReducer,
+    useEffect,
+    useState,
+} from "react";
+import axios from "axios";
+import { uniqueCategory } from "../../utils/uniqueCategory";
+import { sortByPrice } from "../../utils/sortByPrice";
+import { filterByCategory } from "../../utils/filterByCategory";
+import { stateReducerFun } from "../GlobalContext/StateReducer";
+import {filterByRating} from "../../utils/filterByRating"
+import {filterByPriceRange} from "../../utils/filterByPriceRange"
 
-const StateContext = createContext()
-
+const StateContext = createContext();
 
 const initialState = {
     products: [],
     filters: {
-        sortBy: '',
-        priceRange: 20,
+        sortBy: "",
+        priceRange: 2000,
         categoryName: [],
-        rating: ''
+        rating: null,
+        maxPrice: "",
+        minPrice: ""
     },
     wishlist: [],
-}
+};
 
 const StateContextProvider = ({ children }) => {
-
-    const [loading, setLoading] = useState(true)
+    
     const [state, dispatch] = useReducer(stateReducerFun, initialState);
-    const { products, filters: { sortBy, categoryName } } = state
+    const {
+        products,
+        filters: { sortBy, categoryName, rating, priceRange, maxPrice },
+    } = state;
 
-    // getting all category name
-    const getUniqueCategory = uniqueCategory(products, "categoryName")
+  
+    // getting all category's name
+    const getUniqueCategory = uniqueCategory(products, "categoryName");
 
-    // Sort By Price 
-    const getSortByPrice = sortByPrice(products, sortBy)
+    // Sort By Price
+    const getSortByPrice = sortByPrice(products, sortBy);
 
-    //filter by Category 
-    const filterByCategory = (data, categoryName) => {
+    //filter by Category
+    const getFilterByCategory = filterByCategory(getSortByPrice, categoryName);
+     
+    // filter by Rating
+    const getFilterByRating = filterByRating(getFilterByCategory, rating);
 
-        const copied = [...data]
+    //filter by Price range
+    const getFilterByPriceRange = filterByPriceRange(getFilterByRating, priceRange)
 
-        if (categoryName.length !== 0) {
-            return copied.filter((eachProduct) => categoryName.includes(eachProduct.categoryName))
-        }
+    //Final Filtered` list
+    const filteredProductList = getFilterByPriceRange;
 
-        return copied
-
-    }
-
-    const getFilterByCategory = filterByCategory(getSortByPrice, categoryName)
-    console.log(getFilterByCategory)
-
+    
     useEffect(() => {
         (async () => {
             try {
-                const { data: { products } } = await axios.get('/api/products')
-                dispatch({ type: "ON_SUCCESS", payload: products, setLoading: setLoading })
-            }
-            catch (error) {
-                console.log(error)
-            }
-        })()
-    }, [])
+                const {
+                    data: { products },
+                } = await axios.get("/api/products");
+                dispatch({
+                    type: "ON_SUCCESS",
+                    payload: products,
+                });
 
+                dispatch({type: "LOAD_MAX_PRICE", payload: products})
+                
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory }} >
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList}}>
             {children}
         </StateContext.Provider>
-    )
+    );
+};
 
-}
+const useStateContext = () => useContext(StateContext);
 
-const useStateContext = () => useContext(StateContext)
+export { useStateContext, StateContextProvider };
 
-export { useStateContext, StateContextProvider }
+
