@@ -12,17 +12,40 @@
 .badge-card img {
   max-height: 18rem;
   border-bottom: 0.5px solid var(--border-color);
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0;
-  height: auto;
+
 }
 
 .product-card {
+  position: relative;
   max-height: 45rem;
-  max-width: 25rem;
+  max-width: 30rem;
 }
 
-.badge-card .card-content{
+.badge-card .card-content {
   padding: .5rem 1rem;
-  text-align: left;
+  text-align: center;
+}
+
+.rating-start {
+  background-color: transparent;
+}
+
+.outof-text {
+  border-radius: 0;
+ 
+  justify-content: flex-start;
+  align-items: flex-start;
+  backdrop-filter: blur(1px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(17, 17, 17, 0);
+}
+.outof-text span{
+  background-color: var(--primary-color);
+  border-radius: 0;
+  font-weight: 200;
+  font-size: 1rem;
+  margin: .5rem .5rem ;
+  color: var(--text-color);
 }
