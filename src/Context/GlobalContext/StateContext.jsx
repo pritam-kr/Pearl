@@ -22,20 +22,21 @@ const initialState = {
         priceRange: 2000,
         categoryName: [],
         rating: null,
+        maxPrice: "",
+        minPrice: ""
     },
     wishlist: [],
 };
 
 const StateContextProvider = ({ children }) => {
-    const [loading, setLoading] = useState(true);
+    
     const [state, dispatch] = useReducer(stateReducerFun, initialState);
     const {
         products,
-        filters: { sortBy, categoryName, rating, priceRange },
+        filters: { sortBy, categoryName, rating, priceRange, maxPrice },
     } = state;
 
-     
-
+  
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
 
@@ -51,9 +52,10 @@ const StateContextProvider = ({ children }) => {
     //filter by Price range
     const getFilterByPriceRange = filterByPriceRange(getFilterByRating, priceRange)
 
+    //Final Filtered` list
     const filteredProductList = getFilterByPriceRange;
 
-
+    
     useEffect(() => {
         (async () => {
             try {
@@ -63,8 +65,10 @@ const StateContextProvider = ({ children }) => {
                 dispatch({
                     type: "ON_SUCCESS",
                     payload: products,
-                    setLoading: setLoading,
                 });
+
+                dispatch({type: "LOAD_MAX_PRICE", payload: products})
+                
             } catch (error) {
                 console.log(error);
             }
@@ -72,7 +76,7 @@ const StateContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList }}>
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList}}>
             {children}
         </StateContext.Provider>
     );
@@ -81,3 +85,5 @@ const StateContextProvider = ({ children }) => {
 const useStateContext = () => useContext(StateContext);
 
 export { useStateContext, StateContextProvider };
+
+
