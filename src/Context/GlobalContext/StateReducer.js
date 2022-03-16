@@ -1,6 +1,9 @@
+import {LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, STAR_RATING, PRICE_RANGE, CLEAR_FILTER} from "../Action/actions"
+
+
 export const stateReducerFun = (state, action) => {
     switch (action.type) {
-        case "ON_SUCCESS":
+        case ON_SUCCESS:
             if (action.payload) {
                 action.setLoading(false);
                 return {
@@ -9,7 +12,7 @@ export const stateReducerFun = (state, action) => {
                 };
             }
 
-        case "LOW_TO_HIGH":
+        case LOW_TO_HIGH:
             return {
                 ...state,
                 filters: {
@@ -18,7 +21,7 @@ export const stateReducerFun = (state, action) => {
                 },
             };
 
-        case "HIGH_TO_LOW":
+        case HIGH_TO_LOW:
             return {
                 ...state,
                 filters: {
@@ -27,7 +30,7 @@ export const stateReducerFun = (state, action) => {
                 },
             };
 
-        case "GET_CATEGORY":
+        case GET_CATEGORY:
             if (state.filters.categoryName.includes(action.payload)) {
                 return {
                     ...state,
@@ -47,6 +50,35 @@ export const stateReducerFun = (state, action) => {
                     categoryName: [...state.filters.categoryName, action.payload],
                 },
             };
+
+            case STAR_RATING: 
+            
+            if(action.payload === 4){
+                return{...state, filters: {...state.filters, rating: action.payload}}
+            }
+            if(action.payload === 3){
+                return{...state, filters: {...state.filters, rating: action.payload}}
+            }
+            if(action.payload === 2){
+                return{...state, filters: {...state.filters, rating: action.payload}}
+            }
+            if(action.payload === 1){
+                return{...state, filters: {...state.filters, rating: action.payload}}
+            }
+
+            case PRICE_RANGE:
+            
+            return {...state, filters: {...state.filters, priceRange: action.payload}}
+
+            case CLEAR_FILTER:
+
+            return {
+               ...state, filters: {...state.filters,  sortBy: "",
+               priceRange: 500,
+               categoryName: [],
+               rating: null,}
+            }
+            
         default:
             return state;
     }
