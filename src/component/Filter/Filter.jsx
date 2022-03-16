@@ -5,8 +5,8 @@ import { useStateContext } from "../../Context/GlobalContext/StateContext";
 const Filter = () => {
 
     const  {state, getUniqueCategory, dispatch} = useStateContext();
-    const {filters: {priceRange}} = state
-    
+    const {filters: {priceRange, maxPrice}} = state
+
   return (
     <>
       <div className="sidebar-fillers">
@@ -38,16 +38,15 @@ const Filter = () => {
           <h3 className="large-heading">Price</h3>
 
           <h6 className="text-md space-between">
-            <span id="min-price">₹ {priceRange}</span> <span id="max-price">₹ 66000</span>
+            <span id="min-price">₹ {priceRange}</span> <span id="max-price">₹ {maxPrice}</span>
           </h6>
           <input
             className="input range-input"
             id="price-range"
             type="range"
             min="2000"
-            max="66000"
-            step="2000"
-            onChange={(event) => dispatch({type:"PRICE_RANGE", payload:event.target.value})}
+            max={maxPrice}
+            onMouseUp={(event) => dispatch({type:"PRICE_RANGE", payload:event.target.value})}
           />
         </div>
         <div className="sidebar-box sidebar-category">
