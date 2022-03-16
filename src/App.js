@@ -8,11 +8,13 @@ import {WishList} from "./pages/WishList/WishList"
 import {AllProducts} from "./pages/AllProducts/AllProducts"
 import { Login } from "./pages/Auth/Login";
 import { Signup } from "./pages/Auth/Signup";
+import MockAPI from "./component/Mockman/Mockman"
  
  
 
 function App() {
   return (
+    <> 
     <div className="App-container">
       <Navigation />
       <Routes>
@@ -22,9 +24,13 @@ function App() {
         <Route path="/allproducts" element={<AllProducts/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
+
+        <Route path="/mockman" element={<MockAPI />}> </Route>
       </Routes>
+
       <Footer />
      </div>
+     </>
   );
 }
 
