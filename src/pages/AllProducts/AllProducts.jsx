@@ -20,15 +20,16 @@ const AllProducts = () => {
 
                     <div className="products-container">
 
-                        {filteredProductList.map((eachProduct) => {
+                        {filteredProductList.length === 0 ? <h2 className="center">Loading...</h2> : 
+                            filteredProductList.map((eachProduct) => {
 
-                            const { id, title, categoryName, Karat, image, price, rating, inStock } = eachProduct
+                                const { id, title, categoryName, Karat, image, price, rating, inStock } = eachProduct
 
-                            return (
-                                <ProductCard id={id} title={title} categoryName={categoryName} Karat={Karat} image={image} inStock={inStock} price={price} rating={rating}  />
-                            )
-                        })}
-
+                                return (
+                                    <ProductCard id={id} title={title} categoryName={categoryName} Karat={Karat} image={image} inStock={inStock} price={price} rating={rating} />
+                                )
+                            })
+                        }
 
                     </div>
                 </div>
