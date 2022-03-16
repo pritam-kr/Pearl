@@ -5,15 +5,15 @@ import { ProductCard } from "../../component/ProductCard/ProductCard";
 
 const AllProducts = () => {
     return (
-        <div class="all-products-section">
-            <div class="products-wrapper">
+        <div className="all-products-section">
+            <div className="products-wrapper">
 
                 <Filter />
 
-                <div class="all-products">
-                    <h3 class="large-heading">Showing all Products</h3>
+                <div className="all-products">
+                    <h3 className="large-heading">Showing all Products</h3>
 
-                    <div class="products-container">
+                    <div className="products-container">
                         <ProductCard />
                     </div>
                 </div>

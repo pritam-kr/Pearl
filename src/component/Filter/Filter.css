@@ -3,25 +3,30 @@
   border-bottom: 1px solid;
   cursor: pointer;
 }
- 
+
 .sidebar-fillers {
   background-color: var(--background-color);
   padding: 1em;
-  height: max-content; 
+  height: max-content;
 }
 
 .sidebar-box {
-  margin-bottom: 2em;
+  margin-bottom: 2rem;
+  padding-bottom: .5rem;
   border-bottom: 0.5px solid var(--border-color);
 }
+
 .sidebar-box .large-heading {
   margin-bottom: 0.5em;
 }
+
 .sidebar-box ul li {
   margin-bottom: 0.5em;
+  display: block;
 }
+
 .label {
-  margin-left: 0.5em;
+  margin-left: 0.5rem;
 }
 
 .range-input {
@@ -30,8 +35,17 @@
 }
 
 
+/*--------Category---------------*/
+.category-label{
+  display: block;
+}
+.category-checkbox{
+  margin-right: 1rem;
+}
+
+
 @media screen and (max-width: 976px) {
-  .sidebar-fillers{
+  .sidebar-fillers {
     display: none;
   }
 }
