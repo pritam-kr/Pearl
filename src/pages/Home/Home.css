@@ -32,11 +32,11 @@
   justify-content: flex-start;
   align-items: flex-start;
   transition: 0.2s all;
-  background-color: rgba(133, 133, 133, 0.623);
+  background-color: rgba(133, 133, 133, 0.335);
 }
 
 .hero-content-wrapper:hover {
-  background-color: rgba(226, 226, 226, 0.39);
+  background-color: rgba(202, 202, 202, 0.39);
 }
 
 .hero-content {
@@ -59,9 +59,9 @@
   background: var(--primary-color);
   color: var(--text-color);
   margin-top: 2.5em;
-  padding: 1.2em 2.5em;
+  padding: 1em 2.3em;
   border-radius: 0;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .btn-shop:hover {

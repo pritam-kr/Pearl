@@ -1,31 +1,33 @@
 footer {
-    
-    background-color: rgba(0, 0, 0, 0.075);
+    background-color: var(--bg-footer);
   }
   
   .footer-wrapper {
     display: grid;
-    grid-template-columns: 100%;
-    gap: 1rem;
+    grid-template-columns: 100%; 
+    gap: 2rem;
     justify-content: center;
     margin: 0 auto;
     max-width: 1200px;
     padding: 2rem;
   }
   .footer-content {
-    border: 1px solid;
     padding: 1rem;
   }
   .footer-heading {
-    font-size: 1.3rem;
-    font-family: sans-serif;
+    font-size: 1.8rem;
+    margin: .8rem 0;
   }
   .Copyright {
     text-align: center;
     background-color: rgba(54, 54, 54, 0.815);
     padding: 2rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: #fff;
+  }
+
+  .category-list{
+    margin-bottom: .6rem;
   }
   
   @media screen and (min-width: 767px) {

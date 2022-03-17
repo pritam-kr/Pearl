@@ -20,13 +20,13 @@ const Filter = () => {
           <form>
             <ul>
               <li className="lists">
-                <label className="label text-md" id="low-high">
+                <label className="label text-sm" id="low-high">
                 <input type="radio" for="sortby" name="price" checked={state.filters.sortBy && state.filters.sortBy === "LOW_TO_HIGH" } onChange={() =>  dispatch({type: "LOW_TO_HIGH", payload: "LOW_TO_HIGH"})}/>  Price: Low to High 
                 </label>
               </li>
 
               <li className="lists">
-                <label className="label text-md" id="High-low">
+                <label className="label text-sm" id="High-low">
                 <input type="radio" for="sortby" name="price" checked={state.filters.sortBy && state.filters.sortBy === "HIGH_TO_LOW" }  onChange={() =>  dispatch({type: "HIGH_TO_LOW", payload: "HIGH_TO_LOW"})}/>  Price: High to Low
                 </label>
               </li>
@@ -54,7 +54,7 @@ const Filter = () => {
           <ul>
             <li className="lists">
               {
-              getUniqueCategory.map((eachCategory, i) => <label className="label text-md category-label" key={i}> <input type="checkbox" className="category-checkbox" checked={state.filters.categoryName.includes(eachCategory)} onChange={() => dispatch({type:"GET_CATEGORY", payload: eachCategory})}/>{eachCategory}</label>)
+              getUniqueCategory.map((eachCategory, i) => <label className="label text-sm category-label" key={i}> <input type="checkbox" className="category-checkbox" checked={state.filters.categoryName.includes(eachCategory)} onChange={() => dispatch({type:"GET_CATEGORY", payload: eachCategory})}/>{eachCategory}</label>)
               }
             </li>
              
@@ -66,25 +66,25 @@ const Filter = () => {
             <ul>
               <li className="lists">
                 
-                <label className="label text-md" id="four-rate">
+                <label className="label text-sm" id="four-rate">
                   <input type="radio" for="four-rate" name="rating" checked={state.filters.rating && state.filters.rating === 4} onChange={() => dispatch({type: "STAR_RATING", payload: 4})} /> 4 Rating & Above 
                 </label>
               </li>
               <li className="lists">
                 
-                <label className="label text-md" id="three-rate">
+                <label className="label text-sm" id="three-rate">
                   <input type="radio" for="three-rate" name="rating" checked={state.filters.rating && state.filters.rating === 3} onChange={() => dispatch({type: "STAR_RATING", payload: 3})}/> 3 Rating & Above 
                 </label>
               </li>
               <li className="lists">
                  
-                <label className="label text-md" id="two-rate">
+                <label className="label text-sm" id="two-rate">
                   <input type="radio" for="two-rate" name="rating" checked={state.filters.rating && state.filters.rating === 2} onChange={() => dispatch({type:"STAR_RATING", payload: 2})}/> 2 Rating & Above 
                 </label>
               </li>
               <li className="lists">
                 
-                <label className="label text-md" id="one-rate">
+                <label className="label text-sm" id="one-rate">
                   <input type="radio" for="one-rate" name="rating" checked={state.filters.rating && state.filters.rating === 1} onChange={() => dispatch({type:"STAR_RATING", payload: 1})}/> 1 Rating & Above 
                 </label>
               </li>

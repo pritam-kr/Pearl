@@ -1,4 +1,8 @@
  /*All Common CSS properties */
+
+ /*----for Paragraph-------*/
+ @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap');
+
 * {
     box-sizing: border-box;
   }
@@ -12,7 +16,7 @@
     --primary-color: #201e28;
     --primary-hover: #201e28e5;
     --input-background: #c2c4c573;
-    --bg-footer: #505050;
+    --bg-footer: #2e2e2e32;
     --background-color: #fff;
     --heart-icon-hover: #c50505;
     --wishlist-color: #7a7a7a;
@@ -20,6 +24,7 @@
     --heading-font-family: "Janson Text", Times, "Times New Roman", serif;
     ;
     --discount-color: #3333336e;
+    
   }
   
   
@@ -34,8 +39,14 @@
     }
   }
   
+  
+  p, li, label, input, ::placeholder, span, button {
+
+    font-family: 'Source Sans Pro', sans-serif;
+     font-weight: 400;
+     
+  }
   ::placeholder {
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
     font-size: medium;
   }
   
@@ -48,7 +59,7 @@
      border-radius: 0;
    }
    
-  .section-heading {
+   .section-heading {
     font-size: 2.5rem;
     font-weight: 300;
     margin: 3rem;
@@ -57,13 +68,13 @@
   
   .large-heading {
     font-family: var(--heading-font-family);
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 400;
   }
   
   .paragraph {
     font-weight: 400;
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-family: "Brandon Grotesque", sans-serif !important;
     font-size: 1.9rem;
     line-height: 2rem;
   }
@@ -73,20 +84,12 @@
     font-size: 1.7rem;
     font-weight: 400;
     margin: 0;
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
+   
   }
   
-  li, p {
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
-  }
-  
-  label {
-    font-family: "Zen Kaku Gothic Antique", sans-serif ;
-  }
   
   .btn {
-    font-weight: 400;
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 300;
   }
   
   .category-title {
@@ -95,7 +98,7 @@
   }
   
   .product-title {
-    font-weight: 400;
+    font-weight: 600;
     font-family: var(--heading-font-family);
   }
   
@@ -125,7 +128,6 @@
   .discount-price {
     font-size: 1.2rem;
     font-weight: 400;
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
     text-decoration: line-through;
     color: var(--discount-color);
   }

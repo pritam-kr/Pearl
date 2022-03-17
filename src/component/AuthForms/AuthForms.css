@@ -11,5 +11,13 @@
   }
   
   .input {
+    padding: .6rem 1rem;
     border-radius: 0;
+     
+  }
+  .form-label{
+    font-size: 1.3rem;
+  }
+  ::placeholder{
+    font-size: 1.2rem;
   }

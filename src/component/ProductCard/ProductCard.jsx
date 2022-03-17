@@ -1,11 +1,13 @@
 import * as BiIcons from "react-icons/bi";
-import { useState, useEffect } from "react";
 import React from "react"
 import './ProductCard.css'
+import { useCartContext } from "../../Context/CartContext/CartContext";
  
 
-const ProductCard = ({image, id, title, price, rating, inStock}) => {
+const ProductCard = ({eachProduct}) => {
 
+    const {setCartItems} = useCartContext() 
+    const { id, title, categoryName, Karat, image, price, rating, inStock } = eachProduct
     
     return (
         <>
@@ -14,7 +16,7 @@ const ProductCard = ({image, id, title, price, rating, inStock}) => {
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>
-                    <h1 className="card-price product-price">₹  {price} <span className="discount-price">₹
+                    <h1 className="card-price product-price">₹  {new Intl.NumberFormat('en-IN').format(price)} <span className="discount-price">₹
                         19999/-</span></h1>
                     <p className="text-sm"><BiIcons.BiStar className="rating-start"/> {rating}/5</p>
                 </div>
@@ -22,8 +24,7 @@ const ProductCard = ({image, id, title, price, rating, inStock}) => {
                 <div className="card-footer">
                     <div className="move-cart-buttons">
 
-                        <button className="btn btn-primary btn-move-cart text-md"><i
-                            className="fa-solid fa-cart-shopping cart-icon"></i> <BiIcons.BiCart /> Add to Cart</button>
+                        <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => setCartItems(eachProduct)}> <BiIcons.BiCart className="cart-icon"/> Add to Cart</button>
 
                     </div>
                 </div>
