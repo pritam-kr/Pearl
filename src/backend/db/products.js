@@ -17,6 +17,7 @@ export const products = [
     rating: 4,
     inStock: 0,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -53,6 +54,7 @@ export const products = [
     rating: 4,
     inStock: 12,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -77,6 +79,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -89,6 +92,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -101,6 +105,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -125,6 +130,7 @@ export const products = [
     rating: 2,
     inStock: 0,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -137,6 +143,7 @@ export const products = [
     rating: 2,
     inStock: 10,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),
@@ -209,6 +216,7 @@ export const products = [
     rating: 1,
     inStock: 10,
     karat: 950,
+    featured: true
   },
   {
     _id: uuid(),

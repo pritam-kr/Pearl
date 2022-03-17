@@ -1,6 +1,7 @@
  
-import { LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, STAR_RATING, PRICE_RANGE, CLEAR_FILTER } from "../Action/actions"
+import {FEATURED_PRODUCT, LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, STAR_RATING, PRICE_RANGE, CLEAR_FILTER } from "../Action/actions"
 import {gettingMaxPrice} from "../../utils/maxMinPrice"
+import {featuredProduct} from "../../utils/featuredProduct"
 
 export const stateReducerFun = (state, action) => {
 
@@ -81,6 +82,12 @@ export const stateReducerFun = (state, action) => {
                     rating: null,
                 }
             }
+
+        case FEATURED_PRODUCT:
+
+        return {
+            ...state, featured: featuredProduct(action.payload)
+        }
 
         default:
             return state;

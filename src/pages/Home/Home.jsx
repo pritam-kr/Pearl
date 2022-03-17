@@ -1,12 +1,16 @@
 import React from "react";
-import { ProductCard } from "../../component/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import { CategoryImage } from "../../component/CategoryImage/CategoryImage";
- 
-
 import "./Home.css";
+import { useStateContext } from "../../Context/GlobalContext/StateContext";
+import { FeaturedCardProduct } from "../../component/index";
+import { CategoryContextProvider } from "../../Context";
 
 const Home = () => {
+  const {
+    state: { featured },
+  } = useStateContext();
+
   return (
     <>
       <div className="hero-section">
@@ -25,11 +29,6 @@ const Home = () => {
               />
             </video>
 
-            {/* <img
-              src="./heroimg.jpg"
-              alt=""
-              class="hero-img responsive-images"
-            /> */}
             <div className="hero-content-wrapper">
               <div className="hero-content">
                 <h2 className="large-heading hero-title">
@@ -39,12 +38,12 @@ const Home = () => {
                   Lorem ipsum dolor sit amet consectetue adipisicing elit.
                   Impedit perspiciatis
                 </p>
-                  <Link to="/allproducts">
-                    {" "}
-                    <button className="btn btn-primary-outline btn-shop">
-                      Shop Now
-                    </button>
-                  </Link>
+                <Link to="/allproducts">
+                  {" "}
+                  <button className="btn btn-primary-outline btn-shop">
+                    Shop Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -56,24 +55,19 @@ const Home = () => {
           <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
-          {/* <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard /> */}
+            {featured.slice(0, 5).map((eachProduct) => {
+              return <FeaturedCardProduct eachProduct={eachProduct} />;
+            })}
           </div>
         </div>
 
         <div className="section category-section">
           <h1 className="center section-heading">Category</h1>
 
-          <div className="category-image-wrapper">
-            <CategoryImage />
-            <CategoryImage />
-            <CategoryImage />
-            <CategoryImage />
-            <CategoryImage />
-            <CategoryImage />
+          <div className="product-container category-container">
+            <CategoryContextProvider>
+              <CategoryImage />
+            </CategoryContextProvider>
           </div>
 
           <div className="category-wrapper">
@@ -83,13 +77,10 @@ const Home = () => {
                 className="responsive-images"
               />
               <div className="category-content center" id="category-content">
-                <h1 className="category-title">Platinum Necklace</h1>
-                 
-                  {" "}
-                  <Link to="/allproducts">
-                    <button className="btn btn-buy">Shop Now</button>{" "}
-                  </Link>{" "}
-               
+                <h1 className="category-title">Platinum Necklace</h1>{" "}
+                <Link to="/allproducts">
+                  <button className="btn btn-buy">Shop Now</button>{" "}
+                </Link>{" "}
               </div>
             </div>
             <div className="category add-box-two">
@@ -99,14 +90,11 @@ const Home = () => {
               />
 
               <div className="category-content center" id="category-content">
-                <h1 className="category-title">Platinum Rings</h1>
-                 
+                <h1 className="category-title">Platinum Rings</h1>{" "}
+                <Link to="/allproducts">
                   {" "}
-                  <Link to="/allproducts">
-                    {" "}
-                    <button className="btn btn-buy">Shop Now</button>
-                  </Link>{" "}
-                 
+                  <button className="btn btn-buy">Shop Now</button>
+                </Link>{" "}
               </div>
             </div>
             <div className="category add-box-three" id="add-box-three">
@@ -117,19 +105,15 @@ const Home = () => {
               />
 
               <div className="category-content center" id="category-content">
-                <h1 className="category-title">Platinum Earrings</h1>
-                 
+                <h1 className="category-title">Platinum Earrings</h1>{" "}
+                <Link to="/allproducts">
                   {" "}
-                  <Link to="/allproducts">
-                    {" "}
-                    <button className="btn btn-buy">Shop Now</button>{" "}
-                  </Link>{" "}
-               
+                  <button className="btn btn-buy">Shop Now</button>{" "}
+                </Link>{" "}
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </>
   );

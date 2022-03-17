@@ -1,0 +1,1 @@
+export {FeaturedCardProduct} from "../component/FeaturedProductCard/FeaturedProductCard"

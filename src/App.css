@@ -49,6 +49,7 @@
   ::placeholder {
     font-size: medium;
   }
+
   
   .icons {
     font-size: 2rem;
@@ -164,3 +165,4 @@
   input[type="range"] {
     accent-color: var(--primary-color);
   }
+

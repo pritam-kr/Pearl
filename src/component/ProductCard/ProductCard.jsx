@@ -2,6 +2,7 @@ import * as BiIcons from "react-icons/bi";
 import React from "react"
 import './ProductCard.css'
 import { useCartContext } from "../../Context/CartContext/CartContext";
+import {priceFormatter} from "../../utils/priceFormatter"
  
 
 const ProductCard = ({eachProduct}) => {
@@ -16,7 +17,7 @@ const ProductCard = ({eachProduct}) => {
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>
-                    <h1 className="card-price product-price">₹  {new Intl.NumberFormat('en-IN').format(price)} <span className="discount-price">₹
+                    <h1 className="card-price product-price">₹  {priceFormatter(price)} <span className="discount-price">₹
                         19999/-</span></h1>
                     <p className="text-sm"><BiIcons.BiStar className="rating-start"/> {rating}/5</p>
                 </div>

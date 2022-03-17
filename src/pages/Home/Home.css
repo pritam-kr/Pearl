@@ -138,6 +138,9 @@
   transition: 0.1s all;
   width: 100%;
   background-color: rgba(192, 192, 192, 0.301);
+  backdrop-filter: blur(3px) saturate(180%);
+    -webkit-backdrop-filter: blur(3px) saturate(180%);
+    background-color: rgba(46, 46, 46, 0.322);
 }
 
 .btn-buy {
@@ -198,3 +201,16 @@
 }
  
 
+.featured-product-card{
+  max-height: 45rem;
+  border: 1px solid var(--border-color);
+}
+
+.featured-product-image{
+  border-radius: 0;
+}
+
+.featured-product-card .product-price{
+  font-size: 1.3rem;
+  margin: .5rem 0 0 0 ;
+}

@@ -29,24 +29,24 @@ const CartContextProvider = ({children}) => {
 
     // Now do post request with for a single project with the help of token 
     
-    useEffect(() => {
-        (async () => {
+    // useEffect(() => {
+    //     (async () => {
 
-            try{
-                const response = await axios.post('/api/user/cart', cartItem, {
-                    headers: {
-                        'authorization': getToken
-                    }
-                })
+    //         try{
+    //             const response = await axios.post('/api/user/cart', cartItem, {
+    //                 headers: {
+    //                     'authorization': ""
+    //                 }
+    //             })
 
-                console.log(response)
-            }
-            catch(error){
-                console.log(error)
-            }
+    //             console.log(response)
+    //         }
+    //         catch(error){
+    //             console.log(error)
+    //         }
 
-        })()
-    }, [])
+    //     })()
+    // }, [])
     
 
 

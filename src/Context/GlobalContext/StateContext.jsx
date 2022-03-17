@@ -26,6 +26,7 @@ const initialState = {
         minPrice: ""
     },
     wishlist: [],
+    featured: []
 };
 
 const StateContextProvider = ({ children }) => {
@@ -33,10 +34,10 @@ const StateContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(stateReducerFun, initialState);
     const {
         products,
-        filters: { sortBy, categoryName, rating, priceRange, maxPrice },
+        filters: { sortBy, categoryName, rating, priceRange, }, featured
     } = state;
 
-
+   
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
 
@@ -68,6 +69,8 @@ const StateContextProvider = ({ children }) => {
                 });
 
                 dispatch({ type: "LOAD_MAX_PRICE", payload: products })
+
+                dispatch({type: "FEATURED_PRODUCT", payload: products})
 
             } catch (error) {
                 console.log(error);
