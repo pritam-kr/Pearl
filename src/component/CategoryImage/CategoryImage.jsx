@@ -1,14 +1,28 @@
 import React from "react"
 import "./CategoryImage.css"
+import { useCategoryContext } from "../../Context/index"
 
 const CategoryImage = () => {
+
+    const { category } = useCategoryContext()
+
     return (
         <>
-         <div className="category-image-box">
-              <img src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647168584/necklace4_gsxaxb.png" class="responsive-images" alt="category-image" />
-        </div>
+            {category.map((eachCategory) => <div className="category-card">
+                <img
+                    src={eachCategory.image}
+                    className="responsive-images featured-product-image"
+                    alt="featured-product"
+                />
+
+                <div className="card-content">
+
+                    <h2 className="product-title category-title">{eachCategory.categoryName}</h2>
+
+                </div>
+            </div>)}
         </>
     )
-}
 
-export {CategoryImage}
+}
+export { CategoryImage }
