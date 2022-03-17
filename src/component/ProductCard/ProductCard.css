@@ -39,7 +39,7 @@
   align-items: flex-start;
   backdrop-filter: blur(1px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
-  background-color: rgba(17, 17, 17, 0);
+  background-color: rgba(44, 44, 44, 0);
 }
 .outof-text span{
   background-color: var(--primary-color);
@@ -47,5 +47,6 @@
   font-weight: 200;
   font-size: 1rem;
   margin: .5rem .5rem ;
-  color: var(--text-color);
+  color: #fff;
+  box-shadow: none;
 }

@@ -13,8 +13,9 @@
  }
 
  .logo {
-     color: var(--primary-color);
      font-size: 2rem;
+  text-transform: uppercase;
+  font-family: cinzel;
  }
 
  .nav-wrapper {

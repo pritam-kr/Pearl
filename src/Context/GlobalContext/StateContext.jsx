@@ -10,8 +10,8 @@ import { uniqueCategory } from "../../utils/uniqueCategory";
 import { sortByPrice } from "../../utils/sortByPrice";
 import { filterByCategory } from "../../utils/filterByCategory";
 import { stateReducerFun } from "../GlobalContext/StateReducer";
-import {filterByRating} from "../../utils/filterByRating"
-import {filterByPriceRange} from "../../utils/filterByPriceRange"
+import { filterByRating } from "../../utils/filterByRating"
+import { filterByPriceRange } from "../../utils/filterByPriceRange"
 
 const StateContext = createContext();
 
@@ -29,14 +29,14 @@ const initialState = {
 };
 
 const StateContextProvider = ({ children }) => {
-    
+
     const [state, dispatch] = useReducer(stateReducerFun, initialState);
     const {
         products,
         filters: { sortBy, categoryName, rating, priceRange, maxPrice },
     } = state;
 
-  
+
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
 
@@ -45,7 +45,7 @@ const StateContextProvider = ({ children }) => {
 
     //filter by Category
     const getFilterByCategory = filterByCategory(getSortByPrice, categoryName);
-     
+
     // filter by Rating
     const getFilterByRating = filterByRating(getFilterByCategory, rating);
 
@@ -55,7 +55,7 @@ const StateContextProvider = ({ children }) => {
     //Final Filtered` list
     const filteredProductList = getFilterByPriceRange;
 
-    
+
     useEffect(() => {
         (async () => {
             try {
@@ -67,8 +67,8 @@ const StateContextProvider = ({ children }) => {
                     payload: products,
                 });
 
-                dispatch({type: "LOAD_MAX_PRICE", payload: products})
-                
+                dispatch({ type: "LOAD_MAX_PRICE", payload: products })
+
             } catch (error) {
                 console.log(error);
             }
@@ -76,7 +76,7 @@ const StateContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList}}>
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList }}>
             {children}
         </StateContext.Provider>
     );

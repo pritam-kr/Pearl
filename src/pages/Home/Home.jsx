@@ -2,7 +2,7 @@ import React from "react";
 import { ProductCard } from "../../component/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import { CategoryImage } from "../../component/CategoryImage/CategoryImage";
-import { CoupleCategory } from "../../component/CoupleCategory/CoupleCategory";
+ 
 
 import "./Home.css";
 
@@ -35,7 +35,7 @@ const Home = () => {
                 <h2 className="large-heading hero-title">
                   Welcome to Dark Jewelry
                 </h2>
-                <p className="paragraph">
+                <p className="text-lg">
                   Lorem ipsum dolor sit amet consectetue adipisicing elit.
                   Impedit perspiciatis
                 </p>
@@ -56,11 +56,11 @@ const Home = () => {
           <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
+          {/* <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard /> */}
           </div>
         </div>
 
