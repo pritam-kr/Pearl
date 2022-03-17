@@ -1,0 +1,1 @@
+export  const featuredProduct = (product) => product.filter((eachProduct) => eachProduct.featured) 
