@@ -3,13 +3,17 @@ import React from "react"
 import './ProductCard.css'
 import { useCartContext } from "../../Context/CartContext/CartContext";
 import {priceFormatter} from "../../utils/priceFormatter"
+import { useAuthContext } from "../../Context";
  
 
 const ProductCard = ({eachProduct}) => {
 
-    const {setCartItems} = useCartContext() 
+    const {setCartItems, dispatch, addToCart} = useCartContext() 
     const { id, title, categoryName, Karat, image, price, rating, inStock } = eachProduct
     
+   const {getToken}  = useAuthContext()
+     
+
     return (
         <>
             <div className="images-card badge-card product-card" key={id}>
@@ -17,7 +21,7 @@ const ProductCard = ({eachProduct}) => {
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>
-                    <h1 className="card-price product-price">₹  {priceFormatter(price)} <span className="discount-price">₹
+                    <h1 className="card-price product-price"> ₹ {priceFormatter(price)} <span className="discount-price">₹
                         19999/-</span></h1>
                     <p className="text-sm"><BiIcons.BiStar className="rating-start"/> {rating}/5</p>
                 </div>
@@ -25,7 +29,7 @@ const ProductCard = ({eachProduct}) => {
                 <div className="card-footer">
                     <div className="move-cart-buttons">
 
-                        <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => setCartItems(eachProduct)}> <BiIcons.BiCart className="cart-icon"/> Add to Cart</button>
+                        <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => addToCart(eachProduct)}> <BiIcons.BiCart className="cart-icon"/> Add to Cart</button>
 
                     </div>
                 </div>

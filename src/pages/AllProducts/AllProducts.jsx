@@ -1,7 +1,6 @@
 import React from "react";
 import "./AllProducts.css"
-import { Filter } from "../../component/Filter/Filter";
-import { ProductCard } from "../../component/ProductCard/ProductCard";
+import {Filter, ProductCard} from "../../component/index"
 import { useStateContext } from "../../Context/GlobalContext/StateContext"
 
 
