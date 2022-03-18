@@ -1,13 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import {Navigation} from "./component/Navigation/Navigation"
-import {Home} from "./pages/Home/Home"
-import {MyCart} from "./pages/MyCart/MyCart"
-import {Footer} from "./component/Footer/Footer"
-import {WishList} from "./pages/WishList/WishList"
-import {AllProducts} from "./pages/AllProducts/AllProducts"
-import { Login } from "./pages/Auth/Login";
-import { Signup } from "./pages/Auth/Signup";
+
+import {Footer, Navigation} from "./component/index"
+import {Login, Signup, AllProducts, WishList, Home, MyCart} from "./pages/index"
+
 import MockAPI from "./component/Mockman/Mockman"
  
  
