@@ -1,15 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CategoryImage } from "../../component/CategoryImage/CategoryImage";
 import "./Home.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
-import { FeaturedCardProduct } from "../../component/index";
+import { FeaturedCardProduct,CategoryImage } from "../../component/index";
 import { CategoryContextProvider } from "../../Context";
+import { useAuthContext } from "../../Context/AuthContext/AuthContext";
 
 const Home = () => {
   const {
     state: { featured },
   } = useStateContext();
+
+  const {getToken} = useAuthContext()
+
+
 
   return (
     <>
