@@ -1,21 +1,55 @@
 import React from "react";
 import "./AuthForms.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { useAuthContext } from "../../Context";
 
 const LoginForm = () => {
+
+    const [formData, setFormData] = useState({email: "", password: ""})
+    const navigate = useNavigate()
+    const{token, setToken} = useAuthContext()
+
+
+    const loginFormHandler = (e) => {
+        e.preventDefault()
+         
+        const loginUser = formData;
+
+        try {
+            (async () => {
+                const {data : {foundUser, encodedToken}} = await axios.post("/api/auth/login", loginUser);
+                localStorage.setItem('login-Token', encodedToken)
+
+              setToken(encodedToken)
+
+                if(encodedToken){
+                    navigate('/allproducts')
+                }
+            })();
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
     return (
         <>
-            <form className="form">
+            <form className="form" onSubmit={(e)=>loginFormHandler(e)}>
                 <div className="form-header">
                     <h2 className="form-heading">Login</h2>
                 </div>
 
                 <div className="input-row">
-                    <label className="input-label form-label">Name: </label>
+                    <label className="input-label form-label">Email: </label>
                     <input
-                        type="text"
-                        placeholder="Enter Text"
+                        type="email"
+                        placeholder="Enter email"
                         className="input primary-input"
+                        onChange={(event) => setFormData((prev)=> ({...prev, email:event.target.value}))}
+                        required
                     />
                 </div>
 
@@ -28,6 +62,7 @@ const LoginForm = () => {
                         placeholder="******"
                         className="input required-input form-password-input"
                         required
+                        onChange={(event) => setFormData((prev)=> ({...prev, password:event.target.value}))}
                     />
                 </div>
 
@@ -39,15 +74,16 @@ const LoginForm = () => {
                 </div>
 
                 <div className="input-row">
-                    <button className="btn btn-primary btn-submit text-md">
-                        Login
-                    </button>
+                    <button className="btn btn-primary btn-submit text-md">Login</button>
                 </div>
 
                 <div className="form-footer">
                     <p className="paragraph">
                         {" "}
-                      <Link to="/signup" className="links">  Create an Account. </Link>{" "}
+                        <Link to="/signup" className="links">
+                            {" "}
+                            Create an Account.{" "}
+                        </Link>{" "}
                     </p>
                 </div>
             </form>

@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useAuthContext } from "../../Context/AuthContext/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 const SignupForm = () => {
 
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -22,11 +25,13 @@ const SignupForm = () => {
         try {
             (async () => {
                 const { data } = await axios.post("/api/auth/signup", signupUser);
-                localStorage.setItem('Token', data.encodedToken)
+                localStorage.setItem('Signup-Token', data.encodedToken)
 
             })();
 
             setFormData({ firstName: "", lastName: "", email: "", password: "" });
+
+            navigate('/login')
 
         } catch (error) {
             console.log(error);

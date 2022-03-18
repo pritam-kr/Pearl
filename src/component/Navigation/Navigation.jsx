@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
+import {useAuthContext} from "../../Context/index"
+ 
 
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
+  const {token} = useAuthContext()
+  const navigate = useNavigate()
+
   return (
     <>
       <nav className="nav">
@@ -17,7 +22,7 @@ const Navigation = () => {
             <div className="nav-menu">
               <ul>
                 <li className="nav-links"><Link to="/">Home</Link></li>
-                <li className="nav-links"><Link to="/allproducts">Shop</Link></li>
+                <li className="nav-links"><Link to= "/allProducts" >Shop</Link></li>
               </ul>
             </div>
 
@@ -47,12 +52,12 @@ const Navigation = () => {
               <li>
                <Link to="/login"> <BiIcons.BiUser className="icons navigation-icon" /> </Link>
               </li>
-              <li>
-               <Link to="/wishlist"> <BiIcons.BiHeart className="icons navigation-icon" /></Link>
+              <li onClick={() => token ? navigate("/wishlist"): navigate("/login")}>
+                 <BiIcons.BiHeart className="icons navigation-icon" /> 
               </li>
 
-              <li>
-              <Link to="/cart"> <BiIcons.BiCart className="icons navigation-icon" /></Link>
+              <li onClick={() => token ? navigate("/cart"): navigate("/login")}>
+              <BiIcons.BiCart className="icons navigation-icon" />
               </li>
 
               <li className="hamburger-menu">
