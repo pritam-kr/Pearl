@@ -1,0 +1,7 @@
+export {Login} from "../pages/Auth/Login"
+export {Signup} from "../pages/Auth/Signup"
+export {AllProducts} from "../pages/AllProducts/AllProducts"
+export {WishList} from "../pages/WishList/WishList"
+export {Home} from "../pages/Home/Home"
+export{MyCart} from "../pages/MyCart/MyCart"
+export {} from "../pages/SingleProduct/SingleProduct"
