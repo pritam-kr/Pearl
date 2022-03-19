@@ -4,15 +4,16 @@ import React from "react";
 import "./ProductCard.css";
 import { useCartContext } from "../../Context/CartContext/CartContext";
 import { priceFormatter } from "../../utils/priceFormatter";
+import {useWishListContext} from "../../Context/index"
 
-const token = localStorage.getItem("login-Token");
-
+ 
 const ProductCard = ({ eachProduct }) => {
+
+    const {addToWishlist} = useWishListContext()
     const { addToCart} = useCartContext();
 
     const addToCartHandler = (eachProduct) => {
         addToCart(eachProduct)
-
      };
 
     const { id, title, categoryName, Karat, image, price, rating, inStock } =
@@ -55,7 +56,7 @@ const ProductCard = ({ eachProduct }) => {
                     ""
                 )}
 
-                <div class="btn-wishlist"><FaIcons.FaHeart className="wishlist-icon"/></div>
+                <div class="btn-wishlist"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
             </div>
         </>
     );
