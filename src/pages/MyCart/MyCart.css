@@ -1,0 +1,13 @@
+ .cart-section{
+    margin: 8rem 20px 2rem 20px;
+ }
+
+ .page-title{
+   padding-top: 0;
+}
+
+
+.cart-wrapper{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}

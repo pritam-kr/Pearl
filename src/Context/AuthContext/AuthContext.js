@@ -9,11 +9,10 @@ const AuthContext = createContext()
 const AuthContextProvider = ({children}) =>{
     
     const getToken = localStorage.getItem("login-Token")
-    
     const [token, setToken] = useState(null)
 
     
-    return <AuthContext.Provider value={{token, setToken}}>
+    return <AuthContext.Provider value={{token, setToken, getToken}}>
         {children}
     </AuthContext.Provider>
 

@@ -111,6 +111,16 @@
      display: none;
  }
 
+ /*-------------Badge-------------*/
+.icon-badge{
+    position: relative;
+}
+ .badge-icon-number{
+    right: 0rem;
+    top: -1rem;
+    left: 1rem
+  }
+
  @media screen and (min-width: 968px) {
      .search-bar-wrapper {
          position: static;
