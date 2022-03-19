@@ -9,7 +9,7 @@ const LoginForm = () => {
 
     const [formData, setFormData] = useState({email: "", password: ""})
     const navigate = useNavigate()
-    const{token, setToken} = useAuthContext()
+    const{setToken} = useAuthContext()
 
 
     const loginFormHandler = (e) => {
@@ -20,6 +20,7 @@ const LoginForm = () => {
         try {
             (async () => {
                 const {data : {foundUser, encodedToken}} = await axios.post("/api/auth/login", loginUser);
+                
                 localStorage.setItem('login-Token', encodedToken)
 
               setToken(encodedToken)

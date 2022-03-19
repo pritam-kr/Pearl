@@ -4,7 +4,7 @@
 
 .badge-card {
   border-radius: 0;
-  background-color: #fff;
+  
   border: 0.5px solid var(--border-color);
   box-shadow: none;
 }
@@ -34,7 +34,6 @@
 
 .outof-text {
   border-radius: 0;
- 
   justify-content: flex-start;
   align-items: flex-start;
   backdrop-filter: blur(1px) saturate(180%);
@@ -49,4 +48,20 @@
   margin: .5rem .5rem ;
   color: #fff;
   box-shadow: none;
+}
+
+.btn-wishlist{
+  width: fit-content;
+  position: absolute;
+  right: 0;
+  font-size: 2rem;
+  margin: .5rem;
+  cursor: pointer;
+}
+.wishlist-icon{
+  color: var(--wishlist-icon);
+}
+
+.wishlist-icon:hover{
+  color: var(--wishlist-icon-hover);
 }

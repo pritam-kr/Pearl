@@ -3,13 +3,17 @@ import {Link, useNavigate} from "react-router-dom"
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
-import {useAuthContext} from "../../Context/index"
+import {useAuthContext, useCartContext} from "../../Context/index"
+
  
 
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
   const {token} = useAuthContext()
   const navigate = useNavigate()
+  const {state: {totalCartItems}} = useCartContext()
+
+  
 
   return (
     <>
@@ -56,8 +60,8 @@ const Navigation = () => {
                  <BiIcons.BiHeart className="icons navigation-icon" /> 
               </li>
 
-              <li onClick={() => token ? navigate("/cart"): navigate("/login")}>
-              <BiIcons.BiCart className="icons navigation-icon" />
+              <li onClick={() => navigate("/cart")} className="icon-badge">
+              <BiIcons.BiCart className="icons navigation-icon" /> <span className="badge-icon-number badge-status">{totalCartItems}</span>
               </li>
 
               <li className="hamburger-menu">

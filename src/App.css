@@ -24,6 +24,8 @@
     --heading-font-family: "Janson Text", Times, "Times New Roman", serif;
     ;
     --discount-color: #3333336e;
+    --wishlist-icon: #3131316c;
+    --wishlist-icon-hover: #313131b9;
     
   }
   
@@ -59,6 +61,8 @@
    .btn{
      border-radius: 0;
    }
+
+   
    
    .section-heading {
     font-size: 2.5rem;

@@ -1,0 +1,32 @@
+.cart-card{
+    box-shadow: none;
+    border-radius: 0;
+    border: 1px solid var(--border-color);
+    max-width: 900px;
+    height: 20rem;
+    position: relative;
+    
+}
+.cart-card .card-content{
+       display: block;
+       width: 100%;
+       padding: 2rem;
+}
+
+.cart-card .card-footer{
+    display: block;
+    
+}
+
+.cart-card .quantity{
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 1rem;
+}
+
+.cart-card .trash-icon{
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+}
+
