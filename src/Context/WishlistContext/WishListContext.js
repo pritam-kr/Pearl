@@ -8,12 +8,15 @@ const WishListContext = createContext(null);
 
 const initialState = {
     wishlist: [],
-    totalWishListItem: 0,
 };
 
 const WishListContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wishListReducer, initialState);
 
+    //getting total wishlist item 
+    const totalWishListItems = state.wishlist.length
+    
+    //local storage token
     const { getToken } = useAuthContext();
 
     const addToWishlist = (product) => {
@@ -39,7 +42,6 @@ const WishListContextProvider = ({ children }) => {
                     dispatch({
                         type: ADD_TO_WISHLIST,
                         payload: wishlist,
-                        totalWishListItem: wishlist.length,
                     });
                 } catch (error) {
                     console.log("error from catch", error);
@@ -62,7 +64,6 @@ const WishListContextProvider = ({ children }) => {
                 dispatch({
                     type: ADD_TO_WISHLIST,
                     payload: wishlist,
-                    totalWishListItem: wishlist.length,
                 });
                 
 
@@ -73,7 +74,7 @@ const WishListContextProvider = ({ children }) => {
     }
 
     return (
-        <WishListContext.Provider value={{ state, addToWishlist, removeFromWishlist }}>
+        <WishListContext.Provider value={{ state, addToWishlist, removeFromWishlist, totalWishListItems }}>
             {children}
         </WishListContext.Provider>
     );
