@@ -22,7 +22,7 @@ const ProductCard = ({ eachProduct }) => {
     return (
         <>
             <div className="images-card badge-card product-card" key={id}>
-                <img className="card-img" src={image} alt="product_image" />
+                <img className="card-img" src={image} alt={title} />
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>

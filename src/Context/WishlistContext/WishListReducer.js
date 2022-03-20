@@ -5,7 +5,6 @@ export const wishListReducer = (state, action) => {
         return {
           ...state,
           wishlist: action.payload,
-          totalWishListItem: action.totalWishListItem,
         };
     }
   };
