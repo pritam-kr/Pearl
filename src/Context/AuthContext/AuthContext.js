@@ -1,26 +1,22 @@
-import axios from "axios";
-import { useEffect, createContext, useContext, useReducer } from "react";
+import { createContext, useContext } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
- 
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-const AuthContextProvider = ({children}) =>{
-    
-    const getToken = localStorage.getItem("login-Token")
+const AuthContextProvider = ({ children }) => {
+  const getToken = localStorage.getItem("login-Token");
+  const getLocalStorageUser = localStorage.getItem('user')
+  const [token, setToken] = useState(getToken || "");
+  const [user, setUser] = useState(JSON.parse(getLocalStorageUser) || "")
 
-    
-    const [token, setToken] = useState(null)
 
-    
-    return <AuthContext.Provider value={{token, setToken, getToken}}>
-        {children}
+  return (
+    <AuthContext.Provider value={{ token, setToken, getToken, setUser, user }}>
+      {children}
     </AuthContext.Provider>
+  );
+};
 
-}
+const useAuthContext = () => useContext(AuthContext);
 
-const useAuthContext = () => useContext(AuthContext)
-
-
-export {AuthContextProvider, useAuthContext}
+export { AuthContextProvider, useAuthContext };

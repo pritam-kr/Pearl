@@ -4,28 +4,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "../../Context";
+import { JsonWebTokenError } from "jsonwebtoken";
 
 const LoginForm = () => {
 
-    const [formData, setFormData] = useState({email: "", password: ""})
+    const [formData, setFormData] = useState({ email: "", password: "" })
     const navigate = useNavigate()
-    const{setToken} = useAuthContext()
+    const { setToken, setUser } = useAuthContext()
 
 
     const loginFormHandler = (e) => {
         e.preventDefault()
-         
+
         const loginUser = formData;
 
         try {
             (async () => {
-                const {data : {foundUser, encodedToken}} = await axios.post("/api/auth/login", loginUser);
-                
+                const { data: { foundUser, encodedToken } } = await axios.post("/api/auth/login", loginUser);
+
                 localStorage.setItem('login-Token', encodedToken)
+                localStorage.setItem('user', JSON.stringify(foundUser ))
+                setUser(foundUser)
+                setToken(encodedToken)
 
-              setToken(encodedToken)
-
-                if(encodedToken){
+                if (encodedToken) {
                     navigate('/allproducts')
                 }
             })();
@@ -38,7 +40,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <form className="form" onSubmit={(e)=>loginFormHandler(e)}>
+            <form className="form" onSubmit={(e) => loginFormHandler(e)}>
                 <div className="form-header">
                     <h2 className="form-heading">Login</h2>
                 </div>
@@ -49,7 +51,7 @@ const LoginForm = () => {
                         type="email"
                         placeholder="Enter email"
                         className="input primary-input"
-                        onChange={(event) => setFormData((prev)=> ({...prev, email:event.target.value}))}
+                        onChange={(event) => setFormData((prev) => ({ ...prev, email: event.target.value }))}
                         required
                     />
                 </div>
@@ -63,7 +65,7 @@ const LoginForm = () => {
                         placeholder="******"
                         className="input required-input form-password-input"
                         required
-                        onChange={(event) => setFormData((prev)=> ({...prev, password:event.target.value}))}
+                        onChange={(event) => setFormData((prev) => ({ ...prev, password: event.target.value }))}
                     />
                 </div>
 
