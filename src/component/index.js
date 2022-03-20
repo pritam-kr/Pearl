@@ -7,5 +7,6 @@ export {CategoryImage} from "../component/CategoryImage/CategoryImage"
 export {Filter} from "../component/Filter/Filter"
 export {ProductCard} from "../component/ProductCard/ProductCard"
  export {CartCard} from "../component/CartProductCard/CartCard"
+ export {WishListCard} from "../component/WishListProductCard/WishListCard"
 
  

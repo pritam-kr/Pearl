@@ -25,7 +25,6 @@ const initialState = {
         maxPrice: "",
         minPrice: ""
     },
-    wishlist: [],
     featured: []
 };
 

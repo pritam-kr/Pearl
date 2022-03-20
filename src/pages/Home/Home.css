@@ -47,12 +47,10 @@
   margin: 0 20px;
 }
 
-
 .hero-img {
   border-radius: 0;
   height: 100%;
   object-fit: cover;
-
 }
 
 .btn-shop {
@@ -68,13 +66,10 @@
   background-color: var(--primary-hover);
 }
 
-
 @media screen and (min-width: 968px) {
   .hero-section {
     margin-top: 1.1rem;
   }
-
-
 }
 
 @media screen and (max-width: 700px) {
@@ -85,20 +80,17 @@
   }
 }
 
-
 .main-container {
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 0rem;
   max-width: 1300px;
 }
-
 
 .category-wrapper {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
   padding: 0 0 2em 0;
-
 }
 
 .category {
@@ -108,7 +100,6 @@
   background-size: contain;
   height: 400px;
 }
-
 
 .category img {
   width: 100%;
@@ -139,14 +130,14 @@
   width: 100%;
   background-color: rgba(192, 192, 192, 0.301);
   backdrop-filter: blur(3px) saturate(180%);
-    -webkit-backdrop-filter: blur(3px) saturate(180%);
-    background-color: rgba(46, 46, 46, 0.322);
+  -webkit-backdrop-filter: blur(3px) saturate(180%);
+  background-color: rgba(46, 46, 46, 0.322);
 }
 
 .btn-buy {
   margin-top: 1em;
   transition: 0.2s all;
-  padding: .7em 1.5em;
+  padding: 0.7em 1.5em;
   font-size: 1.4rem;
   background-color: var(--body-background);
 }
@@ -156,13 +147,11 @@
   background-color: var(--primary-color);
 }
 
-
 @media screen and (min-width: 968px) {
   .category-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 .product-section {
   padding-bottom: 2rem;
@@ -186,31 +175,29 @@
 @media screen and (min-width: 968px) {
   .product-container {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-
   }
 }
 
-.couples-section .section-heading{
-  margin-bottom: .5rem ;
+.couples-section .section-heading {
+  margin-bottom: 0.5rem;
 }
 
-.couple-product-wrapper{
+.couple-product-wrapper {
   margin: 3rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
- 
 
-.featured-product-card{
+.featured-product-card {
   max-height: 45rem;
   border: 1px solid var(--border-color);
 }
 
-.featured-product-image{
+.featured-product-image {
   border-radius: 0;
 }
 
-.featured-product-card .product-price{
+.featured-product-card .product-price {
   font-size: 1.3rem;
-  margin: .5rem 0 0 0 ;
+  margin: 0.5rem 0 0 0;
 }
