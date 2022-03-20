@@ -8,7 +8,7 @@ const WishList = () => {
     const {state: {wishlist}} = useWishListContext()
 
     return (
-        <div className="section cart-section wishlist-section">
+        <div className="section wishlist-section">
             <div className="product-list-wrapper">
                 <h3 class="large-heading page-title">WishList</h3>
             </div>
