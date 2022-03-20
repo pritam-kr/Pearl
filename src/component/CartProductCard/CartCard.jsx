@@ -2,16 +2,20 @@ import React from "react";
 import "./CartCard.css";
 import * as BiIcons from "react-icons/bi";
 import { useCartContext } from "../../Context";
+import {useAuthContext} from "../../Context/index"
+import {useWishListContext} from "../../Context/"
+ 
 
 const CartCard = () => {
   const {
-    state: { cart },
+    state: { cart}, incrementQuantity, decrementQuantity, deleteCartItem
   } = useCartContext();
 
-
+  const {addToWishlist} = useWishListContext()
+   
   return (
     <>
-      {cart.length === 0 ? (
+      {cart !== null && cart.length === 0 ? (
         <h1 className="Center">No Item in The Cart.</h1>
       ) : (
         cart.map((eachProduct) => (
@@ -35,18 +39,18 @@ const CartCard = () => {
                 <p class="text-md">Quantity: {eachProduct.qty}</p>
 
                 <p>
-                  <BiIcons.BiPlusCircle className="icons" />
-                  <BiIcons.BiMinusCircle className="icons" />
+                  <BiIcons.BiPlusCircle className="icons" onClick={() => incrementQuantity(eachProduct)}  />
+                  <BiIcons.BiMinusCircle className="icons" onClick={() => decrementQuantity(eachProduct)}/>
                 </p>
               </div>
 
               <div class="card-footer">
-                <button class="btn btn-secondary btn-move-cart text-md">
-                  Move to Wishlist
+                <button class="btn btn-secondary btn-move-cart text-md" onClick={() => {addToWishlist(eachProduct), deleteCartItem(eachProduct)}}>
+                  Move to Wishlist 
                 </button>
               </div>
             </div>
-            <BiIcons.BiTrash className="icons trash-icon" />
+            <BiIcons.BiTrash className="icons trash-icon" onClick={() => deleteCartItem(eachProduct)} />
           </div>
         ))
       )}

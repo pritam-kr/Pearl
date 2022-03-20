@@ -9,12 +9,11 @@ const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
   const navigate = useNavigate();
   const {
-    state: { totalCartItems },
+    state: { cart },
   } = useCartContext();
 
-  const { totalWishListItems } = useWishListContext();
+  const {state: {wishlist}} = useWishListContext() 
 
-  console.log(totalWishListItems);
 
   return (
     <>
@@ -33,6 +32,7 @@ const Navigation = () => {
                 <li className="nav-links">
                   <Link to="/allProducts">Shop</Link>
                 </li>
+                <li className="nav-links"><Link to="/mockman">Mockman</Link></li>
               </ul>
             </div>
           </div>
@@ -64,16 +64,13 @@ const Navigation = () => {
                 </Link>
               </li>
               <li onClick={() => navigate("/wishlist")} className="icon-badge">
-                <BiIcons.BiHeart className="icons navigation-icon" /> <span className="badge-icon-number badge-status">
-                  {totalWishListItems}
-                </span>
+              <BiIcons.BiHeart className="icons navigation-icon" /> 
+                {wishlist.length !== 0 && <span className="badge-icon-number badge-status">{wishlist.length}</span>}
               </li>
 
               <li onClick={() => navigate("/cart")} className="icon-badge">
                 <BiIcons.BiCart className="icons navigation-icon" />{" "}
-                <span className="badge-icon-number badge-status">
-                  {totalCartItems}
-                </span>
+               {cart.length !== 0 && <span className="badge-icon-number badge-status">{cart.length}</span>}
               </li>
 
               <li className="hamburger-menu">
