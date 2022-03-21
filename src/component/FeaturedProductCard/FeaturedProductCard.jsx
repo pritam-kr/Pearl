@@ -14,7 +14,7 @@ const FeaturedCardProduct = ({eachProduct}) => {
   const {addToCart} = useCartContext()
 
   return (
-    <div className="featured-product-card" >
+    <div className="featured-product-card" key={eachProduct._id}>
       <img
         src={eachProduct.image}
         className="responsive-images featured-product-image"
@@ -33,7 +33,7 @@ const FeaturedCardProduct = ({eachProduct}) => {
         <h3 className="product-price">₹ {priceFormatter(eachProduct.price)}</h3>
       </div>
 
-      <div class="btn-wishlist btn-wishlist-icon2"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
+      <div className="btn-wishlist btn-wishlist-icon2"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
 
     </div>
   );

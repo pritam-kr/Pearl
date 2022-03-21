@@ -34,7 +34,7 @@ const WishListCard = ({ eachProduct }) => {
                     </button>
                 </div>
             </div>
-            <div class="btn-wishlist">
+            <div className="btn-wishlist">
                 <BiIcons.BiTrash
                     className="wishlist-icon"
                     onClick={() => removeFromWishlist(eachProduct)}

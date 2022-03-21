@@ -10,7 +10,7 @@ const WishList = () => {
     return (
         <div className="section wishlist-section">
             <div className="product-list-wrapper">
-                <h3 class="large-heading page-title">WishList</h3>
+                <h3 className="large-heading page-title">WishList</h3>
             </div>
             <div className="wishlist-wrapper">
 

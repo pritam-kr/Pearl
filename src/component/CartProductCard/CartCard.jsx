@@ -20,25 +20,25 @@ const CartCard = () => {
         <h1 className="Center">No Item in The Cart.</h1>
       ) : (
         cart.map((eachProduct) => (
-          <div class="images-card horizontal-cart-card cart-card">
+          <div className="images-card horizontal-cart-card cart-card">
             <div className="cart-card-product-image">
               <img
-                class="card-img"
+                className="card-img  responsive-images"
                 src={eachProduct.image}
-                className="responsive-images"
+               
               />
             </div>
 
-            <div class="card-content">
-              <h2 class="card-title product-title">{eachProduct.title}</h2>
+            <div className="card-content">
+              <h2 className="card-title product-title">{eachProduct.title}</h2>
 
-              <h2 class="card-price product-price">
+              <h2 className="card-price product-price">
                 ₹ {eachProduct.price}/-{" "}
-                <span class="discount-price">{eachProduct.discount}</span>
+                <span className="discount-price">{eachProduct.discount}</span>
               </h2>
 
-              <div class="quantity">
-                <p class="text-md">Quantity: {eachProduct.qty}</p>
+              <div className="quantity">
+                <p className="text-md">Quantity: {eachProduct.qty}</p>
 
                 <p>
                   <BiIcons.BiPlusCircle
@@ -52,9 +52,9 @@ const CartCard = () => {
                 </p>
               </div>
 
-              <div class="card-footer">
+              <div className="card-footer">
                 <button
-                  class="btn btn-secondary btn-move-cart text-md"
+                  className="btn btn-secondary btn-move-cart text-md"
                   onClick={() => {
                     addToWishlist(eachProduct), deleteCartItem(eachProduct);
                   }}
