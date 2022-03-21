@@ -80,10 +80,12 @@
   }
 }
 
+
+/******Main container******/
+
 .main-container {
-  margin: 0 auto;
-  padding: 0 0rem;
-  max-width: 1300px;
+   
+  padding: 0 4rem;
 }
 
 .category-wrapper {

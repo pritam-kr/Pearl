@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import {Footer, Navigation} from "./component/index"
-import {Login, Signup, AllProducts, WishList, Home, MyCart} from "./pages/index"
+import {Login, Signup, AllProducts, WishList, Home, MyCart, Logout} from "./pages/index"
 
 import MockAPI from "./component/Mockman/Mockman"
  
@@ -20,7 +20,7 @@ function App() {
         <Route path="/allproducts" element={<AllProducts/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
-
+        <Route path="/logout" element={<Logout/>}></Route>
         <Route path="/mockman" element={<MockAPI />}> </Route>
       </Routes>
 

@@ -49,7 +49,7 @@ const Home = () => {
       </div>
 
       <div className="main-container">
-        <div className="section product-section">
+        <div className="product-section">
           <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
@@ -59,7 +59,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="section category-section">
+        <div className="category-section">
           <h1 className="center section-heading">Category</h1>
 
           <div className="product-container category-container">

@@ -23,6 +23,7 @@ const LoginForm = () => {
 
                 localStorage.setItem("login-Token", encodedToken);
                 localStorage.setItem("user", JSON.stringify(foundUser));
+                
                 setUser(foundUser);
                 setToken(encodedToken);
 
@@ -67,6 +68,7 @@ const LoginForm = () => {
                         onChange={(event) =>
                             setFormData((prev) => ({ ...prev, password: event.target.value }))
                         }
+                        autoComplete="true"
                     />
                 </div>
 

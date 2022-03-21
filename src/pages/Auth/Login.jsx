@@ -5,7 +5,7 @@ import { LoginForm } from "../../component/AuthForms/LoginForm"
 const Login = () => {
     return (
         <>
-            <div className="login-form-container center">
+            <div className="form-page">
                 <LoginForm />
             </div>
         </>
