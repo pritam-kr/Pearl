@@ -17,7 +17,7 @@ const WishListContextProvider = ({ children }) => {
     const totalWishListItems = state.wishlist.length
     
     //local storage token
-    const { getToken } = useAuthContext();
+    const {token} = useAuthContext();
 
     const addToWishlist = (product) => {
 
@@ -33,7 +33,7 @@ const WishListContextProvider = ({ children }) => {
                         { product },
                         {
                             headers: {
-                                authorization: getToken,
+                                authorization: token,
                             },
                         }
                     );
@@ -57,7 +57,7 @@ const WishListContextProvider = ({ children }) => {
 
                 const { data: {wishlist} } = await axios.delete(`/api/user/wishlist/${product._id}`, {
                     headers: {
-                        authorization: getToken,
+                        authorization: token,
                     }
                 })
 
@@ -83,3 +83,4 @@ const WishListContextProvider = ({ children }) => {
 const useWishListContext = () => useContext(WishListContext);
 
 export { useWishListContext, WishListContextProvider };
+ 

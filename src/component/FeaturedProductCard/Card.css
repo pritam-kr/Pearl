@@ -1,5 +1,6 @@
 .featured-product-card{
     position: relative;
+    cursor: pointer;
 }
 .btn-wishlist-icon2{
     top: 0;

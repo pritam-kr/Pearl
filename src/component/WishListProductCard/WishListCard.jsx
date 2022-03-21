@@ -29,7 +29,7 @@ const WishListCard = ({ eachProduct }) => {
 
             <div className="card-footer">
                 <div className="move-cart-buttons">
-                    <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => addToCart(eachProduct)}>
+                    <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => {addToCart(eachProduct), removeFromWishlist(eachProduct)}}>
                         <BiIcons.BiCart className="cart-icon" /> Move to Cart
                     </button>
                 </div>

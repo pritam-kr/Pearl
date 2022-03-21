@@ -13,7 +13,7 @@ const MyCart = () => {
         <div className="cart-wrapper">
             
           <div className="product-list-wrapper">
-            <h3 class="large-heading page-title">My Cart ({cart.length})</h3>
+            <h3 class="large-heading page-title">My Cart </h3>
             <CartCard />
           </div>
 

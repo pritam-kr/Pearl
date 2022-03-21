@@ -3,14 +3,18 @@ import * as BiIcons from "react-icons/bi";
 import * as FaIcons from "react-icons/fa"
 import "./Card.css"
 import {priceFormatter} from "../../utils/priceFormatter"
-import {useWishListContext} from "../../Context/index"
+import {useWishListContext, useCartContext} from "../../Context/"
+
+
 
 const FeaturedCardProduct = ({eachProduct}) => {
 
+
   const {addToWishlist} = useWishListContext()
+  const {addToCart} = useCartContext()
 
   return (
-    <div className="featured-product-card">
+    <div className="featured-product-card" onClick={() => addToCart(eachProduct)} >
       <img
         src={eachProduct.image}
         className="responsive-images featured-product-image"
