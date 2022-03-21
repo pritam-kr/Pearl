@@ -4,7 +4,6 @@ import { cartReducer } from "./CartReducer";
 import { useAuthContext } from "../../Context/index";
 import { useEffect } from "react";
 
-
 const CartContext = createContext();
 
 const initialState = {
@@ -21,13 +20,12 @@ const CartContextProvider = ({ children }) => {
     const { token, user } = useAuthContext();
 
     //Getting cart from local storage, which will be run in initial state
-    const initialCart = user.cart
-
+    const initialCart = user.cart;
 
     // Getting data from cart and dispatching to initial state
     useEffect(() => {
-        dispatch({ type: "GET_CART_FROM_LOCAL_STORAGE", payload: initialCart })
-    }, [token, user])
+        dispatch({ type: "GET_CART_FROM_LOCAL_STORAGE", payload: initialCart });
+    }, [token, user]);
 
     // Now do post request with for a single project with the help of token
     const addToCart = (product) => {
@@ -63,13 +61,11 @@ const CartContextProvider = ({ children }) => {
 
     // Decrement Cart quantity
     const decrementQuantity = async (product, type) => {
-
-        const productId = product._id
+        const productId = product._id;
 
         if (product.qty === 1) {
-            return
-        }
-        else {
+            return;
+        } else {
             try {
                 const {
                     data: { cart },
@@ -92,13 +88,11 @@ const CartContextProvider = ({ children }) => {
                 console.log("Error from Increment", error);
             }
         }
-
     };
 
     //Increment cart quantity
     const incrementQuantity = async (product, type) => {
-
-        const productId = product._id
+        const productId = product._id;
 
         try {
             const {
@@ -107,7 +101,7 @@ const CartContextProvider = ({ children }) => {
                 `/api/user/cart/${productId}`,
                 {
                     action: {
-                        type:  type,
+                        type: type,
                     },
                 },
                 {
@@ -130,25 +124,29 @@ const CartContextProvider = ({ children }) => {
         try {
             const {
                 data: { cart },
-            } = await axios.delete(
-                `/api/user/cart/${productId}`,
-                {
-                    headers: {
-                        authorization: token,
-                    },
-                }
-            );
+            } = await axios.delete(`/api/user/cart/${productId}`, {
+                headers: {
+                    authorization: token,
+                },
+            });
 
             dispatch({ type: "DELETE_PRODUCT", payload: cart });
         } catch (error) {
             console.log("Error from delete", error);
         }
-
-    }
+    };
 
     return (
         <CartContext.Provider
-            value={{ state, dispatch, addToCart, incrementQuantity,  decrementQuantity,  deleteCartItem }}>
+            value={{
+                state,
+                dispatch,
+                addToCart,
+                incrementQuantity,
+                decrementQuantity,
+                deleteCartItem,
+            }}
+        >
             {children}
         </CartContext.Provider>
     );

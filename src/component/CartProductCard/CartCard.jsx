@@ -2,16 +2,18 @@ import React from "react";
 import "./CartCard.css";
 import * as BiIcons from "react-icons/bi";
 import { useCartContext } from "../../Context";
-import {useWishListContext} from "../../Context/"
- 
+import { useWishListContext } from "../../Context/";
 
 const CartCard = () => {
   const {
-    state: { cart}, incrementQuantity, decrementQuantity, deleteCartItem
+    state: { cart },
+    incrementQuantity,
+    decrementQuantity,
+    deleteCartItem,
   } = useCartContext();
 
-  const {addToWishlist} = useWishListContext()
-   
+  const { addToWishlist } = useWishListContext();
+
   return (
     <>
       {cart !== null && cart.length === 0 ? (
@@ -31,25 +33,40 @@ const CartCard = () => {
               <h2 class="card-title product-title">{eachProduct.title}</h2>
 
               <h2 class="card-price product-price">
-              ₹ {eachProduct.price}/-  <span class="discount-price">{eachProduct.discount}</span>
+                ₹ {eachProduct.price}/-{" "}
+                <span class="discount-price">{eachProduct.discount}</span>
               </h2>
 
               <div class="quantity">
                 <p class="text-md">Quantity: {eachProduct.qty}</p>
 
                 <p>
-                  <BiIcons.BiPlusCircle className="icons" onClick={() => incrementQuantity(eachProduct, "increment")}  />
-                  <BiIcons.BiMinusCircle className="icons" onClick={() => decrementQuantity(eachProduct, "decrement")}/>
+                  <BiIcons.BiPlusCircle
+                    className="icons"
+                    onClick={() => incrementQuantity(eachProduct, "increment")}
+                  />
+                  <BiIcons.BiMinusCircle
+                    className="icons"
+                    onClick={() => decrementQuantity(eachProduct, "decrement")}
+                  />
                 </p>
               </div>
 
               <div class="card-footer">
-                <button class="btn btn-secondary btn-move-cart text-md" onClick={() => {addToWishlist(eachProduct), deleteCartItem(eachProduct)}}>
-                  Move to Wishlist 
+                <button
+                  class="btn btn-secondary btn-move-cart text-md"
+                  onClick={() => {
+                    addToWishlist(eachProduct), deleteCartItem(eachProduct);
+                  }}
+                >
+                  Move to Wishlist
                 </button>
               </div>
             </div>
-            <BiIcons.BiTrash className="icons trash-icon" onClick={() => deleteCartItem(eachProduct)} />
+            <BiIcons.BiTrash
+              className="icons trash-icon"
+              onClick={() => deleteCartItem(eachProduct)}
+            />
           </div>
         ))
       )}
