@@ -12,9 +12,11 @@ const Navigation = () => {
     state: { cart },
   } = useCartContext();
 
+
+
   const {state: {wishlist}} = useWishListContext() 
 
-
+  console.log(cart)
   return (
     <>
       <nav className="nav">

@@ -4,14 +4,11 @@ import "./Home.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
 import { FeaturedCardProduct, CategoryImage } from "../../component/index";
 import { CategoryContextProvider } from "../../Context";
-import { useAuthContext } from "../../Context/AuthContext/AuthContext";
 
 const Home = () => {
   const {
     state: { featured },
   } = useStateContext();
-
-  const { getToken } = useAuthContext();
 
   return (
     <>
@@ -56,8 +53,8 @@ const Home = () => {
           <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
-            {featured.slice(0, 5).map((eachProduct, i) => {
-              return <FeaturedCardProduct eachProduct={eachProduct} key={i} />;
+            {featured.slice(0, 5).map((eachProduct) => {
+              return <FeaturedCardProduct eachProduct={eachProduct} key={eachProduct._id} />;
             })}
           </div>
         </div>

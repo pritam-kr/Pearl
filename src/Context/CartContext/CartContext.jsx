@@ -19,8 +19,11 @@ const CartContextProvider = ({ children }) => {
     const { cart } = state;
     const { token, user } = useAuthContext();
 
+    // console.log(cart)
     //Getting cart from local storage, which will be run in initial state
     const initialCart = user.cart;
+
+    console.log(initialCart.length)
 
     // Getting data from cart and dispatching to initial state
     useEffect(() => {
@@ -50,7 +53,6 @@ const CartContextProvider = ({ children }) => {
                         type: "ADD_TO_CART",
                         payload: cart,
                         productId: product._id,
-                        totalItems: cart !== null && cart.length,
                     });
                 } catch (error) {
                     console.log(error);

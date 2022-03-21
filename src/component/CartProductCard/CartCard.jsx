@@ -20,7 +20,7 @@ const CartCard = () => {
         <h1 className="Center">No Item in The Cart.</h1>
       ) : (
         cart.map((eachProduct) => (
-          <div className="images-card horizontal-cart-card cart-card">
+          <div className="images-card horizontal-cart-card cart-card" key={eachProduct._id}>
             <div className="cart-card-product-image">
               <img
                 className="card-img  responsive-images"
