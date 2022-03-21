@@ -111,7 +111,7 @@ const Filter = () => {
                 <label className="label text-sm" id="four-rate">
                   <input
                     type="radio"
-                    for="four-rate"
+                    htmlFor="four-rate"
                     name="rating"
                     checked={state.filters.rating && state.filters.rating === 4}
                     onChange={() =>
@@ -125,7 +125,7 @@ const Filter = () => {
                 <label className="label text-sm" id="three-rate">
                   <input
                     type="radio"
-                    for="three-rate"
+                    htmlFor="three-rate"
                     name="rating"
                     checked={state.filters.rating && state.filters.rating === 3}
                     onChange={() =>
@@ -139,7 +139,7 @@ const Filter = () => {
                 <label className="label text-sm" id="two-rate">
                   <input
                     type="radio"
-                    for="two-rate"
+                    htmlFor="two-rate"
                     name="rating"
                     checked={state.filters.rating && state.filters.rating === 2}
                     onChange={() =>
@@ -153,7 +153,7 @@ const Filter = () => {
                 <label className="label text-sm" id="one-rate">
                   <input
                     type="radio"
-                    for="one-rate"
+                    htmlFor="one-rate"
                     name="rating"
                     checked={state.filters.rating && state.filters.rating === 1}
                     onChange={() =>

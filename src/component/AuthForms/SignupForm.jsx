@@ -103,6 +103,7 @@ const SignupForm = () => {
                         }
                         className="input required-input form-password-input"
                         required
+                         
                     />
                 </div>
 

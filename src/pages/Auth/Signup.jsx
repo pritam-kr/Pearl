@@ -1,14 +1,14 @@
 import React from "react"
 import { SignupForm } from "../../component/AuthForms/SignupForm"
 
-const Signup = () =>{
-    return(
+const Signup = () => {
+    return (
         <>
-        <div className="login-form-container center">
-        <SignupForm />
-        </div>
+            <div className="form-page">
+                <SignupForm />
+            </div>
         </>
     )
 }
 
-export{Signup}
+export { Signup }

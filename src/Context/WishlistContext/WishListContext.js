@@ -13,9 +13,9 @@ const initialState = {
 const WishListContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wishListReducer, initialState);
 
-    //getting total wishlist item 
-    const totalWishListItems = state.wishlist.length
-    
+    const {user} = useAuthContext()
+
+
     //local storage token
     const {token} = useAuthContext();
 
@@ -74,7 +74,7 @@ const WishListContextProvider = ({ children }) => {
     }
 
     return (
-        <WishListContext.Provider value={{ state, addToWishlist, removeFromWishlist, totalWishListItems }}>
+        <WishListContext.Provider value={{ state, addToWishlist, removeFromWishlist, }}>
             {children}
         </WishListContext.Provider>
     );

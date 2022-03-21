@@ -3,6 +3,7 @@ import * as BiIcons from "react-icons/bi";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { useWishListContext } from "../../Context/";
 import {useCartContext} from "../../Context/index"
+import "./WishlistCard.css"
 
 const WishListCard = ({ eachProduct }) => {
     
@@ -13,7 +14,7 @@ const WishListCard = ({ eachProduct }) => {
     const { removeFromWishlist } = useWishListContext();
 
     return (
-        <div className="images-card badge-card product-card" key={_id}>
+        <div className="images-card badge-card wishlist-card" key={_id}>
             <img className="card-img" src={image} alt={title} />
 
             <div className="card-content">

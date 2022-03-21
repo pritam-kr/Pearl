@@ -8,10 +8,10 @@ import {
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
-    case GET_CART_FROM_LOCAL_STORAGE:
-      return {
-        ...state, cart: action.payload
-      };
+    // case GET_CART_FROM_LOCAL_STORAGE:
+    //   return {
+    //     ...state, cart: action.payload
+    //   };
 
     case ADD_TO_CART:
       return {

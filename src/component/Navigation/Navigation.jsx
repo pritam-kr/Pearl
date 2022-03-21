@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
-import { useCartContext, useWishListContext } from "../../Context/index";
+import {
+  useAuthContext,
+  useCartContext,
+  useWishListContext,
+} from "../../Context/index";
 
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
@@ -12,11 +16,11 @@ const Navigation = () => {
     state: { cart },
   } = useCartContext();
 
+  const {
+    state: { wishlist },
+  } = useWishListContext();
+  const { token, logoutFun} = useAuthContext();
 
-
-  const {state: {wishlist}} = useWishListContext() 
-
-  console.log(cart)
   return (
     <>
       <nav className="nav">
@@ -29,12 +33,20 @@ const Navigation = () => {
             <div className="nav-menu">
               <ul>
                 <li className="nav-links">
-                  <Link to="/">Home</Link>
+                  <Link className="Link" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-links">
-                  <Link to="/allProducts">Shop</Link>
+                  <Link className="Link" to="/allProducts">
+                    Shop
+                  </Link>
                 </li>
-                <li className="nav-links"><Link to="/mockman">Mockman</Link></li>
+                <li className="nav-links">
+                  <Link className="Link" to="/mockman">
+                    Mockman
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -48,12 +60,22 @@ const Navigation = () => {
               sidebarMenu ? "sidebar-Menu active-nav-menu" : "sidebar-Menu"
             }
           >
-            <ul className="sidebar-links">
-              <li>Home</li>
-              <li>Product</li>
-              <li>Category</li>
-              <li>Shop</li>
-              <li>Payal</li>
+            <ul className="sidebar">
+              <li className="sidebar-link">
+                <BiIcons.BiHome className="sidebar-icon" /> Home
+              </li>
+              <li className="sidebar-link">
+                <BiIcons.BiBox className="sidebar-icon" /> Product
+              </li>
+              <li className="sidebar-link">
+                <BiIcons.BiCategory className="sidebar-icon" /> Category
+              </li>
+              <li className="sidebar-link">
+                <BiIcons.BiUser className="sidebar-icon" /> Login
+              </li>
+              <li className="sidebar-link">
+                <BiIcons.BiLogIn className="sidebar-icon" /> Signup
+              </li>
             </ul>
           </div>
 
@@ -65,14 +87,29 @@ const Navigation = () => {
                   <BiIcons.BiUser className="icons navigation-icon" />{" "}
                 </Link>
               </li>
-              <li onClick={() => navigate("/wishlist")} className="icon-badge">
-              <BiIcons.BiHeart className="icons navigation-icon" /> 
-                {wishlist.length !== 0 && <span className="badge-icon-number badge-status">{wishlist.length}</span>}
+              <li onClick={() => {token ? navigate("/wishlist"): navigate('/login')}} className="icon-badge">
+                <BiIcons.BiHeart className="icons navigation-icon" />
+                {wishlist?.length > 0 && (
+                  <span className="badge-icon-number badge-status">
+                    {" "}
+                    {wishlist?.length}
+                  </span>
+                )}
               </li>
 
-              <li onClick={() => navigate("/cart")} className="icon-badge">
+              <li onClick={() => {token ? navigate("/cart"): navigate('/login')}} className="icon-badge">
                 <BiIcons.BiCart className="icons navigation-icon" />{" "}
-               {cart.length !== 0 && <span className="badge-icon-number badge-status">{cart.length}</span>}
+                {cart?.length > 0 && (
+                  <span className="badge-icon-number badge-status">
+                    {cart?.length}{" "}
+                  </span>
+                )}
+              </li>
+
+              <li onClick={() => {logoutFun(), navigate("/logout")}} className="icon-badge">
+                {token && (
+                  <BiIcons.BiLogOut className="icons navigation-icon" />
+                )}
               </li>
 
               <li className="hamburger-menu">

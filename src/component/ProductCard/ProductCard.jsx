@@ -4,13 +4,16 @@ import React from "react";
 import "./ProductCard.css";
 import { useCartContext } from "../../Context/CartContext/CartContext";
 import { priceFormatter } from "../../utils/priceFormatter";
-import {useWishListContext} from "../../Context/index"
+import {useAuthContext, useWishListContext} from "../../Context/index"
+import { useNavigate } from "react-router-dom";
 
  
 const ProductCard = ({ eachProduct }) => {
 
     const {addToWishlist} = useWishListContext()
     const { addToCart} = useCartContext();
+    const navigate = useNavigate()
+    const {token} = useAuthContext()
 
     const addToCartHandler = (eachProduct) => {
         addToCart(eachProduct)
@@ -18,6 +21,8 @@ const ProductCard = ({ eachProduct }) => {
 
     const { id, title, categoryName, Karat, image, price, rating, inStock } =
         eachProduct;
+
+         
 
     return (
         <>
@@ -40,7 +45,7 @@ const ProductCard = ({ eachProduct }) => {
                     <div className="move-cart-buttons">
                         <button
                             className="btn btn-primary btn-move-cart text-sm center"
-                            onClick={() => addToCartHandler(eachProduct)}
+                            onClick={() => {!token? navigate("/login"): addToCartHandler(eachProduct)}}
                         >
                             {" "}
                             <BiIcons.BiCart className="cart-icon" /> Add to Cart
