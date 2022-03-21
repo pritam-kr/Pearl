@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
-import { FeaturedCardProduct,CategoryImage } from "../../component/index";
+import { FeaturedCardProduct, CategoryImage } from "../../component/index";
 import { CategoryContextProvider } from "../../Context";
 import { useAuthContext } from "../../Context/AuthContext/AuthContext";
 
@@ -11,9 +11,7 @@ const Home = () => {
     state: { featured },
   } = useStateContext();
 
-  const {getToken} = useAuthContext()
-
-
+  const { getToken } = useAuthContext();
 
   return (
     <>
@@ -23,7 +21,7 @@ const Home = () => {
             <video
               loop
               muted
-              autoplay="autoplay"
+              autoPlay="autoPlay"
               class="hero-img responsive-images"
               style={{ objectFit: "cover" }}
             >
@@ -39,8 +37,7 @@ const Home = () => {
                   Welcome to Dark Jewelry
                 </h2>
                 <p className="text-lg">
-                  Lorem ipsum dolor sit amet consectetue adipisicing elit.
-                  Impedit perspiciatis
+                  Pearl is an Indian platinum Jewelry brand.
                 </p>
                 <Link to="/allproducts">
                   {" "}
@@ -59,8 +56,8 @@ const Home = () => {
           <h1 className="center section-heading">New Arrivals</h1>
 
           <div className="product-container">
-            {featured.slice(0, 5).map((eachProduct) => {
-              return <FeaturedCardProduct eachProduct={eachProduct} />;
+            {featured.slice(0, 5).map((eachProduct, i) => {
+              return <FeaturedCardProduct eachProduct={eachProduct} key={i} />;
             })}
           </div>
         </div>

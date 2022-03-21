@@ -13,12 +13,12 @@ const MyCart = () => {
         <div className="cart-wrapper">
             
           <div className="product-list-wrapper">
-            <h3 class="large-heading page-title">My Cart </h3>
+            <h3 className="large-heading page-title">My Cart </h3>
             <CartCard />
           </div>
 
           <div className="price-details-wrapper">
-            <h3 class="large-heading page-title">Price Details</h3>
+            <h3 className="large-heading page-title">Price Details</h3>
           </div>
 
         </div>
@@ -28,3 +28,4 @@ const MyCart = () => {
 };
 
 export { MyCart };
+

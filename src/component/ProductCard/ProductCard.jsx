@@ -49,14 +49,14 @@ const ProductCard = ({ eachProduct }) => {
                 </div>
 
                 {inStock === 0 ? (
-                    <h4 class="overlay-text outof-text text-sm">
+                    <h4 className="overlay-text outof-text text-sm">
                         <span>Out of Stock</span>
                     </h4>
                 ) : (
                     ""
                 )}
 
-                <div class="btn-wishlist"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
+                <div className="btn-wishlist"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
             </div>
         </>
     );

@@ -6,36 +6,34 @@ import axios from "axios";
 import { useAuthContext } from "../../Context";
 
 const LoginForm = () => {
-
-    const [formData, setFormData] = useState({ email: "", password: "" })
-    const navigate = useNavigate()
-    const { setToken, setUser } = useAuthContext()
-
+    const [formData, setFormData] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
+    const { setToken, setUser } = useAuthContext();
 
     const loginFormHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const loginUser = formData;
 
         try {
             (async () => {
-                const { data: { foundUser, encodedToken } } = await axios.post("/api/auth/login", loginUser);
+                const {
+                    data: { foundUser, encodedToken },
+                } = await axios.post("/api/auth/login", loginUser);
 
-                localStorage.setItem('login-Token', encodedToken)
-                localStorage.setItem('user', JSON.stringify(foundUser ))
-                setUser(foundUser)
-                setToken(encodedToken)
+                localStorage.setItem("login-Token", encodedToken);
+                localStorage.setItem("user", JSON.stringify(foundUser));
+                setUser(foundUser);
+                setToken(encodedToken);
 
                 if (encodedToken) {
-                    navigate('/allproducts')
+                    navigate("/allproducts");
                 }
             })();
-
         } catch (error) {
             console.log(error);
         }
-    }
-
+    };
 
     return (
         <>
@@ -50,7 +48,9 @@ const LoginForm = () => {
                         type="email"
                         placeholder="Enter email"
                         className="input primary-input"
-                        onChange={(event) => setFormData((prev) => ({ ...prev, email: event.target.value }))}
+                        onChange={(event) =>
+                            setFormData((prev) => ({ ...prev, email: event.target.value }))
+                        }
                         required
                     />
                 </div>
@@ -64,7 +64,9 @@ const LoginForm = () => {
                         placeholder="******"
                         className="input required-input form-password-input"
                         required
-                        onChange={(event) => setFormData((prev) => ({ ...prev, password: event.target.value }))}
+                        onChange={(event) =>
+                            setFormData((prev) => ({ ...prev, password: event.target.value }))
+                        }
                     />
                 </div>
 
