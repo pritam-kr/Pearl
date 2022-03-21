@@ -14,11 +14,11 @@ const FeaturedCardProduct = ({eachProduct}) => {
   const {addToCart} = useCartContext()
 
   return (
-    <div className="featured-product-card" onClick={() => addToCart(eachProduct)} >
+    <div className="featured-product-card" >
       <img
         src={eachProduct.image}
         className="responsive-images featured-product-image"
-        alt="featured-product"
+        alt={eachProduct.title} onClick={() => addToCart(eachProduct)}
       />
 
       <div className="card-content">
