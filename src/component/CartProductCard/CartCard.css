@@ -5,6 +5,7 @@
     max-width: 900px;
     height: 20rem;
     position: relative;
+    margin-bottom: 1rem;
     
 }
 .cart-card .card-content{
@@ -30,3 +31,20 @@
     margin: 1rem;
 }
 
+ 
+.btn-move-cart:hover{
+    background-color: var(--primary-color);
+}
+.icons{
+    cursor: pointer;
+
+}
+.icons:hover{
+    color: var(--primary-hover);
+}
+.myCart-wishlist-button{
+    top: 0;
+    right: 3rem;
+   
+    margin: 1rem;
+}
