@@ -20,15 +20,13 @@ const CartContextProvider = ({ children }) => {
     const { cart } = state;
     const { token, user } = useAuthContext();
 
-    //Getting cart from local storage, which will be run initial state
+    //Getting cart from local storage, which will be run in initial state
     const initialCart = user.cart
 
 
     // Getting data from cart and dispatching to initial state
     useEffect(() => {
-
         dispatch({ type: "GET_CART_FROM_LOCAL_STORAGE", payload: initialCart })
-
     }, [token, user])
 
     // Now do post request with for a single project with the help of token
@@ -64,7 +62,7 @@ const CartContextProvider = ({ children }) => {
     };
 
     // Decrement Cart quantity
-    const decrementQuantity = async (product) => {
+    const decrementQuantity = async (product, type) => {
 
         const productId = product._id
 
@@ -79,7 +77,7 @@ const CartContextProvider = ({ children }) => {
                     `/api/user/cart/${productId}`,
                     {
                         action: {
-                            type: "decrement",
+                            type: type,
                         },
                     },
                     {
@@ -98,7 +96,7 @@ const CartContextProvider = ({ children }) => {
     };
 
     //Increment cart quantity
-    const incrementQuantity = async (product) => {
+    const incrementQuantity = async (product, type) => {
 
         const productId = product._id
 
@@ -109,7 +107,7 @@ const CartContextProvider = ({ children }) => {
                 `/api/user/cart/${productId}`,
                 {
                     action: {
-                        type: "increment",
+                        type:  type,
                     },
                 },
                 {
@@ -150,8 +148,7 @@ const CartContextProvider = ({ children }) => {
 
     return (
         <CartContext.Provider
-            value={{ state, dispatch, addToCart, incrementQuantity, decrementQuantity, deleteCartItem }}
-        >
+            value={{ state, dispatch, addToCart, incrementQuantity,  decrementQuantity,  deleteCartItem }}>
             {children}
         </CartContext.Provider>
     );

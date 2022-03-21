@@ -2,7 +2,6 @@ import React from "react";
 import "./CartCard.css";
 import * as BiIcons from "react-icons/bi";
 import { useCartContext } from "../../Context";
-import {useAuthContext} from "../../Context/index"
 import {useWishListContext} from "../../Context/"
  
 
@@ -39,8 +38,8 @@ const CartCard = () => {
                 <p class="text-md">Quantity: {eachProduct.qty}</p>
 
                 <p>
-                  <BiIcons.BiPlusCircle className="icons" onClick={() => incrementQuantity(eachProduct)}  />
-                  <BiIcons.BiMinusCircle className="icons" onClick={() => decrementQuantity(eachProduct)}/>
+                  <BiIcons.BiPlusCircle className="icons" onClick={() => incrementQuantity(eachProduct, "increment")}  />
+                  <BiIcons.BiMinusCircle className="icons" onClick={() => decrementQuantity(eachProduct, "decrement")}/>
                 </p>
               </div>
 
