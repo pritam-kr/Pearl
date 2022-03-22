@@ -3,6 +3,7 @@ import {FEATURED_PRODUCT, LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, ST
 import {gettingMaxPrice} from "../../utils/maxMinPrice"
 import {featuredProduct} from "../../utils/featuredProduct"
 
+
 export const stateReducerFun = (state, action) => {
 
     switch (action.type) {
@@ -17,6 +18,7 @@ export const stateReducerFun = (state, action) => {
             }
 
         case "LOAD_MAX_PRICE":
+             
             return {
                 ...state, filters: { ...state.filters, maxPrice:  gettingMaxPrice(action.payload)}
             }

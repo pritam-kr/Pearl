@@ -6,23 +6,23 @@ import { useCartContext } from "../../Context/CartContext/CartContext";
 import { priceFormatter } from "../../utils/priceFormatter";
 import {useAuthContext, useWishListContext} from "../../Context/index"
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
  
 const ProductCard = ({ eachProduct }) => {
 
     const {addToWishlist} = useWishListContext()
-    const { addToCart} = useCartContext();
+    const { addToCart, buttonLoader} = useCartContext();
     const navigate = useNavigate()
     const {token} = useAuthContext()
-
+    
     const addToCartHandler = (eachProduct) => {
         addToCart(eachProduct)
      };
 
-    const { id, title, categoryName, Karat, image, price, rating, inStock } =
+    const { id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
         eachProduct;
 
-         
 
     return (
         <>
@@ -33,7 +33,7 @@ const ProductCard = ({ eachProduct }) => {
                     <h2 className="card-title product-title">{title}</h2>
                     <h1 className="card-price product-price">
                         {" "}
-                        ₹ {priceFormatter(price)}{" "}
+                        ₹ {priceFormatter(currentPrice)}{" "}
                         <span className="discount-price">₹ 19999/-</span>
                     </h1>
                     <p className="text-sm">
@@ -48,7 +48,7 @@ const ProductCard = ({ eachProduct }) => {
                             onClick={() => {!token? navigate("/login"): addToCartHandler(eachProduct)}}
                         >
                             {" "}
-                            <BiIcons.BiCart className="cart-icon" /> Add to Cart
+                            <BiIcons.BiCart className="cart-icon" />  Add to Cart
                         </button>
                     </div>
                 </div>

@@ -2,11 +2,43 @@ import React from "react";
 import { useCartContext } from "../../Context/index";
 import { CartCard } from "../../component/index";
 import "./MyCart.css";
+import { productQuantity, totalPrice, totalMRP } from "./PriceDetails";
+import { priceFormatter } from "../../utils/priceFormatter";
 
 const MyCart = () => {
   const {
     state: { cart },
   } = useCartContext();
+
+  //get total Product quantity
+  const getTotalQuantity = cart.reduce(productQuantity, 0);
+
+  // get total price
+  const getTotalPrice = cart.reduce(totalPrice, 0);
+
+  // get total MRP
+  const getTotalMRP = cart.reduce(totalMRP, 0);
+
+  //total discount from MRP
+  const totalDiscount = (MRP, currentPrice) => MRP - currentPrice;
+  const getTotalDiscount = totalDiscount(getTotalMRP, getTotalPrice);
+
+  // Get delivery charges
+  const deliveryCharge = (totalPrice) => (totalPrice >= 15000 ? 1000 : 0);
+  const getDeliveryCharge = deliveryCharge(getTotalPrice);
+
+  //get tax price
+  const taxPrice = (totalPrice, tax) => (totalPrice * tax) / 100;
+  const getTaxPrice = taxPrice(getTotalPrice, 20);
+
+  //get final price
+  const finalPrice = (totalPrice, deliveryCharge, tax) =>
+    totalPrice + tax + deliveryCharge;
+  const getFinalPrice = finalPrice(
+    getTotalPrice,
+    getDeliveryCharge,
+    getTaxPrice
+  );
 
   return (
     <>
@@ -23,18 +55,40 @@ const MyCart = () => {
 
             <div className="price-info">
               <ul>
-                <li className="lists space-between"><span>Total Quantity</span><span>10</span></li>
-                <li className="lists space-between"><span>Price</span> <span>20000</span></li>
-                <li className="lists space-between"><span>Delivery Charge</span> <span>500</span></li>
-                <li className="lists space-between"><span>Discount</span> <span>500</span></li>
-                <li className="lists space-between"><span><b>Final Price</b></span> <span>19523</span></li>
+                <li className="lists space-between">
+                  <span>Total Quantity</span>
+                  <span>{getTotalQuantity}</span>
+                </li>
+                <li className="lists space-between">
+                  <span>Total Price</span>{" "}
+                  <span>₹ {priceFormatter(getTotalPrice)}</span>
+                </li>
+                <li className="lists space-between">
+                  <span>Delivery Charge</span>{" "}
+                  <span>₹ {priceFormatter(getDeliveryCharge)} </span>
+                </li>
+                <li className="lists space-between">
+                  <span>Total MRP</span>{" "}
+                  <span>₹ {priceFormatter(getTotalMRP)} </span>
+                </li>
+                <li className="lists space-between">
+                  <span>Total Discount</span>{" "}
+                  <span>₹ {priceFormatter(getTotalDiscount)} </span>
+                </li>
+                <li className="lists space-between">
+                  <span>GST</span> <span>₹ {priceFormatter(getTaxPrice)} </span>
+                </li>
+                <li className="lists space-between">
+                  <span>
+                    <b>Final Price</b>
+                  </span>{" "}
+                  <span>₹ {priceFormatter(getFinalPrice)} </span>
+                </li>
               </ul>
 
               <button className="btn btn-primary">Checkout</button>
             </div>
-
           </div>
-          
         </div>
       </div>
     </>

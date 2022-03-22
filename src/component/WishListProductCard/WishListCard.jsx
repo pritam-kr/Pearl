@@ -9,7 +9,7 @@ const WishListCard = ({ eachProduct }) => {
     
     const {addToCart} = useCartContext()
 
-    const { _id, image, title, price, rating, discount } = eachProduct;
+    const { _id, image, title, currentPrice, rating, originalPrice } = eachProduct;
 
     const { removeFromWishlist } = useWishListContext();
 
@@ -20,8 +20,8 @@ const WishListCard = ({ eachProduct }) => {
             <div className="card-content">
                 <h2 className="card-title product-title">{title}</h2>
                 <h1 className="card-price product-price">
-                    ₹ {priceFormatter(price)}
-                    <span className="discount-price"> {discount}</span>
+                    ₹ {priceFormatter(currentPrice)}
+                    <span className="discount-price"> {priceFormatter(originalPrice)}</span>
                 </h1>
                 <p className="text-sm">
                     <BiIcons.BiStar className="rating-start" /> {rating}/5
