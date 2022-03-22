@@ -75,7 +75,7 @@ const Filter = () => {
             className="input range-input"
 
             type="range"
-            min="2000"
+            
             max={maxPrice}
             onMouseUp={(event) =>
               dispatch({ type: "PRICE_RANGE", payload: event.target.value })
