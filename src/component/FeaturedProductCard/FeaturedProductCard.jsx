@@ -30,7 +30,7 @@ const FeaturedCardProduct = ({eachProduct}) => {
           </span>
         </div>
 
-        <h3 className="product-price">₹ {priceFormatter(eachProduct.price)}</h3>
+        <h3 className="product-price">₹ {priceFormatter(eachProduct.currentPrice)}</h3>
       </div>
 
       <div className="btn-wishlist btn-wishlist-icon2"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>

@@ -2,5 +2,5 @@ export const filterByPriceRange = (data, price) => {
   if (!price) {
     return data;
   }
-  return data.filter((eachProduct) => eachProduct.price >= price);
+  return data.filter((eachProduct) => eachProduct.currentPrice>= price);
 };

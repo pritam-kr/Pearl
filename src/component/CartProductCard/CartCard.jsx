@@ -35,8 +35,8 @@ const CartCard = () => {
             <h2 className="card-title product-title">{eachProduct.title}</h2>
 
             <h2 className="card-price product-price">
-              ₹ {eachProduct.price}/-{" "}
-              <span className="discount-price">₹ {eachProduct.discount}</span>
+              ₹ {eachProduct.currentPrice}/-{" "}
+              <span className="discount-price">₹ {eachProduct.originalPrice}</span>
             </h2>
 
             <div className="quantity">
