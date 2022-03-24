@@ -1,28 +1,25 @@
 import * as BiIcons from "react-icons/bi";
-import * as FaIcons  from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
 import React from "react";
 import "./ProductCard.css";
 import { useCartContext } from "../../Context/CartContext/CartContext";
 import { priceFormatter } from "../../utils/priceFormatter";
-import {useAuthContext, useWishListContext} from "../../Context/index"
+import { useAuthContext, useWishListContext } from "../../Context/index"
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
+import { toast } from "react-toastify";
  
 const ProductCard = ({ eachProduct }) => {
 
-    const {addToWishlist} = useWishListContext()
-    const { addToCart, buttonLoader} = useCartContext();
+    const { addToWishlist, state: { wishlist }, removeFromWishlist } = useWishListContext()
+    const { addToCart, state: { cart } } = useCartContext();
     const navigate = useNavigate()
-    const {token} = useAuthContext()
-    
+    const { token } = useAuthContext()
     const addToCartHandler = (eachProduct) => {
         addToCart(eachProduct)
-     };
-
+    };
+ 
     const { id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
         eachProduct;
-
 
     return (
         <>
@@ -31,10 +28,11 @@ const ProductCard = ({ eachProduct }) => {
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>
+                    <p>{categoryName}</p>
                     <h1 className="card-price product-price">
                         {" "}
                         ₹ {priceFormatter(currentPrice)}{" "}
-                        <span className="discount-price">₹ 19999/-</span>
+                        <span className="discount-price">₹ {priceFormatter(19999)}/-</span>
                     </h1>
                     <p className="text-sm">
                         <BiIcons.BiStar className="rating-start" /> {rating}/5
@@ -43,13 +41,14 @@ const ProductCard = ({ eachProduct }) => {
 
                 <div className="card-footer">
                     <div className="move-cart-buttons">
-                        <button
+                        {cart.find((eachItem) => eachItem._id === eachProduct._id) ? <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => navigate("/cart")}> <BiIcons.BiCart className="cart-icon"  />  Go to cart</button> : <button
                             className="btn btn-primary btn-move-cart text-sm center"
-                            onClick={() => {!token? navigate("/login"): addToCartHandler(eachProduct)}}
+                            onClick={() => { !token ? navigate("/login") : addToCartHandler(eachProduct) }}
                         >
                             {" "}
                             <BiIcons.BiCart className="cart-icon" />  Add to Cart
-                        </button>
+                        </button>}
+
                     </div>
                 </div>
 
@@ -61,7 +60,9 @@ const ProductCard = ({ eachProduct }) => {
                     ""
                 )}
 
-                <div className="btn-wishlist"><FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)}/></div>
+                <div className="btn-wishlist">
+                    {wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)} />)}
+                </div>
             </div>
         </>
     );
