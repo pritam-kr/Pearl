@@ -26,6 +26,11 @@
   --wishlist-icon-hover: #313131b9;
 }
 
+.error{
+  color: var(--heart-icon-hover);
+  padding: 0;
+}
+
 html {
   font-size: 67%;
   scroll-behavior: smooth;
@@ -52,10 +57,11 @@ button {
 }
 
 .section {
- 
  padding: 1rem;
-   
 }
+
+
+
 
 .icons {
   font-size: 2rem;
