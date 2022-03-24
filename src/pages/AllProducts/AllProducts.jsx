@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AllProducts.css";
 import { Filter, ProductCard } from "../../component/index";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
+import { useCartContext } from "../../Context";
+import { useState } from "react";
 
 const AllProducts = () => {
   const { filteredProductList } = useStateContext();
+  const { loader } = useCartContext();
+  const [gettingLoader, setGettingLoader] = useState(loader);
+
+  useEffect(() => {
+    setGettingLoader(loader);
+  }, [loader]);
 
   return (
     <div className="all-products-section">
@@ -23,6 +31,7 @@ const AllProducts = () => {
                   <ProductCard
                     eachProduct={eachProduct}
                     key={eachProduct._id}
+                    gettingLoader={gettingLoader}
                   />
                 );
               })
