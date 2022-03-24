@@ -4,6 +4,7 @@ import {
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
   DELETE_PRODUCT,
+  SET_LOADER
 } from "../Action/actions";
 
 
@@ -15,13 +16,13 @@ export const cartReducer = (state, action) => {
       };
 
     case ADD_TO_CART:
-       
+
       return {
         ...state,
         cart: action.payload,
-        
+
       };
-      
+
     case INCREMENT_QUANTITY:
       return {
         ...state,
@@ -39,8 +40,12 @@ export const cartReducer = (state, action) => {
         cart: action.payload,
       };
 
+    case SET_LOADER:
+      return {
+        ...state, loader: action.payload
+      }
 
-    default:
-      return state;
+      default:
+        return state;
   }
 };

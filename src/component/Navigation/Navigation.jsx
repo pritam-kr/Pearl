@@ -89,19 +89,19 @@ const Navigation = () => {
               </li>
               <li onClick={() => {token ? navigate("/wishlist"): navigate('/login')}} className="icon-badge">
                 <BiIcons.BiHeart className="icons navigation-icon" />
-                {wishlist?.length > 0 && (
+                {token && (
                   <span className="badge-icon-number badge-status">
                     {" "}
-                    {wishlist?.length}
+                    {wishlist?.length }
                   </span>
                 )}
               </li>
 
               <li onClick={() => {token ? navigate("/cart"): navigate('/login')}} className="icon-badge">
                 <BiIcons.BiCart className="icons navigation-icon" />{" "}
-                {cart?.length > 0 && (
+                {token && (
                   <span className="badge-icon-number badge-status">
-                    {cart?.length}{" "}
+                    {cart?.length}
                   </span>
                 )}
               </li>

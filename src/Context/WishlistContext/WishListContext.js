@@ -3,6 +3,7 @@ import { useContext, createContext, useReducer } from "react";
 import { ADD_TO_WISHLIST } from "../Action/actions";
 import { useAuthContext } from "../index";
 import { wishListReducer } from "./WishListReducer";
+import {toast} from "react-toastify"
 
 const WishListContext = createContext(null);
 
@@ -13,9 +14,7 @@ const initialState = {
 const WishListContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wishListReducer, initialState);
 
-    const {user} = useAuthContext()
-
-
+    
     //local storage token
     const {token} = useAuthContext();
 
@@ -27,6 +26,7 @@ const WishListContextProvider = ({ children }) => {
             (async () => {
                 try {
                     const {
+                        status,
                         data: { wishlist },
                     } = await axios.post(
                         "/api/user/wishlist",
@@ -38,13 +38,14 @@ const WishListContextProvider = ({ children }) => {
                         }
                     );
 
+                    {status === 201  && toast.success("Added to wishlist") }
 
                     dispatch({
                         type: ADD_TO_WISHLIST,
                         payload: wishlist,
                     });
                 } catch (error) {
-                    console.log("error from catch", error);
+                   console.log(error)
                 }
             })();
         }
@@ -55,11 +56,13 @@ const WishListContextProvider = ({ children }) => {
         (async () => {
             try {
 
-                const { data: {wishlist} } = await axios.delete(`/api/user/wishlist/${product._id}`, {
+                const {status,  data: {wishlist} } = await axios.delete(`/api/user/wishlist/${product._id}`, {
                     headers: {
                         authorization: token,
                     }
                 })
+
+                {status === 200  && toast.success("Removed from wishlist") }
 
                 dispatch({
                     type: ADD_TO_WISHLIST,
@@ -68,7 +71,7 @@ const WishListContextProvider = ({ children }) => {
                 
 
             } catch (error) {
-                console.log(error)
+                 console.log(error)
             }
         })()
     }

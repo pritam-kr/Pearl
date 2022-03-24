@@ -3,21 +3,20 @@ import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "./CartReducer";
 import { useAuthContext } from "../../Context/index";
 import { useEffect, useState } from "react";
+import {toast} from "react-toastify"
 
 const CartContext = createContext();
 
 const initialState = {
   cart: [],
-  totalPrice: 0,
-  deliveryCharge: null,
-  totalCartItems: 0,
-  discount: null,
+  loader: false
 };
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { cart } = state;
+  const { cart, } = state;
   const { token, user } = useAuthContext();
+
   
   // Getting data from cart and dispatching to initial state
   useEffect(() => {
@@ -43,14 +42,14 @@ const CartContextProvider = ({ children }) => {
 
   // Now do post request with for a single project with the help of token
   const addToCart = (product) => {
-
-     
+    
     if (cart.find((eachProduct) => eachProduct._id === product._id)) {
       return;
     } else {
       (async () => {
         try {
           const {
+            status,
             data: { cart },
           } = await axios.post(
             "/api/user/cart",
@@ -62,13 +61,16 @@ const CartContextProvider = ({ children }) => {
             }
           );
 
+          // show ing toast on add to cart
+            status === 201 ? toast.success("Product Added to Cart") : null
+
           dispatch({
             type: "ADD_TO_CART",
             payload: cart,
             productId: product._id,
           });
         } catch (error) {
-          console.log(error);
+           console.log(error)
         }
       })();
     }
@@ -100,7 +102,7 @@ const CartContextProvider = ({ children }) => {
 
         dispatch({ type: "DECREMENT_QUANTITY", payload: cart });
       } catch (error) {
-        console.log("Error from Increment", error);
+         console.log(error)
       }
     }
   };
@@ -128,7 +130,7 @@ const CartContextProvider = ({ children }) => {
 
       dispatch({ type: "INCREMENT_QUANTITY", payload: cart });
     } catch (error) {
-      console.log("Error from Increment", error);
+       console.log(error)
     }
   };
 
@@ -138,6 +140,7 @@ const CartContextProvider = ({ children }) => {
 
     try {
       const {
+        status,
         data: { cart },
       } = await axios.delete(`/api/user/cart/${productId}`, {
         headers: {
@@ -145,13 +148,19 @@ const CartContextProvider = ({ children }) => {
         },
       });
 
+      // showing toast on deleting product from cart
+       status === 200 ? toast.info("Product Delete from cart") : null
+
       dispatch({ type: "DELETE_PRODUCT", payload: cart });
     } catch (error) {
-      console.log("Error from delete", error);
+       console.log(error)
+
     }
   };
 
   return (
+    <>
+  
     <CartContext.Provider
       value={{
         state,
@@ -163,8 +172,9 @@ const CartContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </CartContext.Provider>
+    </CartContext.Provider> </> 
   );
+ 
 };
 
 const useCartContext = () => useContext(CartContext);

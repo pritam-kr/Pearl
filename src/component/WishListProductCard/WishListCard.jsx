@@ -4,15 +4,15 @@ import { priceFormatter } from "../../utils/priceFormatter";
 import { useWishListContext } from "../../Context/";
 import {useCartContext} from "../../Context/index"
 import "./WishlistCard.css"
+ 
 
 const WishListCard = ({ eachProduct }) => {
-    
     const {addToCart} = useCartContext()
-
     const { _id, image, title, currentPrice, rating, originalPrice } = eachProduct;
 
-    const { removeFromWishlist } = useWishListContext();
+    const { removeFromWishlist, state: {wishlist} } = useWishListContext();
 
+   
     return (
         <div className="images-card badge-card wishlist-card" key={_id}>
             <img className="card-img" src={image} alt={title} />
