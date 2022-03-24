@@ -19,7 +19,7 @@ const Home = () => {
               loop
               muted
               autoPlay="autoPlay"
-              class="hero-img responsive-images"
+              className="hero-img responsive-images"
               style={{ objectFit: "cover" }}
             >
               <source
@@ -74,7 +74,7 @@ const Home = () => {
                 src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647265604/21_sskl2v.jpg"
                 className="responsive-images"
               />
-              <div className="category-content center" id="category-content">
+              <div className="category-content center">
                 <h1 className="category-title">Platinum Necklace</h1>{" "}
                 <Link to="/allproducts">
                   <button className="btn btn-buy">Shop Now</button>{" "}
