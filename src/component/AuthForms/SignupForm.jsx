@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import {regEx} from "../../utils/regEx";
 
 
 const SignupForm = () => {
 
+    const [error, setError] = useState("")
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -17,24 +18,39 @@ const SignupForm = () => {
         password: "",
     });
 
+
     const signUpFormHandler = (e) => {
         
         e.preventDefault();
         const signupUser = formData;
 
-        try {
+
+        if(regEx.test(formData.email)){
+
             (async () => {
-                const { data } = await axios.post("/api/auth/signup", signupUser);
-                localStorage.setItem('Signup-Token', data.encodedToken)
 
-            })();
+                try{
 
-            setFormData({ firstName: "", lastName: "", email: "", password: "" });
+                    const { data : {encodedToken} } = await axios.post("/api/auth/signup", signupUser);
+                    localStorage.setItem('Signup-Token', encodedToken)
 
-            navigate('/login')
+                    if (encodedToken) {
+                        navigate("/login");
+                        setFormData({ firstName: "", lastName: "", email: "", password: "" });
+                    }
+                }
+                catch (error) {
+                    const {data : {errors}} = error.response
+                    setError(...errors)
+                }
 
-        } catch (error) {
-            console.log(error);
+            })()
+
+        }else if (!regEx.test(formData.email)) {
+            setError("Email is not Valid")
+
+        } else {
+            setError("")
         }
     };
 
@@ -88,6 +104,9 @@ const SignupForm = () => {
                         className="input required-input form-password-input"
                         required
                     />
+
+                    <p className="text-sm error">{error}</p>
+
                 </div>
 
                 <div className="input-row">

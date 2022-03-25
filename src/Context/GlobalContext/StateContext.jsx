@@ -3,7 +3,6 @@ import {
     useContext,
     useReducer,
     useEffect,
-    useState,
 } from "react";
 import axios from "axios";
 import { uniqueCategory } from "../../utils/uniqueCategory";
@@ -12,6 +11,8 @@ import { filterByCategory } from "../../utils/filterByCategory";
 import { stateReducerFun } from "../GlobalContext/StateReducer";
 import { filterByRating } from "../../utils/filterByRating"
 import { filterByPriceRange } from "../../utils/filterByPriceRange"
+import {toast, ToastContainer} from "react-toastify"
+
 
 const StateContext = createContext();
 
@@ -60,8 +61,10 @@ const StateContextProvider = ({ children }) => {
         (async () => {
             try {
                 const {
+                    status,
                     data: { products },
                 } = await axios.get("/api/products");
+
                 dispatch({
                     type: "ON_SUCCESS",
                     payload: products,
@@ -72,7 +75,7 @@ const StateContextProvider = ({ children }) => {
                 dispatch({type: "FEATURED_PRODUCT", payload: products})
 
             } catch (error) {
-                console.log(error);
+                console.log(error)
             }
         })();
     }, []);

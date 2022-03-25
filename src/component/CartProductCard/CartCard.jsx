@@ -4,6 +4,7 @@ import * as BiIcons from "react-icons/bi";
 import * as FaIcons from "react-icons/fa";
 import { useCartContext } from "../../Context";
 import { useWishListContext } from "../../Context/";
+import { toast, ToastContainer } from "react-toastify";
 
 const CartCard = () => {
   const {
@@ -14,11 +15,11 @@ const CartCard = () => {
   } = useCartContext();
 
   
-
   const { addToWishlist } = useWishListContext();
 
   return (
     <>
+    
       {cart?.map((eachProduct) => (
         <div
           className="images-card horizontal-cart-card cart-card"

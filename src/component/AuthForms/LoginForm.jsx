@@ -4,40 +4,70 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "../../Context";
+import { regEx } from "../../utils/regEx"
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
+//User Logged in message showing 
+const loggedMessage = (foundUser) => {
+    const {firstName, lastName} = foundUser
+    toast.success (`Welcome ${firstName} ${lastName}`)
+}
 
 const LoginForm = () => {
-    const [formData, setFormData] = useState({ email: "", password: "" });
+    const [formData, setFormData] = useState({ email: "", password: "" });  
     const navigate = useNavigate();
     const { setToken, setUser } = useAuthContext();
+    const [error, setError] = useState("")
+
 
     const loginFormHandler = (e) => {
         e.preventDefault();
 
-        const loginUser = formData;
+        if (regEx.test(formData.email)) {
 
-        try {
             (async () => {
-                const {
-                    data: { foundUser, encodedToken },
-                } = await axios.post("/api/auth/login", loginUser);
 
-                localStorage.setItem("login-Token", encodedToken);
-                localStorage.setItem("user", JSON.stringify(foundUser));
-                
-                setUser(foundUser);
-                setToken(encodedToken);
+                try {
+                    const {
+                        status,
+                        data: { foundUser, encodedToken },
+                    } = await axios.post("/api/auth/login", formData);
 
-                if (encodedToken) {
-                    navigate("/allproducts");
+                    // Logged message 
+                    status === 200? loggedMessage(foundUser) : null
+
+                    // Saving data at local storage
+                    localStorage.setItem("login-Token", encodedToken);
+                    localStorage.setItem("user", JSON.stringify(foundUser));
+
+                    setUser(foundUser);
+                    setToken(encodedToken);
+
+                    if (encodedToken) {
+                        navigate("/allproducts");
+                    }
+                }
+
+                catch (error) {  
+                const {data : {errors}} = error.response
+                setError(...errors)
                 }
             })();
-        } catch (error) {
-            console.log(error);
+
+        } else if (!regEx.test(formData.email)) {
+            setError("Email is not Valid")
+
+        } else {
+            setError("")
         }
+
+
     };
 
     return (
         <>
+        <ToastContainer />
             <form className="form" onSubmit={(e) => loginFormHandler(e)}>
                 <div className="form-header">
                     <h2 className="form-heading">Login</h2>
@@ -46,14 +76,18 @@ const LoginForm = () => {
                 <div className="input-row">
                     <label className="input-label form-label">Email: </label>
                     <input
-                        type="email"
+                        type="text"
                         placeholder="Enter email"
                         className="input primary-input"
                         onChange={(event) =>
                             setFormData((prev) => ({ ...prev, email: event.target.value }))
                         }
-                        required
+                        autoComplete="true"
+                        value={formData.email}
                     />
+
+                    
+                    <p className="text-sm error">{error}</p>
                 </div>
 
                 <div className="input-row">
@@ -69,18 +103,20 @@ const LoginForm = () => {
                             setFormData((prev) => ({ ...prev, password: event.target.value }))
                         }
                         autoComplete="true"
+                        value={formData.password}
                     />
                 </div>
 
                 <div className="input-row">
                     <label className="input-label">
-                        <input type="checkbox" className="input checkbox-input" />
+                        <input type="checkbox" className="input checkbox-input" required />
                         <span className="checkbox-text">Remember me</span>
                     </label>
                 </div>
 
                 <div className="input-row">
                     <button className="btn btn-primary btn-submit text-md">Login</button>
+                    <p className="text-credential center text-sm" onClick={() => setFormData({email: "pritamvr9@gmail.com", password: "pritam123"})} >Login with Test Credential</p>
                 </div>
 
                 <div className="form-footer">
