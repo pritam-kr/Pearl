@@ -21,3 +21,13 @@
   ::placeholder{
     font-size: 1.2rem;
   }
+
+  .text-credential{
+    cursor: pointer;
+    width: fit-content;
+    margin: .5rem auto;
+    text-decoration: underline;
+  }
+  .form-footer{
+    margin-top: 1rem;
+  }

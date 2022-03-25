@@ -83,6 +83,7 @@ const LoginForm = () => {
                             setFormData((prev) => ({ ...prev, email: event.target.value }))
                         }
                         autoComplete="true"
+                        value={formData.email}
                     />
 
                     
@@ -102,6 +103,7 @@ const LoginForm = () => {
                             setFormData((prev) => ({ ...prev, password: event.target.value }))
                         }
                         autoComplete="true"
+                        value={formData.password}
                     />
                 </div>
 
@@ -114,6 +116,7 @@ const LoginForm = () => {
 
                 <div className="input-row">
                     <button className="btn btn-primary btn-submit text-md">Login</button>
+                    <p className="text-credential center text-sm" onClick={() => setFormData({email: "pritamvr9@gmail.com", password: "pritam123"})} >Login with Test Credential</p>
                 </div>
 
                 <div className="form-footer">
