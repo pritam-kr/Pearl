@@ -3,15 +3,23 @@
 }
 
 .products-wrapper {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-gap: 10px;
+   display: flex;
+   gap: 10px;
+}
+
+.filter-wrapper{
+  flex: 0.3;
+   
+}
+
+.all-products{
+  flex: 1;
 }
 
 .products-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 270px));
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   flex-wrap: wrap;
   padding: 1em 0.5em;
@@ -62,9 +70,56 @@
   margin-left: 0;
   background-color: transparent;
 }
+ 
+/*========Filter Responsive stuffs==============*/
+.filter-icon-wrapper .filter-icon{
+  font-size: 2.5rem;
+}
 
-@media screen and (max-width: 976px) {
-  .products-wrapper {
-    grid-template-columns: 1fr;
+.filter-wrapper{
+  display: none;
+}
+.active-sidebar-filter{
+  display: block;
+  position: absolute;
+  border-right: 1px solid var(--border-color);
+  z-index: 111;
+   height: 100%;
+  width: 40%;
+}
+
+@media screen and (min-width: 976px) {
+
+  .active-sidebar-filter{
+    display: block;
+    position: static;
+    width: 25rem;
+    z-index: 111;
   }
+
+  .filter-wrapper {
+     display: block;
+  }
+ 
+   .products-container {
+     max-width: 900px;
+     margin: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(20rem, 1fr) );
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 1em 0.5em;
+  }
+}
+
+.filter-icon-wrapper{
+  display: block;
+}
+
+@media screen  and (min-width: 976px) {
+  .filter-icon-wrapper{
+    display: none;
+  }
+
 }

@@ -4,11 +4,20 @@ import { Filter, ProductCard } from "../../component/index";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
 import { useCartContext } from "../../Context";
 import { useState } from "react";
+import * as BiIcons from "react-icons/bi";
+import * as RiIcons from "react-icons/ri";
 
 const AllProducts = () => {
   const { filteredProductList } = useStateContext();
   const { loader } = useCartContext();
   const [gettingLoader, setGettingLoader] = useState(loader);
+  const [filter, setFilter] = useState(false)
+
+
+  useEffect(() => {
+    setFilter(filter)
+  }, [setFilter])
+
 
   useEffect(() => {
     setGettingLoader(loader);
@@ -17,10 +26,13 @@ const AllProducts = () => {
   return (
     <div className="all-products-section">
       <div className="products-wrapper">
-        <Filter />
+
+        <div className={!filter ? "filter-wrapper" : "filter-wrapper active-sidebar-filter"}>
+          <Filter />
+        </div>
 
         <div className="all-products">
-          <h3 className="large-heading">Showing all Products</h3>
+          <h3 className="large-heading space-between">Showing all Products <span className="filter-icon-wrapper" onClick={() => setFilter(!filter)}><BiIcons.BiFilter className="icons filter-icon" /></span></h3>
 
           <div className="products-container">
             {filteredProductList.length === 0 ? (
