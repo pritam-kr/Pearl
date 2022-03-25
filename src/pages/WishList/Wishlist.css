@@ -1,5 +1,6 @@
 .wishlist-section {
   margin: 8rem 20px 2rem 20px;
+  min-height: 75vh;
 }
 
 .wishlist-wrapper {
@@ -8,4 +9,5 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  
 }
