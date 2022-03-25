@@ -3,8 +3,7 @@ import "./App.css";
 import {Footer, Navigation} from "./component/index"
 import {Login, Signup, AllProducts, WishList, Home, MyCart, Logout} from "./pages/index"
 import MockAPI from "./component/Mockman/Mockman"
-import {useAuthContext} from "./Context/index"
-
+import {useAuthContext, PrivateRoute} from "./Context/index"
 import {ToastContainer} from "react-toastify"
 
 function App() {
@@ -18,12 +17,12 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />}></Route> 
-        <Route path="/cart" element={token? <MyCart/>: <Login />}></Route> 
-        <Route path="/wishlist" element={token? <WishList/> : <Login />}></Route> 
+        <Route path="/cart" element={ <PrivateRoute> <MyCart /> </PrivateRoute>}></Route> 
+        <Route path="/wishlist" element={<PrivateRoute> <WishList/></PrivateRoute>}></Route> 
         <Route path="/allproducts" element={<AllProducts/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
-        <Route path="/logout" element={token ? <Logout />: <Login /> }></Route>
+        <Route path="/logout" element={<PrivateRoute> <Logout /></PrivateRoute>}></Route>
         <Route path="/mockman" element={<MockAPI />}> </Route>
       </Routes>
 
