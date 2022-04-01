@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
@@ -38,9 +38,9 @@ const Navigation = () => {
       <nav className="nav">
         <div className="nav-wrapper">
           <div className="left-div">
-            <div className="logo">
+            <Link to="/" className="logo">
               Pearl <p className="text-xm">The Dark Jewelry</p>
-            </div>
+            </Link>
 
             <div className="nav-menu">
               <ul>
