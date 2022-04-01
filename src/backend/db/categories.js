@@ -15,7 +15,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Ear Rings",
+    categoryName: "Ear Ring",
     description:
       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
       image: "https://res.cloudinary.com/dhqxln7zi/image/upload/v1647536227/p-1_dlbquw.png"

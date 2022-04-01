@@ -2,7 +2,7 @@ import {
     createContext,
     useContext,
     useReducer,
-    useEffect,
+    useEffect, useState
 } from "react";
 import axios from "axios";
 import { uniqueCategory } from "../../utils/uniqueCategory";
@@ -20,7 +20,7 @@ const initialState = {
     products: [],
     filters: {
         sortBy: "",
-        priceRange: 2000,
+        priceRange: 0,
         categoryName: [],
         rating: null,
         maxPrice: "",
@@ -37,6 +37,9 @@ const StateContextProvider = ({ children }) => {
         filters: { sortBy, categoryName, rating, priceRange, }, featured
     } = state;
 
+    //Search-Bar
+    const [searchTerm, setSearchTerm] = useState("")
+ 
    
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
@@ -54,9 +57,9 @@ const StateContextProvider = ({ children }) => {
     const getFilterByPriceRange = filterByPriceRange(getFilterByRating, priceRange)
 
     //Final Filtered` list
-    const filteredProductList = getFilterByPriceRange;
+    const filteredProductList = getFilterByPriceRange 
 
-
+    //Getting product from Backend
     useEffect(() => {
         (async () => {
             try {
@@ -70,18 +73,19 @@ const StateContextProvider = ({ children }) => {
                     payload: products,
                 });
 
-                dispatch({ type: "LOAD_MAX_PRICE", payload: products })
-
-                dispatch({type: "FEATURED_PRODUCT", payload: products})
+                 if(status === 200){
+                    dispatch({ type: "LOAD_MAX_PRICE", payload: products })
+                    dispatch({type: "FEATURED_PRODUCT", payload: products})
+                 }
 
             } catch (error) {
-                console.log(error)
+                 toast.error("Error occured in Global Product Data", {position: "top-right"})
             }
         })();
     }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList }}>
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList, setSearchTerm, searchTerm }}>
             {children}
         </StateContext.Provider>
     );

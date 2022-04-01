@@ -48,6 +48,7 @@ const CartCard = () => {
                   className="icons"
                   onClick={() => incrementQuantity(eachProduct, "increment")}
                 />
+                
                 <BiIcons.BiMinusCircle
                   className="icons"
                   onClick={() => decrementQuantity(eachProduct, "decrement")}

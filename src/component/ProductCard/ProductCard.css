@@ -4,7 +4,7 @@
 
 .badge-card {
   border-radius: 0;
-  
+   
   border: 0.5px solid var(--border-color);
   box-shadow: none;
 }
@@ -20,7 +20,8 @@
 .product-card {
   position: relative;
   max-height: 45rem;
-  max-width: 30rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .badge-card .card-content {
@@ -36,9 +37,8 @@
   border-radius: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  backdrop-filter: blur(1px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  background-color: rgba(44, 44, 44, 0.726);
+   cursor:  not-allowed;
+  background-color: rgba(44, 44, 44, 0.061);
   z-index: 101;
 }
 .outof-text span{

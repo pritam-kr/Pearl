@@ -3,26 +3,33 @@
 }
 
 .products-wrapper {
-   display: flex;
-   gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-.filter-wrapper{
+.filter-wrapper {
   flex: 0.3;
-   
 }
 
-.all-products{
+.all-products {
   flex: 1;
 }
 
 .products-container {
   display: grid;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(1, 1fr);
+
+  gap: 1rem;
   padding: 1em 0.5em;
+}
+
+@media screen and (min-width: 567px) {
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1em 0.5em;
+  }
 }
 
 .badge-card {
@@ -30,7 +37,7 @@
   background-color: #fff;
   border: 0.5px solid var(--border-color);
 }
- 
+
 .card-footer {
   padding: 0;
 }
@@ -70,27 +77,27 @@
   margin-left: 0;
   background-color: transparent;
 }
- 
+
 /*========Filter Responsive stuffs==============*/
-.filter-icon-wrapper .filter-icon{
+.filter-icon-wrapper .filter-icon {
   font-size: 2.5rem;
 }
 
-.filter-wrapper{
+.filter-wrapper {
   display: none;
 }
-.active-sidebar-filter{
+
+.active-sidebar-filter {
   display: block;
   position: absolute;
   border-right: 1px solid var(--border-color);
   z-index: 111;
-   height: 100%;
+  height: 100%;
   width: 40%;
 }
 
 @media screen and (min-width: 976px) {
-
-  .active-sidebar-filter{
+  .active-sidebar-filter {
     display: block;
     position: static;
     width: 25rem;
@@ -98,28 +105,27 @@
   }
 
   .filter-wrapper {
-     display: block;
+    display: block;
   }
- 
-   .products-container {
-     max-width: 900px;
-     margin: auto;
+
+  .products-container {
+    max-width: 900px;
+    margin: auto;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat( auto-fit, minmax(20rem, 1fr) );
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 10px;
     flex-wrap: wrap;
     padding: 1em 0.5em;
   }
 }
 
-.filter-icon-wrapper{
+.filter-icon-wrapper {
   display: block;
 }
 
-@media screen  and (min-width: 976px) {
-  .filter-icon-wrapper{
+@media screen and (min-width: 976px) {
+  .filter-icon-wrapper {
     display: none;
   }
-
 }

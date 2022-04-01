@@ -6,5 +6,12 @@ export const wishListReducer = (state, action) => {
           ...state,
           wishlist: action.payload,
         };
+      case "GET_WISHLIST_DATA":
+        return {
+          ...state,
+          wishlist: action.payload,
+        };
+      default:
+      return state
     }
   };

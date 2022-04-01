@@ -5,7 +5,7 @@ import { useStateContext } from "../../Context/GlobalContext/StateContext";
 const Filter = () => {
   const { state, getUniqueCategory, dispatch } = useStateContext();
   const {
-    filters: { priceRange, maxPrice },
+    filters: { priceRange, maxPrice, minPrice },
   } = state;
 
   return (
@@ -29,7 +29,7 @@ const Filter = () => {
                 <label className="label text-sm" id="low-high">
                   <input
                     type="radio"
-                    for="sortBy"
+                    htmlFor="sortBy"
                     name="price"
                     checked={
                       state.filters.sortBy &&
@@ -38,7 +38,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "LOW_TO_HIGH", payload: "LOW_TO_HIGH" })
                     }
-                  />{" "}
+                  /> 
                   Price: Low to High
                 </label>
               </li>
@@ -47,7 +47,7 @@ const Filter = () => {
                 <label className="label text-sm" id="High-low">
                   <input
                     type="radio"
-                    for="sortBy"
+                    htmlFor="sortBy"
                     name="price"
                     checked={
                       state.filters.sortBy &&
@@ -56,7 +56,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "HIGH_TO_LOW", payload: "HIGH_TO_LOW" })
                     }
-                  />{" "}
+                  /> 
                   Price: High to Low
                 </label>
               </li>
@@ -68,16 +68,16 @@ const Filter = () => {
           <h3 className="large-heading">Price</h3>
 
           <h6 className="text-md space-between">
-            <span id="min-price">₹ {priceRange}</span>{" "}
+            <span id="min-price">₹ {priceRange}</span>
             <span id="max-price">₹ {maxPrice}</span>
           </h6>
           <input
             className="input range-input"
-
             type="range"
-            
+             value={priceRange}
             max={maxPrice}
-            onMouseUp={(event) =>
+            min={minPrice}
+            onChange={(event) =>
               dispatch({ type: "PRICE_RANGE", payload: event.target.value })
             }
           />
@@ -88,7 +88,6 @@ const Filter = () => {
             <li className="lists">
               {getUniqueCategory.map((eachCategory, i) => (
                 <label className="label text-sm category-label" key={i}>
-                  {" "}
                   <input
                     type="checkbox"
                     className="category-checkbox"
@@ -96,6 +95,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "GET_CATEGORY", payload: eachCategory })
                     }
+                    
                   />
                   {eachCategory}
                 </label>
@@ -117,7 +117,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 4 })
                     }
-                  />{" "}
+                  /> 
                   4 Rating & Above
                 </label>
               </li>
@@ -131,7 +131,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 3 })
                     }
-                  />{" "}
+                  />
                   3 Rating & Above
                 </label>
               </li>
@@ -145,7 +145,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 2 })
                     }
-                  />{" "}
+                  />
                   2 Rating & Above
                 </label>
               </li>
@@ -159,7 +159,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 1 })
                     }
-                  />{" "}
+                  /> 
                   1 Rating & Above
                 </label>
               </li>

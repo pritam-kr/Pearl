@@ -5,10 +5,10 @@ import { useStateContext } from "../../Context/GlobalContext/StateContext";
 import { useCartContext } from "../../Context";
 import { useState } from "react";
 import * as BiIcons from "react-icons/bi";
-import * as RiIcons from "react-icons/ri";
+ 
 
 const AllProducts = () => {
-  const { filteredProductList } = useStateContext();
+  const { filteredProductList, searchTerm } = useStateContext();
   const { loader } = useCartContext();
   const [gettingLoader, setGettingLoader] = useState(loader);
   const [filter, setFilter] = useState(false)
@@ -38,7 +38,13 @@ const AllProducts = () => {
             {filteredProductList.length === 0 ? (
               <h2 className="center">Loading...</h2>
             ) : (
-              filteredProductList.map((eachProduct) => {
+              filteredProductList.filter((eachProduct) => {
+                if(searchTerm === ""){
+                  return eachProduct
+                }else if(eachProduct.title.toLowerCase().includes(searchTerm.toLowerCase())){
+                  return eachProduct
+                }
+              }).map((eachProduct) => {
                 return (
                   <ProductCard
                     eachProduct={eachProduct}
