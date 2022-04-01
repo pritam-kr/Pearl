@@ -4,6 +4,7 @@ import { ADD_TO_WISHLIST } from "../Action/actions";
 import { useAuthContext } from "../index";
 import { wishListReducer } from "./WishListReducer";
 import {toast} from "react-toastify"
+import { useEffect } from "react";
 
 const WishListContext = createContext(null);
 
@@ -14,9 +15,36 @@ const initialState = {
 const WishListContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wishListReducer, initialState);
 
-    
     //local storage token
     const {token} = useAuthContext();
+
+    //getting cart items from backend as a initial data 
+
+    useEffect(() =>{
+
+        (async () => {
+            try {
+
+                const {status,  data: {wishlist} } = await axios.get(`/api/user/wishlist/`, {
+                    headers: {
+                        authorization: token,
+                    }
+                })
+
+                
+                if(status === 200){
+                      dispatch({
+                    type: "GET_WISHLIST_DATA",
+                    payload: wishlist,
+                });
+                }
+
+            } catch (error) {
+                 console.log(error)
+            }
+        })()
+
+    }, [])
 
     const addToWishlist = (product) => {
 
