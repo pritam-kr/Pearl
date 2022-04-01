@@ -2,7 +2,7 @@ import {
     createContext,
     useContext,
     useReducer,
-    useEffect,
+    useEffect, useState
 } from "react";
 import axios from "axios";
 import { uniqueCategory } from "../../utils/uniqueCategory";
@@ -37,6 +37,9 @@ const StateContextProvider = ({ children }) => {
         filters: { sortBy, categoryName, rating, priceRange, }, featured
     } = state;
 
+    //Search-Bar
+    const [searchTerm, setSearchTerm] = useState("")
+ 
    
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
@@ -54,8 +57,7 @@ const StateContextProvider = ({ children }) => {
     const getFilterByPriceRange = filterByPriceRange(getFilterByRating, priceRange)
 
     //Final Filtered` list
-    const filteredProductList = getFilterByPriceRange;
-
+    const filteredProductList = getFilterByPriceRange 
 
     useEffect(() => {
         (async () => {
@@ -82,7 +84,7 @@ const StateContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList }}>
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList, setSearchTerm, searchTerm }}>
             {children}
         </StateContext.Provider>
     );

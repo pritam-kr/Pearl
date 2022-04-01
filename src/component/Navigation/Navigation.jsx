@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
@@ -6,11 +6,23 @@ import * as RiIcons from "react-icons/ri";
 import {
   useAuthContext,
   useCartContext,
-  useWishListContext,
+  useWishListContext,useStateContext
 } from "../../Context/index";
+ 
 
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
+
+
+  //Search Term handler
+  const {setSearchTerm}= useStateContext()
+  const [inputKey, setInputKey] = useState("")
+
+  useEffect(() => {
+    setSearchTerm(inputKey)
+  }, [inputKey, setInputKey])
+   
+
   const navigate = useNavigate();
   const {
     state: { cart },
@@ -52,7 +64,7 @@ const Navigation = () => {
           </div>
 
           <div className="middle-div search-bar-wrapper">
-            <input className="input searchbar" placeholder="Search" />
+            <input className="input searchbar" placeholder="Search" onChange={(event) =>  setInputKey(event.target.value)}/>
           </div>
 
           <div
@@ -83,22 +95,20 @@ const Navigation = () => {
             <ul className="nav-ul">
               <li>
                 <Link to="/login">
-                  {" "}
-                  <BiIcons.BiUser className="icons navigation-icon" />{" "}
+                  <BiIcons.BiUser className="icons navigation-icon" />
                 </Link>
               </li>
               <li onClick={() => {token ? navigate("/wishlist"): navigate('/login')}} className="icon-badge">
                 <BiIcons.BiHeart className="icons navigation-icon" />
                 {token && (
                   <span className="badge-icon-number badge-status">
-                    {" "}
                     {wishlist?.length }
                   </span>
                 )}
               </li>
 
               <li onClick={() => {token ? navigate("/cart"): navigate('/login')}} className="icon-badge">
-                <BiIcons.BiCart className="icons navigation-icon" />{" "}
+                <BiIcons.BiCart className="icons navigation-icon" />
                 {token && (
                   <span className="badge-icon-number badge-status">
                     {cart?.length}

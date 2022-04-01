@@ -4,7 +4,7 @@
 
 .badge-card {
   border-radius: 0;
-  
+   
   border: 0.5px solid var(--border-color);
   box-shadow: none;
 }
@@ -20,7 +20,7 @@
 .product-card {
   position: relative;
   max-height: 45rem;
-  max-width: 30rem;
+  max-width: 25rem;
 }
 
 .badge-card .card-content {
