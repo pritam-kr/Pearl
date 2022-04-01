@@ -20,7 +20,8 @@
 .product-card {
   position: relative;
   max-height: 45rem;
-  max-width: 25rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .badge-card .card-content {

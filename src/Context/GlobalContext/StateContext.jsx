@@ -59,6 +59,7 @@ const StateContextProvider = ({ children }) => {
     //Final Filtered` list
     const filteredProductList = getFilterByPriceRange 
 
+    //Getting product from Backend
     useEffect(() => {
         (async () => {
             try {

@@ -1,7 +1,9 @@
  
-import {FEATURED_PRODUCT, LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, STAR_RATING, PRICE_RANGE, CLEAR_FILTER } from "../Action/actions"
-import {gettingMaxPrice} from "../../utils/maxMinPrice"
+import {CHECKED_CATEGORY,FEATURED_PRODUCT, LOW_TO_HIGH, HIGH_TO_LOW, ON_SUCCESS, GET_CATEGORY, STAR_RATING, PRICE_RANGE, CLEAR_FILTER } from "../Action/actions"
+import {gettingMaxPrice,gettingMinPrice} from "../../utils/maxMinPrice"
 import {featuredProduct} from "../../utils/featuredProduct"
+import { act } from "@testing-library/react";
+ 
 
 
 export const stateReducerFun = (state, action) => {
@@ -22,6 +24,7 @@ export const stateReducerFun = (state, action) => {
             return {
                 ...state, filters: { ...state.filters, maxPrice:  gettingMaxPrice(action.payload)}
             }
+ 
 
         case LOW_TO_HIGH:
             return {
@@ -42,6 +45,7 @@ export const stateReducerFun = (state, action) => {
             };
 
         case GET_CATEGORY:
+            console.log(action.payload)
             if (state.filters.categoryName.includes(action.payload)) {
                 return {
                     ...state,
@@ -79,9 +83,10 @@ export const stateReducerFun = (state, action) => {
             return {
                 ...state, filters: {
                     ...state.filters, sortBy: "",
-                    priceRange: 2000,
+                    priceRange: 0,
                     categoryName: [],
                     rating: null,
+                     
                 }
             }
 
@@ -89,6 +94,12 @@ export const stateReducerFun = (state, action) => {
 
         return {
             ...state, featured: featuredProduct(action.payload)
+        }
+
+        case CHECKED_CATEGORY : 
+         console.log(action.payload)
+        return {
+            ...state, filters: {...state.filters, categoryName: [ action.payload]}
         }
 
         default:

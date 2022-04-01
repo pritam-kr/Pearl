@@ -18,15 +18,14 @@ const FeaturedCardProduct = ({eachProduct}) => {
       <img
         src={eachProduct.image}
         className="responsive-images featured-product-image"
-        alt={eachProduct.title} onClick={() => addToCart(eachProduct)}
+        alt={eachProduct.title} onClick={() => {token ? addToCart(eachProduct) : navigate('/login')}}
       />
 
       <div className="card-content">
         <div className="space-between">
-          <h2 className="product-title">{eachProduct.title}</h2>{" "}
+          <h2 className="product-title">{eachProduct.title}</h2>
           <span className="text-sm center">
-            {" "}
-            <BiIcons.BiStar /> {eachProduct.rating} / 5{" "}
+            <BiIcons.BiStar /> {eachProduct.rating} / 5
           </span>
         </div>
 
