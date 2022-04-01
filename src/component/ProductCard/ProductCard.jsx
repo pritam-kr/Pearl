@@ -8,6 +8,7 @@ import { useAuthContext, useWishListContext } from "../../Context/index"
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
  
+ 
 const ProductCard = ({ eachProduct }) => {
 
     const { addToWishlist, state: { wishlist }, removeFromWishlist } = useWishListContext()
@@ -61,7 +62,7 @@ const ProductCard = ({ eachProduct }) => {
                 )}
 
                 <div className="btn-wishlist">
-                    {wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => addToWishlist(eachProduct)} />)}
+                    {wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => (token ? addToWishlist(eachProduct) : navigate("/login"))} />)}
                 </div>
             </div>
         </>

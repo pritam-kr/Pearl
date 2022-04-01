@@ -20,7 +20,7 @@ const initialState = {
     products: [],
     filters: {
         sortBy: "",
-        priceRange: 2000,
+        priceRange: 0,
         categoryName: [],
         rating: null,
         maxPrice: "",
@@ -70,12 +70,13 @@ const StateContextProvider = ({ children }) => {
                     payload: products,
                 });
 
-                dispatch({ type: "LOAD_MAX_PRICE", payload: products })
-
-                dispatch({type: "FEATURED_PRODUCT", payload: products})
+                 if(status === 200){
+                    dispatch({ type: "LOAD_MAX_PRICE", payload: products })
+                    dispatch({type: "FEATURED_PRODUCT", payload: products})
+                 }
 
             } catch (error) {
-                console.log(error)
+                 toast.error("Error occured in Global Product Data", {position: "top-right"})
             }
         })();
     }, []);

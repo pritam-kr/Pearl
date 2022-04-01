@@ -29,7 +29,7 @@ const Filter = () => {
                 <label className="label text-sm" id="low-high">
                   <input
                     type="radio"
-                    for="sortBy"
+                    htmlFor="sortBy"
                     name="price"
                     checked={
                       state.filters.sortBy &&
@@ -47,7 +47,7 @@ const Filter = () => {
                 <label className="label text-sm" id="High-low">
                   <input
                     type="radio"
-                    for="sortBy"
+                    htmlFor="sortBy"
                     name="price"
                     checked={
                       state.filters.sortBy &&

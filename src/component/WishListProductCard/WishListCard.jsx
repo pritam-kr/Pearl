@@ -2,11 +2,14 @@ import React from "react";
 import * as BiIcons from "react-icons/bi";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { useWishListContext } from "../../Context/";
-import {useCartContext} from "../../Context/index"
+import {useCartContext, useAuthContext} from "../../Context/index"
+
 import "./WishlistCard.css"
  
 
 const WishListCard = ({ eachProduct }) => {
+    
+     
     const {addToCart} = useCartContext()
     const { _id, image, title, currentPrice, rating, originalPrice } = eachProduct;
 
