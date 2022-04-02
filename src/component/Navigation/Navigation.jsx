@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import React, { useState,  } from "react";
+import { Link, useNavigate,   } from "react-router-dom";
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
@@ -18,9 +18,16 @@ const Navigation = () => {
   const {setSearchTerm}= useStateContext()
   const [inputKey, setInputKey] = useState("")
 
-  useEffect(() => {
-    setSearchTerm(inputKey)
-  }, [inputKey, setInputKey])
+  
+  const searchHandler = () =>{
+     if(setSearchTerm === ""){
+       return
+     }else{
+      setSearchTerm(inputKey)
+      setInputKey("")
+      navigate('/allProducts')
+     }
+  }
    
 
   const navigate = useNavigate();
@@ -64,7 +71,8 @@ const Navigation = () => {
           </div>
 
           <div className="middle-div search-bar-wrapper">
-            <input className="input searchbar" placeholder="Search" onChange={(event) =>  setInputKey(event.target.value)}/>
+            <input className="input" placeholder="Search" value={inputKey} onChange={(event) =>  setInputKey(event.target.value)}/> 
+            <button className="btn-search" onClick={() => searchHandler()}><BiIcons.BiSearch className="icons"/></button>
           </div>
 
           <div

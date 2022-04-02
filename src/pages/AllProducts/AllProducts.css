@@ -1,5 +1,5 @@
 .all-products-section {
-  margin: 8rem 20px 2rem 20px;
+  margin: 10rem 20px 2rem 20px;
 }
 
 .products-wrapper {
@@ -97,6 +97,9 @@
 }
 
 @media screen and (min-width: 976px) {
+  .all-products-section {
+    margin: 8rem 20px 2rem 20px;
+  }
   .active-sidebar-filter {
     display: block;
     position: static;
