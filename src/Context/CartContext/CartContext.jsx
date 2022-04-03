@@ -9,7 +9,8 @@ const CartContext = createContext();
 
 const initialState = {
   cart: [],
-  loader: false
+  loader: false, 
+  error: null
 };
 
 const CartContextProvider = ({ children }) => {
@@ -17,28 +18,27 @@ const CartContextProvider = ({ children }) => {
   const { cart, } = state;
   const { token, user } = useAuthContext();
 
-  
+ 
   // Getting data from cart and dispatching to initial state
   useEffect(() => {
-    {
-      token &&
-        (async () => {
-          try {
-            const {
-              data: { cart },
-            } = await axios("api/user/cart", {
-              headers: {
-                authorization: token,
-              },
-            });
+     if(token){
+      (async () => {
+        try {
+          const {
+            data: { cart },
+          } = await axios.get("api/user/cart", {
+            headers: {
+              authorization: token,
+            },
+          });
 
-            dispatch({ type: "GET_CART_FROM_LOCAL_STORAGE", payload: cart });
-          } catch (error) {
-            console.log(error);
-          }
-        })();
-    }
-  }, [token, user]);
+          dispatch({ type: "GET_CART_FROM_DATABASE", payload: cart });
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+     }
+  }, []);
 
   // Now do post request with for a single project with the help of token
   const addToCart = (product) => {

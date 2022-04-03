@@ -19,13 +19,21 @@ const ProductCard = ({ eachProduct }) => {
         addToCart(eachProduct)
     };
  
-    const { id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
+    const { _id ,id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
         eachProduct;
+    
+    const singleProductHandler = () => {
+         if(token){
+            navigate(`/sp/${_id}`)
+         }else{
+             navigate('/login')
+         }
+    }
 
     return (
         <>
             <div className="images-card badge-card product-card" key={id}>
-                <img className="card-img" src={image} alt={title} />
+                <img className="card-img" src={image} alt={title} onClick={() => singleProductHandler()} />
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>

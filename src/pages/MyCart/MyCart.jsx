@@ -24,7 +24,7 @@ const MyCart = () => {
   const getTotalDiscount = totalDiscount(getTotalMRP, getTotalPrice);
 
   // Get delivery charges
-  const deliveryCharge = (totalPrice) => (totalPrice <= 25000 ? 1000 : 0);
+  const deliveryCharge = (totalPrice) => (totalPrice >= 25000 ? 1000 : 0);
   const getDeliveryCharge = deliveryCharge(getTotalPrice);
 
   //get tax price
