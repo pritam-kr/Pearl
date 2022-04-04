@@ -9,4 +9,5 @@ export { ProductCard } from "../component/ProductCard/ProductCard";
 export { CartCard } from "../component/CartProductCard/CartCard";
 export { WishListCard } from "../component/WishListProductCard/WishListCard";
 export { Gif } from "../component/Gif/Gif";
+export {Empty} from "./Empty/Empty"
  

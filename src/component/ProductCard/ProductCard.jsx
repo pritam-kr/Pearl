@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const ProductCard = ({ eachProduct }) => {
 
     const { addToWishlist, state: { wishlist }, removeFromWishlist } = useWishListContext()
-    const { addToCart, state: { cart } } = useCartContext();
+    const { addToCart, state: { cart, loader } } = useCartContext();
     const navigate = useNavigate()
     const { token } = useAuthContext()
     const addToCartHandler = (eachProduct) => {
@@ -46,6 +46,7 @@ const ProductCard = ({ eachProduct }) => {
                     <p className="text-sm">
                         <BiIcons.BiStar className="rating-start" /> {rating}/5
                     </p>
+                     
                 </div>
 
                 <div className="card-footer">
@@ -54,7 +55,7 @@ const ProductCard = ({ eachProduct }) => {
                             className="btn btn-primary btn-move-cart text-sm center"
                             onClick={() => { !token ? navigate("/login") : addToCartHandler(eachProduct) }}
                         >
-                            {" "}
+                            
                             <BiIcons.BiCart className="cart-icon" />  Add to Cart
                         </button>}
 

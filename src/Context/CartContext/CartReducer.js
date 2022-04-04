@@ -17,10 +17,12 @@ export const cartReducer = (state, action) => {
 
     case ADD_TO_CART:
 
+    console.log(action.loading)
+
       return {
         ...state,
         cart: action.payload,
-
+        loader: action.loading
       };
 
     case INCREMENT_QUANTITY:

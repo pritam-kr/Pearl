@@ -15,10 +15,10 @@ const initialState = {
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { cart, } = state;
+  const { cart, loader} = state;
   const { token, user } = useAuthContext();
 
- 
+  
   // Getting data from cart and dispatching to initial state
   useEffect(() => {
      if(token){
@@ -68,6 +68,7 @@ const CartContextProvider = ({ children }) => {
             type: "ADD_TO_CART",
             payload: cart,
             productId: product._id,
+            loading: true
           });
         } catch (error) {
            console.log(error)
