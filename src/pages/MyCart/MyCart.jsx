@@ -1,6 +1,6 @@
 import React from "react";
 import { useCartContext } from "../../Context/index";
-import { CartCard } from "../../component/index";
+import { CartCard, Empty } from "../../component/index";
 import "./MyCart.css";
 import { productQuantity, totalPrice, totalMRP } from "./PriceDetails";
 import { priceFormatter } from "../../utils/priceFormatter";
@@ -42,7 +42,7 @@ const MyCart = () => {
 
   return (
     <>
-      <div className="section cart-section">
+      {cart?.length === 0 ? <Empty page={"cart"}/> : <div className="section cart-section">
         <h3 className="large-heading page-title center">My Cart </h3>
 
         <div className="cart-wrapper">
@@ -90,7 +90,7 @@ const MyCart = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 };
