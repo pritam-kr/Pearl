@@ -20,7 +20,7 @@ function App() {
         <Route path="/cart" element={ <PrivateRoute> <MyCart /> </PrivateRoute>}></Route> 
         <Route path="/wishlist" element={<PrivateRoute> <WishList/></PrivateRoute>}></Route> 
         <Route path="/allproducts" element={<AllProducts/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
+        {token ? <Route path="/allproducts" element={<AllProducts />}></Route> : <Route path="/login" element={<Login/>}></Route>}
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/logout" element={<PrivateRoute> <Logout /></PrivateRoute>}></Route>
         <Route path="/mockman" element={<MockAPI />}> </Route>
