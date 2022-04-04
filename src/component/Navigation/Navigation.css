@@ -106,11 +106,11 @@
   top: 0;
   left: -40%;
   height: 100vh;
-  color: #fff;
+  color: var(--heading-color);
   overflow: hidden;
   backdrop-filter: blur(30px) saturate(180%);
   -webkit-backdrop-filter: blur(30px) saturate(180%);
-  background-color: rgb(59, 59, 59);
+  background-color: rgba(255, 254, 254, 0.903);
   transition: 0.3s all;
   width: 40%;
   z-index: 999;
@@ -124,7 +124,7 @@
 }
 
 .sidebar {
-  padding: 2rem 0;
+  padding: 2rem ;
 }
 
 .sidebar-link {
@@ -192,5 +192,8 @@
     padding: 0.85rem 1rem;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.12);
+  }
+  .sidebar-Menu{
+    display: none;
   }
 }
