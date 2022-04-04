@@ -71,7 +71,7 @@ const ProductCard = ({ eachProduct }) => {
                 )}
 
                 <div className="btn-wishlist">
-                    {wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => (token ? addToWishlist(eachProduct) : navigate("/login"))} />)}
+                    {token && wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => (token ? addToWishlist(eachProduct) : navigate("/login"))} />)}
                 </div>
             </div>
         </>
