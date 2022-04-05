@@ -20,11 +20,13 @@ The Dark Jewelry is a Brand for Platinum Jewelry - Buy Platinum Diamond Jewelry 
   - Price Range
   - Sort By Rating
   - Out of Stock
+  - Product Search
 - Single Product
 - Quantity Increment and Decrement
 - Authentication
   - Signup
-  - Login
+  - Login 
+  - Login Alert
 - Cart Management
 - Wishlist Management
 - Price Details
