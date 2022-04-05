@@ -1,5 +1,5 @@
 import {
-  GET_CART_FROM_LOCAL_STORAGE,
+  GET_CART_FROM_DATABASE,
   ADD_TO_CART,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
@@ -10,20 +10,23 @@ import {
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
-    case GET_CART_FROM_LOCAL_STORAGE:
+    case GET_CART_FROM_DATABASE:
       return {
         ...state, cart: action.payload
       };
 
     case ADD_TO_CART:
 
+    console.log(action.loading)
+
       return {
         ...state,
         cart: action.payload,
-
+        loader: action.loading
       };
 
     case INCREMENT_QUANTITY:
+       
       return {
         ...state,
         cart: action.payload,

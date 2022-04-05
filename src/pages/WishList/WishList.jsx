@@ -1,5 +1,5 @@
 import React from "react";
-import { WishListCard } from "../../component/index";
+import { WishListCard, Empty } from "../../component/index";
 import { useWishListContext } from "../../Context/index";
 import "./Wishlist.css";
 
@@ -10,7 +10,7 @@ const WishList = () => {
 
   return (
     <>
-      <div className="section cart-section wishlist-section">
+      {wishlist?.length === 0 ? <Empty page={"Wishlist"} />: <div className="section cart-section wishlist-section">
         <h3 className="large-heading page-title center">Wishlist </h3>
 
         <div className=" wishlist-wrapper">
@@ -20,7 +20,7 @@ const WishList = () => {
             );
           })}
         </div>
-      </div>
+      </div>}
     </>
   );
 };

@@ -12,20 +12,28 @@ import { toast } from "react-toastify";
 const ProductCard = ({ eachProduct }) => {
 
     const { addToWishlist, state: { wishlist }, removeFromWishlist } = useWishListContext()
-    const { addToCart, state: { cart } } = useCartContext();
+    const { addToCart, state: { cart, loader } } = useCartContext();
     const navigate = useNavigate()
     const { token } = useAuthContext()
     const addToCartHandler = (eachProduct) => {
         addToCart(eachProduct)
     };
  
-    const { id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
+    const { _id ,id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
         eachProduct;
+    
+    const singleProductHandler = () => {
+         if(token){
+            navigate(`/sp/${_id}`)
+         }else{
+             navigate('/login')
+         }
+    }
 
     return (
         <>
             <div className="images-card badge-card product-card" key={id}>
-                <img className="card-img" src={image} alt={title} />
+                <img className="card-img" src={image} alt={title} onClick={() => singleProductHandler()} />
 
                 <div className="card-content">
                     <h2 className="card-title product-title">{title}</h2>
@@ -38,6 +46,7 @@ const ProductCard = ({ eachProduct }) => {
                     <p className="text-sm">
                         <BiIcons.BiStar className="rating-start" /> {rating}/5
                     </p>
+                     
                 </div>
 
                 <div className="card-footer">
@@ -46,7 +55,7 @@ const ProductCard = ({ eachProduct }) => {
                             className="btn btn-primary btn-move-cart text-sm center"
                             onClick={() => { !token ? navigate("/login") : addToCartHandler(eachProduct) }}
                         >
-                            {" "}
+                            
                             <BiIcons.BiCart className="cart-icon" />  Add to Cart
                         </button>}
 
@@ -62,7 +71,7 @@ const ProductCard = ({ eachProduct }) => {
                 )}
 
                 <div className="btn-wishlist">
-                    {wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => (token ? addToWishlist(eachProduct) : navigate("/login"))} />)}
+                    {token && wishlist.find((eachItem) => eachItem._id === eachProduct._id) ? (<FaIcons.FaHeart className="wishlist-icon" style={{ color: "red" }} onClick={() => {removeFromWishlist(eachProduct)}} />) : (<FaIcons.FaHeart className="wishlist-icon" onClick={() => (token ? addToWishlist(eachProduct) : navigate("/login"))} />)}
                 </div>
             </div>
         </>

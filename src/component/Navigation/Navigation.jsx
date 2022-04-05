@@ -1,34 +1,36 @@
-import React, { useState,  } from "react";
-import { Link, useNavigate,   } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
 import {
   useAuthContext,
   useCartContext,
-  useWishListContext,useStateContext
+  useWishListContext,
+  useStateContext,
 } from "../../Context/index";
- 
 
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
 
-
-  //Search Term handler
-  const {setSearchTerm}= useStateContext()
-  const [inputKey, setInputKey] = useState("")
-
   
-  const searchHandler = () =>{
-     if(setSearchTerm === ""){
-       return
-     }else{
-      setSearchTerm(inputKey)
-      setInputKey("")
-      navigate('/allProducts')
-     }
-  }
-   
+  //Search Term handler
+  const { setSearchTerm } = useStateContext();
+  const [inputKey, setInputKey] = useState("");
+
+  const searchHandler = () => {
+    if (setSearchTerm === "") {
+      return;
+    } else {
+      setSearchTerm(inputKey);
+      if (inputKey === "") {
+        return;
+      } else {
+        setInputKey("");
+        navigate("/allProducts");
+      }
+    }
+  };
 
   const navigate = useNavigate();
   const {
@@ -38,7 +40,12 @@ const Navigation = () => {
   const {
     state: { wishlist },
   } = useWishListContext();
-  const { token, logoutFun} = useAuthContext();
+  const { token, logoutFun } = useAuthContext();
+
+  const activeLinkHandler = ({isActive}) => ({
+    color: isActive ? "var(--primary-color)" : "#201e28e5",
+    fontWeight: isActive ? "700" : "500"
+  })
 
   return (
     <>
@@ -52,27 +59,34 @@ const Navigation = () => {
             <div className="nav-menu">
               <ul>
                 <li className="nav-links">
-                  <Link className="Link" to="/">
+                  <NavLink to="/" style={activeLinkHandler} className="Link" >
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
-                <li className="nav-links">
-                  <Link className="Link" to="/allProducts">
+                <li  className="nav-links">
+                  <NavLink style={activeLinkHandler} className="Link" to="/allProducts">
                     Shop
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-links">
-                  <Link className="Link" to="/mockman">
+                  <NavLink style={activeLinkHandler} className="Link" to="/mockman">
                     Mockman
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="middle-div search-bar-wrapper">
-            <input className="input" placeholder="Search" value={inputKey} onChange={(event) =>  setInputKey(event.target.value)}/> 
-            <button className="btn-search" onClick={() => searchHandler()}><BiIcons.BiSearch className="icons"/></button>
+            <input
+              className="input"
+              placeholder="Search"
+              value={inputKey}
+              onChange={(event) => setInputKey(event.target.value)}
+            />
+            <button className="btn-search" onClick={() => searchHandler()}>
+              <BiIcons.BiSearch className="icons" />
+            </button>
           </div>
 
           <div
@@ -81,21 +95,18 @@ const Navigation = () => {
             }
           >
             <ul className="sidebar">
-              <li className="sidebar-link">
+              <NavLink to="/" style={activeLinkHandler} className="sidebar-link">
                 <BiIcons.BiHome className="sidebar-icon" /> Home
-              </li>
-              <li className="sidebar-link">
+              </NavLink>
+              <NavLink to="/allProducts" style={activeLinkHandler} className="sidebar-link">
                 <BiIcons.BiBox className="sidebar-icon" /> Product
-              </li>
-              <li className="sidebar-link">
-                <BiIcons.BiCategory className="sidebar-icon" /> Category
-              </li>
-              <li className="sidebar-link">
+              </NavLink>
+              {token ? <NavLink to="/"  className="sidebar-link" onClick={() => logoutFun()}>
+                <BiIcons.BiLogIn className="sidebar-icon" /> Logout
+              </NavLink>: <NavLink style={activeLinkHandler} to="/login" className="sidebar-link">
                 <BiIcons.BiUser className="sidebar-icon" /> Login
-              </li>
-              <li className="sidebar-link">
-                <BiIcons.BiLogIn className="sidebar-icon" /> Signup
-              </li>
+              </NavLink>}
+              
             </ul>
           </div>
 
@@ -106,16 +117,26 @@ const Navigation = () => {
                   <BiIcons.BiUser className="icons navigation-icon" />
                 </Link>
               </li>
-              <li onClick={() => {token ? navigate("/wishlist"): navigate('/login')}} className="icon-badge">
+              <li
+                onClick={() => {
+                  token ? navigate("/wishlist") : navigate("/login");
+                }}
+                className="icon-badge"
+              >
                 <BiIcons.BiHeart className="icons navigation-icon" />
                 {token && (
                   <span className="badge-icon-number badge-status">
-                    {wishlist?.length }
+                    {wishlist?.length}
                   </span>
                 )}
               </li>
 
-              <li onClick={() => {token ? navigate("/cart"): navigate('/login')}} className="icon-badge">
+              <li
+                onClick={() => {
+                  token ? navigate("/cart") : navigate("/login");
+                }}
+                className="icon-badge"
+              >
                 <BiIcons.BiCart className="icons navigation-icon" />
                 {token && (
                   <span className="badge-icon-number badge-status">
@@ -124,7 +145,12 @@ const Navigation = () => {
                 )}
               </li>
 
-              <li onClick={() => {logoutFun(), navigate("/logout")}} className="icon-badge">
+              <li
+                onClick={() => {
+                  logoutFun(), navigate("/logout");
+                }}
+                className="icon-badge"
+              >
                 {token && (
                   <BiIcons.BiLogOut className="icons navigation-icon" />
                 )}
