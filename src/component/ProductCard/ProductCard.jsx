@@ -6,7 +6,6 @@ import { useCartContext } from "../../Context/CartContext/CartContext";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { useAuthContext, useWishListContext } from "../../Context/index"
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
  
  
 const ProductCard = ({ eachProduct }) => {
