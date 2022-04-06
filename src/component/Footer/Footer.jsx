@@ -36,20 +36,22 @@ const Footer = () => {
         <div className="footer-content footer-right">
           <h1 className="large-heading footer-heading">Contact us</h1>
 
+
           <ul>
-            <li className="lists text-md">
-              <RiIcons.RiGithubLine />
-            </li>
-            <li className="lists text-md">
-              <RiIcons.RiTwitterLine />
-            </li>
-            <li className="lists text-md">
-              <RiIcons.RiLinkedinBoxLine />
-            </li>
-            <li className="lists text-md">
-              <RiIcons.RiInstagramLine />
-            </li>
-          </ul>
+                <li className="lists">
+                    <a href="https://twitter.com/Pritamkr_" target="_blank" rel="noreferrer" className="links"> <RiIcons.RiTwitterLine className="icons" /> </a> </li>
+
+                <li className="lists">
+                    <a href="https://www.linkedin.com/in/pritam-kumar-0ab3431bb/" rel="noreferrer" target="_blank" className="links"> <RiIcons.RiLinkedinLine className="icons"/></a></li>
+
+                <li className="lists">
+                    <a href="https://www.instagram.com/pritam_kr30/" target="_blank" rel="noreferrer" className="links"> <RiIcons.RiInstagramLine className="icons"/></a>
+                </li>
+                <li className="lists">
+                    <a href="https://github.com/pritam-kr/playme" target="_blank " rel="noreferrer" className="links "> <RiIcons.RiGithubLine className="icons" /></a>
+                </li>
+            </ul>
+          
         </div>
       </div>
 
