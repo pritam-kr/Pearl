@@ -1,0 +1,19 @@
+.empty-container{
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-container .section-heading{
+    margin: 0;
+    margin-bottom: 1rem;
+}
+.empty-wrapper{
+    text-align: center;
+}
+@media screen and (min-width: 976px){
+.empty-container {
+    margin: 8rem 20px 2rem 20px;
+}
+}
