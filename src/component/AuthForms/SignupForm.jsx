@@ -128,7 +128,7 @@ const SignupForm = () => {
 
                 <div className="input-row">
                     <label className="input-label">
-                        <input type="checkbox" required className="input checkbox-input " />
+                        <input type="checkbox"  className="input checkbox-input " />
                         <span className="checkbox-text">Accept all terms & conditions</span>
                     </label>
                 </div>

@@ -29,6 +29,7 @@ const MyCart = () => {
 
   //get tax price
   const taxPrice = (totalPrice, tax) => (totalPrice * tax) / 100;
+
   const getTaxPrice = taxPrice(getTotalPrice, 20);
 
   //get final price
@@ -39,6 +40,9 @@ const MyCart = () => {
     getDeliveryCharge,
     getTaxPrice
   );
+
+
+
 
   return (
     <>

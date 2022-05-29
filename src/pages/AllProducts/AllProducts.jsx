@@ -25,6 +25,7 @@ const AllProducts = () => {
 
   return (
     <div className="all-products-section">
+
       <div className="products-wrapper">
 
         <div className={!filter ? "filter-wrapper" : "filter-wrapper active-sidebar-filter"}>
@@ -36,7 +37,7 @@ const AllProducts = () => {
 
           <div className="products-container">
             {filteredProductList.length === 0 ? (
-              <h2 className="center">Loading...</h2>
+              <h2 className="center">There is no product.</h2>
             ) : (
               filteredProductList.filter((eachProduct) => {
                 if(searchTerm === ""){
@@ -57,6 +58,7 @@ const AllProducts = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

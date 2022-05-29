@@ -109,7 +109,7 @@ const LoginForm = () => {
 
                 <div className="input-row">
                     <label className="input-label">
-                        <input type="checkbox" className="input checkbox-input" required />
+                        <input type="checkbox" className="input checkbox-input" />
                         <span className="checkbox-text">Remember me</span>
                     </label>
                 </div>

@@ -8,10 +8,11 @@ const Filter = () => {
     filters: { priceRange, maxPrice, minPrice },
   } = state;
 
+  
   return (
     <>
       <div className="sidebar-fillers">
-        <div className="sidebar-box sidebar-header space-between">
+        <div className="sidebar-box sidebar-header">
           <h3 className="large-heading">Filter</h3>
           <span
             className="text-sm clear-filler"
@@ -26,7 +27,7 @@ const Filter = () => {
           <form>
             <ul>
               <li className="lists">
-                <label className="label text-sm" id="low-high">
+                <label className="label text-sm start-center">
                   <input
                     type="radio"
                     htmlFor="sortBy"
@@ -44,7 +45,7 @@ const Filter = () => {
               </li>
 
               <li className="lists">
-                <label className="label text-sm" id="High-low">
+                <label className="label text-sm start-center" >
                   <input
                     type="radio"
                     htmlFor="sortBy"
@@ -108,7 +109,7 @@ const Filter = () => {
           <form>
             <ul>
               <li className="lists">
-                <label className="label text-sm" id="four-rate">
+                <label className="label text-sm start-center" id="four-rate">
                   <input
                     type="radio"
                     htmlFor="four-rate"
@@ -122,7 +123,7 @@ const Filter = () => {
                 </label>
               </li>
               <li className="lists">
-                <label className="label text-sm" id="three-rate">
+                <label className="label text-sm start-center" id="three-rate">
                   <input
                     type="radio"
                     htmlFor="three-rate"
@@ -136,7 +137,7 @@ const Filter = () => {
                 </label>
               </li>
               <li className="lists">
-                <label className="label text-sm" id="two-rate">
+                <label className="label text-sm start-center" id="two-rate">
                   <input
                     type="radio"
                     htmlFor="two-rate"
@@ -150,7 +151,7 @@ const Filter = () => {
                 </label>
               </li>
               <li className="lists">
-                <label className="label text-sm" id="one-rate">
+                <label className="label text-sm start-center" id="one-rate">
                   <input
                     type="radio"
                     htmlFor="one-rate"

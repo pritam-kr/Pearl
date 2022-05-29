@@ -1,4 +1,5 @@
 export const sortByPrice = (data, sortBy) => {
+
     if(sortBy === "HIGH_TO_LOW"){
         return [...data].sort((a, b) => b.currentPrice - a.currentPrice)
     }
