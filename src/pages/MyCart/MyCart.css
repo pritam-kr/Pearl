@@ -11,6 +11,7 @@
     grid-template-columns: 100%;
     gap: 1rem;
     max-width: 1500px;
+    margin:  0 auto;
  }
 
  .price-details {
