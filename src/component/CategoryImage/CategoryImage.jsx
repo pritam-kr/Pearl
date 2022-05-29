@@ -11,7 +11,7 @@ const CategoryImage = () => {
 
 
   const categoryHandler = (name) => {
-       console.log(name)
+       
     if(token){
         dispatch({type: "CHECKED_CATEGORY", payload: name})
         navigate("/allProducts")

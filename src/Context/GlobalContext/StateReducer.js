@@ -46,7 +46,7 @@ export const stateReducerFun = (state, action) => {
             };
 
         case GET_CATEGORY:
-            console.log(action.payload)
+             
             if (state.filters.categoryName.includes(action.payload)) {
                 return {
                     ...state,

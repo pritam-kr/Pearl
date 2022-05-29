@@ -20,17 +20,12 @@ const Footer = () => {
           />
         </div>
         <div className="footer-content footer-middle">
-          <h1 className="large-heading footer-heading">Category</h1>
+          <h1 className="large-heading footer-heading">Phone</h1>
 
           <ul>
-            {getUniqueCategory.map((eachCategory, i) => (
-              <li
-                className="lists text-sm category-list"
-                key={i}
-              >
-                {eachCategory}
+                <li className="lists text-sm category-list">
+            +91 123456789
               </li>
-            ))}
           </ul>
         </div>
         <div className="footer-content footer-right">

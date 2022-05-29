@@ -10,7 +10,8 @@ const CartContext = createContext();
 const initialState = {
   cart: [],
   loader: false, 
-  error: null
+  error: null,
+  coupon: [20, 30, 50, 60]
 };
 
 const CartContextProvider = ({ children }) => {

@@ -4,6 +4,16 @@
   cursor: pointer;
 }
 
+.sidebar-fillers .sidebar-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.sidebar-fillers .sidebar-header .large-heading{
+   margin-bottom: 0;
+}
+
 .sidebar-fillers {
   background-color: var(--background-color);
   padding: 1em;

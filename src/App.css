@@ -178,3 +178,11 @@ input[type="radio"],
 input[type="range"] {
   accent-color: var(--primary-color);
 }
+
+
+.start-center{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
