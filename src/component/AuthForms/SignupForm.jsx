@@ -8,6 +8,8 @@ import {regEx} from "../../utils/regEx";
 
 const SignupForm = () => {
 
+
+
     const [error, setError] = useState("")
     const navigate = useNavigate()
 

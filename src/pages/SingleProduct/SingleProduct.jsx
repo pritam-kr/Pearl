@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Sp.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useStateContext, useCartContext, useAuthContext, useWishListContext } from "../../Context/index";
@@ -8,6 +8,7 @@ import { priceFormatter } from "../../utils/priceFormatter"
 import { Gif } from "../../component/index"
 
 const SingleProduct = () => {
+    useEffect(() => document.title = "Product", [])
 
     const navigate = useNavigate()
 

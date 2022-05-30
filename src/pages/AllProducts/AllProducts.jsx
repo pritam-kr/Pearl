@@ -8,6 +8,9 @@ import * as BiIcons from "react-icons/bi";
  
 
 const AllProducts = () => {
+
+  useEffect(() => document.title = "Products", [])
+
   const { filteredProductList, searchTerm } = useStateContext();
   const { loader } = useCartContext();
   const [gettingLoader, setGettingLoader] = useState(loader);

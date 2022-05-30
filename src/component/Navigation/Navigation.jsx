@@ -108,11 +108,11 @@ const Navigation = () => {
 
           <div className="right-div">
             <ul className="nav-ul">
-              {/* <li>
+              {!token && <li>
                 <Link to="/login">
                   <BiIcons.BiUser className="icons navigation-icon" />
                 </Link>
-              </li> */}
+              </li>}
               <li
                 onClick={() => {
                   token ? navigate("/wishlist") : navigate("/login");
