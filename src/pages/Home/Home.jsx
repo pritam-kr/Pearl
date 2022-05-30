@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
@@ -6,6 +6,9 @@ import { FeaturedCardProduct, CategoryImage } from "../../component/index";
 import { CategoryContextProvider } from "../../Context";
 
 const Home = () => {
+
+  useEffect(() => document.title = "PEARL - HOME", [])
+
   const {
     state: { featured },
   } = useStateContext();
@@ -68,49 +71,7 @@ const Home = () => {
             </CategoryContextProvider>
           </div>
 
-          <div className="category-wrapper">
-            <div className="category add-box-one">
-              <img
-                src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647265604/21_sskl2v.jpg"
-                className="responsive-images"
-              />
-              <div className="category-content center">
-                <h1 className="category-title">Platinum Necklace</h1>{" "}
-                <Link to="/allproducts">
-                  <button className="btn btn-buy">Shop Now</button>{" "}
-                </Link>{" "}
-              </div>
-            </div>
-            <div className="category add-box-two">
-              <img
-                src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647265605/22_vnj51r.jpg"
-                className="responsive-images"
-              />
-
-              <div className="category-content center" id="category-content">
-                <h1 className="category-title">Platinum Rings</h1>{" "}
-                <Link to="/allproducts">
-                  {" "}
-                  <button className="btn btn-buy">Shop Now</button>
-                </Link>{" "}
-              </div>
-            </div>
-            <div className="category add-box-three" id="add-box-three">
-              <img
-                src="https://res.cloudinary.com/dhqxln7zi/image/upload/v1647266147/19_zwqhmg.jpg"
-                className="responsive-images"
-                id="mouse-hover"
-              />
-
-              <div className="category-content center" id="category-content">
-                <h1 className="category-title">Platinum Earrings</h1>{" "}
-                <Link to="/allproducts">
-                  {" "}
-                  <button className="btn btn-buy">Shop Now</button>{" "}
-                </Link>{" "}
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </>

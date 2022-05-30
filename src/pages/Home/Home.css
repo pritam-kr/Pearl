@@ -100,12 +100,12 @@
   cursor: pointer;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 400px;
+  height: 300px;
+  width: 300px;
 }
 
 .category img {
-  width: 100%;
-  height: 100%;
+ 
   border-radius: 0;
   filter: grayscale(150%);
   transition: 0.3s all;
@@ -176,7 +176,7 @@
 
 @media screen and (min-width: 968px) {
   .product-container {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px,250px));
   }
 }
 

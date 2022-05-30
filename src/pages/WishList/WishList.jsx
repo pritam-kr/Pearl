@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { WishListCard, Empty } from "../../component/index";
 import { useWishListContext } from "../../Context/index";
 import "./Wishlist.css";
 
 const WishList = () => {
+
+  useEffect(() => document.title = "Wishlist", [])
+
   const {
     state: { wishlist },
   } = useWishListContext();
