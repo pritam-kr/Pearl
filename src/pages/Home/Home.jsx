@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
@@ -6,8 +6,7 @@ import { FeaturedCardProduct, CategoryImage } from "../../component/index";
 import { CategoryContextProvider } from "../../Context";
 
 const Home = () => {
-
-  useEffect(() => document.title = "PEARL - HOME", [])
+  useEffect(() => (document.title = "PEARL - HOME"), []);
 
   const {
     state: { featured },
@@ -57,7 +56,12 @@ const Home = () => {
 
           <div className="product-container">
             {featured.slice(0, 5).map((eachProduct) => {
-              return <FeaturedCardProduct eachProduct={eachProduct} key={eachProduct._id} />;
+              return (
+                <FeaturedCardProduct
+                  eachProduct={eachProduct}
+                  key={eachProduct._id}
+                />
+              );
             })}
           </div>
         </div>
@@ -70,8 +74,6 @@ const Home = () => {
               <CategoryImage />
             </CategoryContextProvider>
           </div>
-
-         
         </div>
       </div>
     </>

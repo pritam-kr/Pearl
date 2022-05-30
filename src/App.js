@@ -12,7 +12,7 @@ function App() {
 
   return (
     <> 
-    <ToastContainer autoClose={1000} />
+    <ToastContainer autoClose={500} />
     <div className="App-container">
       <Navigation />
       <Routes>

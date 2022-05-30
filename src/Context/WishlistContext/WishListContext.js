@@ -40,7 +40,7 @@ const WishListContextProvider = ({ children }) => {
                 }
 
             } catch (error) {
-                 console.log(error)
+                 
             }
         })()
 
@@ -73,7 +73,7 @@ const WishListContextProvider = ({ children }) => {
                         payload: wishlist,
                     });
                 } catch (error) {
-                   console.log(error)
+                    
                 }
             })();
         }
@@ -99,7 +99,7 @@ const WishListContextProvider = ({ children }) => {
                 
 
             } catch (error) {
-                 console.log(error)
+                 
             }
         })()
     }
