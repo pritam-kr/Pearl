@@ -5,12 +5,9 @@ import * as FaIcons from "react-icons/fa";
 import { useCartContext } from "../../Context";
 import { useWishListContext } from "../../Context/";
 import { useEffect } from "react";
- 
 
 const CartCard = () => {
-
-
-  useEffect(() => document.title = "Cart", [])
+  useEffect(() => (document.title = "Cart"), []);
 
   const {
     state: { cart },
@@ -20,6 +17,8 @@ const CartCard = () => {
   } = useCartContext();
 
   const { addToWishlist } = useWishListContext();
+
+
 
   return (
     <>
@@ -68,7 +67,7 @@ const CartCard = () => {
                 <FaIcons.FaHeart
                   className="wishlist-icon"
                   onClick={() => {
-                    addToWishlist(eachProduct), deleteCartItem(eachProduct);
+                    addToWishlist(eachProduct);
                   }}
                 />
               </div>

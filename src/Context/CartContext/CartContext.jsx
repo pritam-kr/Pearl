@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "./CartReducer";
 import { useAuthContext } from "../../Context/index";
 import { useEffect, useState } from "react";
-import {toast} from "react-toastify"
+import {toast} from "react-hot-toast"
 
 const CartContext = createContext();
 
@@ -151,7 +151,7 @@ const CartContextProvider = ({ children }) => {
       });
 
       // showing toast on deleting product from cart
-       status === 200 ? toast.info("Product Delete from cart") : null
+       status === 200 ? toast.success("Product Delete from cart") : null
 
       dispatch({ type: "DELETE_PRODUCT", payload: cart });
     } catch (error) {

@@ -5,22 +5,21 @@ import { useStateContext } from "../../Context/GlobalContext/StateContext";
 import { useCartContext } from "../../Context";
 import { useState } from "react";
 import * as BiIcons from "react-icons/bi";
- 
 
 const AllProducts = () => {
+  useEffect(() => (document.title = "Products"), []);
 
-  useEffect(() => document.title = "Products", [])
-
-  const { filteredProductList, searchTerm } = useStateContext();
+  const {
+    state: { filters },
+    getSearchedProducts,
+  } = useStateContext();
   const { loader } = useCartContext();
   const [gettingLoader, setGettingLoader] = useState(loader);
-  const [filter, setFilter] = useState(false)
-
+  const [filter, setFilter] = useState(false);
 
   useEffect(() => {
-    setFilter(filter)
-  }, [setFilter])
-
+    setFilter(filter);
+  }, [setFilter]);
 
   useEffect(() => {
     setGettingLoader(loader);
@@ -28,27 +27,31 @@ const AllProducts = () => {
 
   return (
     <div className="all-products-section">
-
       <div className="products-wrapper">
-
-        <div className={!filter ? "filter-wrapper" : "filter-wrapper active-sidebar-filter"}>
+        <div
+          className={
+            !filter ? "filter-wrapper" : "filter-wrapper active-sidebar-filter"
+          }
+        >
           <Filter />
         </div>
 
         <div className="all-products">
-          <h3 className="large-heading space-between">Showing all Products <span className="filter-icon-wrapper" onClick={() => setFilter(!filter)}><BiIcons.BiFilter className="icons filter-icon" /></span></h3>
+          <h3 className="large-heading space-between">
+            Showing all Products{" "}
+            <span
+              className="filter-icon-wrapper"
+              onClick={() => setFilter(!filter)}
+            >
+              <BiIcons.BiFilter className="icons filter-icon" />
+            </span>
+          </h3>
 
-          <div className="products-container">
-            {filteredProductList.length === 0 ? (
-              <h2 className="center">There is no product.</h2>
-            ) : (
-              filteredProductList.filter((eachProduct) => {
-                if(searchTerm === ""){
-                  return eachProduct
-                }else if(eachProduct.title.toLowerCase().includes(searchTerm.toLowerCase())){
-                  return eachProduct
-                }
-              }).map((eachProduct) => {
+          {getSearchedProducts?.length === 0 ? (
+            <h1 className="center text-md">No Products Found</h1>
+          ) : (
+            <div className="products-container">
+              {getSearchedProducts?.map((eachProduct) => {
                 return (
                   <ProductCard
                     eachProduct={eachProduct}
@@ -56,12 +59,11 @@ const AllProducts = () => {
                     gettingLoader={gettingLoader}
                   />
                 );
-              })
-            )}
-          </div>
+              })}
+            </div>
+          )}
         </div>
       </div>
-      
     </div>
   );
 };

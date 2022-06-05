@@ -1,6 +1,6 @@
 footer {
     background-color: var(--bg-footer);
-    
+     
   }
   
   .footer-wrapper {
@@ -29,6 +29,10 @@ footer {
 
   .category-list{
     margin-bottom: .6rem;
+  }
+
+  .payment-image{
+    border-radius: 0;
   }
   
   @media screen and (min-width: 767px) {

@@ -13,21 +13,23 @@ import {
 const Navigation = () => {
   const [sidebarMenu, activeSidebarMenu] = useState(false);
 
-  
   //Search Term handler
-  const { setSearchTerm } = useStateContext();
-  const [inputKey, setInputKey] = useState("");
+  const { setSearchTerm,dispatch } = useStateContext();
+ 
+  
+
+  const [searchKey, setSearchKey] = useState("");
 
   const searchHandler = () => {
     if (setSearchTerm === "") {
       return;
     } else {
-      setSearchTerm(inputKey);
-      if (inputKey === "") {
+      if (searchKey === "") {
         return;
       } else {
-        setInputKey("");
-        navigate("/allProducts");
+        setSearchKey("");
+        navigate("/allproducts");
+        dispatch({type: "SEARCH_QUERY", payload: searchKey})
       }
     }
   };
@@ -64,7 +66,7 @@ const Navigation = () => {
                   </NavLink>
                 </li>
                 <li  className="nav-links">
-                  <NavLink style={activeLinkHandler} className="Link" to="/allProducts">
+                  <NavLink style={activeLinkHandler} className="Link" to="/allproducts">
                     Shop
                   </NavLink>
                 </li>
@@ -77,8 +79,8 @@ const Navigation = () => {
             <input
               className="input"
               placeholder="Search"
-              value={inputKey}
-              onChange={(event) => setInputKey(event.target.value)}
+              value={searchKey}
+              onChange={(event) => setSearchKey(event.target.value)}
             />
             <button className="btn-search" onClick={() => searchHandler()}>
               <BiIcons.BiSearch className="icons" />

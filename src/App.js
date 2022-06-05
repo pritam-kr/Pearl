@@ -5,6 +5,9 @@ import {Login, Signup, AllProducts, WishList, Home, MyCart, Logout, SingleProduc
 import MockAPI from "./component/Mockman/Mockman"
 import {useAuthContext, PrivateRoute} from "./Context/index"
 import {ToastContainer} from "react-toastify"
+import {Scroll} from "./utils/Scroll"
+import {Toaster} from "react-hot-toast"
+ 
 
 function App() {
 
@@ -12,9 +15,10 @@ function App() {
 
   return (
     <> 
-    <ToastContainer autoClose={500} />
+    <Toaster  position="top-right"  toastOptions={{style: {fontSize: "1.2rem"}}} />
     <div className="App-container">
       <Navigation />
+      <Scroll>
       <Routes>
         <Route path="/" element={<Home />}></Route> 
         <Route path="/cart" element={ <PrivateRoute> <MyCart /> </PrivateRoute>}></Route> 
@@ -24,10 +28,10 @@ function App() {
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/logout" element={<PrivateRoute> <Logout /></PrivateRoute>}></Route>
         <Route path="/mockman" element={<MockAPI />}> </Route>
-        <Route path="/sp/:productID" element={token && <SingleProduct />}> </Route>
+        <Route path="/sp/:productID" element={<SingleProduct />}> </Route>
         <Route path="*" element={<Navigate to="/allProducts" />} ></Route>
       </Routes>
-
+      </Scroll>
       <Footer />
      </div>
      </>

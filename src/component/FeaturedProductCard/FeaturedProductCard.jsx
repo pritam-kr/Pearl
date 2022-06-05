@@ -13,12 +13,18 @@ const FeaturedCardProduct = ({eachProduct}) => {
   const {addToCart} = useCartContext()
   const {token} = useAuthContext()
 
+  const singleProductHandler = (_id) => {
+ 
+       navigate(`/sp/${_id}`)
+    
+}
+
   return (
     <div className="featured-product-card" key={eachProduct._id}>
       <img
         src={eachProduct.image}
         className="responsive-images featured-product-image"
-        alt={eachProduct.title} onClick={() => {token ? addToCart(eachProduct) : navigate('/login')}}
+        alt={eachProduct.title} onClick={() =>  singleProductHandler(eachProduct._id)}
       />
 
       <div className="card-content">
