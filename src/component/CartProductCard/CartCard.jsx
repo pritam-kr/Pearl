@@ -6,7 +6,7 @@ import { useCartContext } from "../../Context";
 import { useWishListContext } from "../../Context/";
 import { useEffect } from "react";
 
-const CartCard = () => {
+const CartCard = ({getTotalQuantity}) => {
   useEffect(() => (document.title = "Cart"), []);
 
   const {
@@ -51,12 +51,12 @@ const CartCard = () => {
               </p>
               <p>
                 <BiIcons.BiMinusCircle
-                  className="icons"
+                  className="icons" style={eachProduct.qty === 1? {opacity: 0.3, cursor: "none"} : {opacity: 1} }
                   onClick={() => decrementQuantity(eachProduct, "decrement")}
                 />
 
                 <BiIcons.BiPlusCircle
-                  className="icons"
+                  className="icons" 
                   onClick={() => incrementQuantity(eachProduct, "increment")}
                 />
               </p>
