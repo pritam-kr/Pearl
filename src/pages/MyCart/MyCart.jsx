@@ -63,7 +63,7 @@ const MyCart = () => {
 
         <div className="cart-wrapper">
           <div className="product-list-wrapper">
-            <CartCard />
+            <CartCard getTotalQuantity={getTotalQuantity}/>
           </div>
 
           <div className="price-details">
