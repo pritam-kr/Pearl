@@ -45,6 +45,13 @@ export const cartReducer = (state, action) => {
         loader: action.payload,
       };
 
+      //Empty cart after payment done
+      case "EMPTY_CART": 
+      return {...state, cart: action.payload}
+      
+      case "GET_ORDER_DETAILS":
+        return {...state, orderDetails: action.payload}
+
     default:
       return state;
   }

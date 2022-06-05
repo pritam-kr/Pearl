@@ -11,14 +11,19 @@ const initialState = {
   cart: [],
   loader: false, 
   error: null,
-  coupon: [20, 30, 50, 60]
+  coupon: [20, 30, 50, 60],
+  orderDetails: ""
 };
+
+ 
+
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { cart, loader} = state;
+  const { cart,} = state;
   const { token, user } = useAuthContext();
 
+ 
   
   // Getting data from cart and dispatching to initial state
   useEffect(() => {

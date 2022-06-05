@@ -1,0 +1,26 @@
+.text-cardbox{
+    box-shadow: none;
+  
+    border-radius: 0;
+    padding: 2rem;
+    text-align: left;
+    max-width: 40rem;
+    width: 400px;
+}
+.text-cardbox .text-card-header{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.check-icons{
+    color: green;
+    font-size: 3rem;
+}
+.payment-details .lists{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.text-cardbox .btn-primary{
+    margin-top: 2rem;
+}
