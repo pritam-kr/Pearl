@@ -17,7 +17,7 @@ export const products = [
     rating: 4,
     inStock: 0,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 10000,
     featured: true
   },
   {
@@ -31,7 +31,7 @@ export const products = [
     rating: 4,
     inStock: 3,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 5500,
   },
   {
     _id: uuid(),
@@ -44,7 +44,7 @@ export const products = [
     rating: 4,
     inStock: 15,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 10502,
   },
   {
     _id: uuid(),
@@ -57,7 +57,7 @@ export const products = [
     rating: 4,
     inStock: 12,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 5000,
     featured: true
   },
   {
@@ -71,7 +71,7 @@ export const products = [
     rating: 4,
     inStock: 0,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 6000,
   },
   {
     _id: uuid(),
@@ -84,7 +84,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 3000,
     featured: true
   },
   {
@@ -98,7 +98,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 7000,
     featured: true
   },
   {
@@ -112,7 +112,7 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 5000,
     featured: true
   },
   {
@@ -139,7 +139,7 @@ export const products = [
     rating: 2,
     inStock: 0,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 6999,
     featured: true
   },
   {
@@ -153,7 +153,7 @@ export const products = [
     rating: 2,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 7852,
     featured: true
   },
   {
@@ -167,7 +167,7 @@ export const products = [
     rating: 2,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 11960,
   },
   {
     _id: uuid(),
@@ -180,7 +180,7 @@ export const products = [
     rating: 2,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 7000,
   },
   {
     _id: uuid(),
@@ -193,7 +193,7 @@ export const products = [
     rating: 2,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 9000,
   },
   {
     _id: uuid(),
@@ -206,7 +206,7 @@ export const products = [
     rating: 1,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 5800,
   },
   {
     _id: uuid(),
@@ -219,20 +219,20 @@ export const products = [
     rating: 1,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 3500,
   },
   {
     _id: uuid(),
     title: "Necklace Two",
     author: "Pritam Kumar",
-    currentPrice: 23000,
+    currentPrice: 2000,
     categoryName: "Necklace",
     image: "https://res.cloudinary.com/dhqxln7zi/image/upload/v1647168585/necklace2_aups97.png",
     description: "Platinum Evara brings you beautifully crafted colllection of platinum necklace sets to complement with the platinum earrings. Browse platinum necklace designs today!",
     rating: 1,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 2200,
     featured: true
   },
   {
@@ -246,7 +246,7 @@ export const products = [
     rating: 1,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 7500,
   },
   {
     _id: uuid(),
@@ -259,19 +259,19 @@ export const products = [
     rating: 3,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 10000,
   },
   {
     _id: uuid(),
     title: "Necklace Five",
     author: "Pritam Kumar",
-    currentPrice: 34000,
+    currentPrice: 8900,
     categoryName: "Necklace",
     image: "https://res.cloudinary.com/dhqxln7zi/image/upload/v1647168584/necklace5_s6kth4.png",
     description: "Platinum Evara brings you beautifully crafted colllection of platinum necklace sets to complement with the platinum earrings. Browse platinum necklace designs today!",
     rating: 2,
     inStock: 10,
     karat: 950,
-    originalPrice: 70000,
+    originalPrice: 9500,
   }
 ];

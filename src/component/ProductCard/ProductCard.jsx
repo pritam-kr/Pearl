@@ -18,14 +18,11 @@ const ProductCard = ({ eachProduct }) => {
         addToCart(eachProduct)
     };
  
-    const { _id ,id, title, categoryName, Karat, image, currentPrice, rating, inStock } =
+    const { _id ,id, title, categoryName, Karat, image, currentPrice, rating, inStock,  originalPrice } =
         eachProduct;
     
     const singleProductHandler = () => {
-         
             navigate(`/sp/${_id}`)
-          
-        
     }
 
     return (
@@ -39,7 +36,7 @@ const ProductCard = ({ eachProduct }) => {
                     <h1 className="card-price product-price">
                         {" "}
                         ₹ {priceFormatter(currentPrice)}{" "}
-                        <span className="discount-price">₹ {priceFormatter(19999)}/-</span>
+                        <span className="discount-price">₹ {priceFormatter( originalPrice)}/-</span>
                     </h1>
                     <p className="text-sm">
                         <BiIcons.BiStar className="rating-start" /> {rating}/5
