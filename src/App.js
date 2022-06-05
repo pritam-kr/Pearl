@@ -14,7 +14,7 @@ function App() {
 
   return (
     <> 
-    <Toaster  position="top-right"  toastOptions={{style: {fontSize: "1.2rem"}, duration: 800,}} />
+    <Toaster  position="bottom-right"  toastOptions={{style: {fontSize: "1.2rem"}, duration: 1200,}} />
     <div className="App-container">
       <Navigation />
       <Scroll>
