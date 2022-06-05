@@ -2,18 +2,14 @@ import {
     createContext,
     useContext,
     useReducer,
-    useEffect, useState
+    useEffect, 
 } from "react";
 import axios from "axios";
-import { uniqueCategory } from "../../utils/uniqueCategory";
-import { sortByPrice } from "../../utils/sortByPrice";
-import { filterByCategory } from "../../utils/filterByCategory";
 import { stateReducerFun } from "../GlobalContext/StateReducer";
-import { filterByRating } from "../../utils/filterByRating"
-import { filterByPriceRange } from "../../utils/filterByPriceRange"
-import {toast, ToastContainer} from "react-toastify"
+import {toast} from "react-hot-toast"
+import { searchProducts,uniqueCategory, sortByPrice, filterByCategory, filterByPriceRange, filterByRating } from "../../utils";
 
-
+ 
 const StateContext = createContext();
 
 const initialState = {
@@ -24,9 +20,11 @@ const initialState = {
         categoryName: [],
         rating: null,
         maxPrice: "",
-        minPrice: ""
+        minPrice: "",
+        search: ""
     },
-    featured: []
+    featured: [],
+    
 };
 
 const StateContextProvider = ({ children }) => {
@@ -34,13 +32,10 @@ const StateContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(stateReducerFun, initialState);
     const {
         products,
-        filters: { sortBy, categoryName, rating, priceRange, }, featured
+        filters: { sortBy, categoryName, rating, priceRange, search}, featured
     } = state;
 
-    //Search-Bar
-    const [searchTerm, setSearchTerm] = useState("")
- 
-   
+     
     // getting all category's name
     const getUniqueCategory = uniqueCategory(products, "categoryName");
 
@@ -59,23 +54,25 @@ const StateContextProvider = ({ children }) => {
     //Final Filtered` list
     const filteredProductList = getFilterByPriceRange 
 
+    const getSearchedProducts = searchProducts(filteredProductList, search)
+
+   
     //Getting product from Backend
     useEffect(() => {
         (async () => {
             try {
                 const {
                     status,
-                    data: { products },
+                    data: { products }, 
                 } = await axios.get("/api/products");
-
-                dispatch({
-                    type: "ON_SUCCESS",
-                    payload: products,
-                });
 
                  if(status === 200){
                     dispatch({ type: "LOAD_MAX_PRICE", payload: products })
                     dispatch({type: "FEATURED_PRODUCT", payload: products})
+                    dispatch({
+                        type: "ON_SUCCESS",
+                        payload: products,
+                    });
                  }
 
             } catch (error) {
@@ -85,7 +82,7 @@ const StateContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList, setSearchTerm, searchTerm }}>
+        <StateContext.Provider value={{ state, dispatch, getUniqueCategory, filteredProductList, getSearchedProducts }}>
             {children}
         </StateContext.Provider>
     );

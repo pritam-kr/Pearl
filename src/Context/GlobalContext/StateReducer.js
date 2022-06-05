@@ -87,6 +87,7 @@ export const stateReducerFun = (state, action) => {
                     priceRange: 0,
                     categoryName: [],
                     rating: null,
+                    search: ""
                      
                 }
             }
@@ -96,6 +97,9 @@ export const stateReducerFun = (state, action) => {
         return {
             ...state, featured: featuredProduct(action.payload)
         }
+
+        case "SEARCH_QUERY": 
+        return {...state, filters: {...state.filters, search: action.payload}}
 
         case CHECKED_CATEGORY : 
         return {

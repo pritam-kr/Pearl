@@ -8,7 +8,6 @@ const Filter = () => {
     filters: { priceRange, maxPrice, minPrice },
   } = state;
 
-  
   return (
     <>
       <div className="sidebar-fillers">
@@ -29,6 +28,7 @@ const Filter = () => {
               <li className="lists">
                 <label className="label text-sm start-center">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="sortBy"
                     name="price"
@@ -39,14 +39,15 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "LOW_TO_HIGH", payload: "LOW_TO_HIGH" })
                     }
-                  /> 
+                  />
                   Price: Low to High
                 </label>
               </li>
 
               <li className="lists">
-                <label className="label text-sm start-center" >
+                <label className="label text-sm start-center">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="sortBy"
                     name="price"
@@ -57,7 +58,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "HIGH_TO_LOW", payload: "HIGH_TO_LOW" })
                     }
-                  /> 
+                  />
                   Price: High to Low
                 </label>
               </li>
@@ -75,7 +76,7 @@ const Filter = () => {
           <input
             className="input range-input"
             type="range"
-             value={priceRange}
+            value={priceRange}
             max={maxPrice}
             min={minPrice}
             onChange={(event) =>
@@ -96,7 +97,6 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "GET_CATEGORY", payload: eachCategory })
                     }
-                    
                   />
                   {eachCategory}
                 </label>
@@ -111,6 +111,7 @@ const Filter = () => {
               <li className="lists">
                 <label className="label text-sm start-center" id="four-rate">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="four-rate"
                     name="rating"
@@ -118,13 +119,14 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 4 })
                     }
-                  /> 
+                  />
                   4 Rating & Above
                 </label>
               </li>
               <li className="lists">
                 <label className="label text-sm start-center" id="three-rate">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="three-rate"
                     name="rating"
@@ -139,6 +141,7 @@ const Filter = () => {
               <li className="lists">
                 <label className="label text-sm start-center" id="two-rate">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="two-rate"
                     name="rating"
@@ -153,6 +156,7 @@ const Filter = () => {
               <li className="lists">
                 <label className="label text-sm start-center" id="one-rate">
                   <input
+                    className="category-checkbox"
                     type="radio"
                     htmlFor="one-rate"
                     name="rating"
@@ -160,7 +164,7 @@ const Filter = () => {
                     onChange={() =>
                       dispatch({ type: "STAR_RATING", payload: 1 })
                     }
-                  /> 
+                  />
                   1 Rating & Above
                 </label>
               </li>

@@ -4,6 +4,8 @@ import { CartCard, Empty } from "../../component/index";
 import "./MyCart.css";
 import { productQuantity, totalPrice, totalMRP } from "./PriceDetails";
 import { priceFormatter } from "../../utils/priceFormatter";
+import { displayRazorpay } from "../../utils/razorPayPopup";
+ 
 
 const MyCart = () => {
   const {
@@ -40,6 +42,7 @@ const MyCart = () => {
     getDeliveryCharge,
     getTaxPrice
   );
+
 
 
 
@@ -90,7 +93,7 @@ const MyCart = () => {
                 </li>
               </ul>
 
-              <button className="btn btn-primary">Checkout</button>
+              <button className="btn btn-primary" onClick={displayRazorpay}>Checkout</button>
             </div>
           </div>
         </div>

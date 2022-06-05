@@ -5,7 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "../../Context";
 import { regEx } from "../../utils/regEx"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-hot-toast"
 import 'react-toastify/dist/ReactToastify.css';
 
 //User Logged in message showing 
@@ -70,7 +70,7 @@ const LoginForm = () => {
 
     return (
         <>
-        <ToastContainer />
+       
             <form className="form" onSubmit={(e) => loginFormHandler(e)}>
                 <div className="form-header">
                     <h2 className="form-heading">Login</h2>

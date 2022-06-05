@@ -3,7 +3,7 @@ import { useContext, createContext, useReducer } from "react";
 import { ADD_TO_WISHLIST } from "../Action/actions";
 import { useAuthContext } from "../index";
 import { wishListReducer } from "./WishListReducer";
-import {toast} from "react-toastify"
+import {toast} from "react-hot-toast"
 import { useEffect } from "react";
 
 const WishListContext = createContext(null);

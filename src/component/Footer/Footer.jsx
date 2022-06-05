@@ -16,7 +16,7 @@ const Footer = () => {
           <h1 className="large-heading footer-heading ">Payment Acceptable</h1>
           <img
             src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/payment-method_69e7ec.svg"
-            className="responsive-images"
+            className="responsive-images payment-image"
           />
         </div>
         <div className="footer-content footer-middle">
@@ -43,7 +43,7 @@ const Footer = () => {
                     <a href="https://www.instagram.com/pritam_kr30/" target="_blank" rel="noreferrer" className="links"> <RiIcons.RiInstagramLine className="icons"/></a>
                 </li>
                 <li className="lists">
-                    <a href="https://github.com/pritam-kr/playme" target="_blank " rel="noreferrer" className="links "> <RiIcons.RiGithubLine className="icons" /></a>
+                    <a href="https://github.com/pritam-kr/Pearl" target="_blank " rel="noreferrer" className="links "> <RiIcons.RiGithubLine className="icons" /></a>
                 </li>
             </ul>
           
@@ -51,8 +51,8 @@ const Footer = () => {
       </div>
 
       <div className="Copyright space-between">
-        <p className="text-xm">Privacy and Policy</p>{" "}
-        <p className="text-xm">Code By Pritam</p>
+        <p className="text-sm">Privacy and Policy</p>{" "}
+        <p className="text-sm">Code By Pritam</p>
       </div>
     </footer>
   );

@@ -14,6 +14,7 @@ const SingleProduct = () => {
 
     const {addToWishlist, state: {wishlist}, removeFromWishlist} = useWishListContext()
 
+    const {token} = useAuthContext()
      
     const { addToCart, state } = useCartContext()
     const { cart } = state
@@ -55,10 +56,10 @@ const SingleProduct = () => {
 
 
                     <div className="card-footer">
-                         {cart?.find((eachProduct) => eachProduct._id === isProduct._id) ? <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => navigate('/cart')}>Go to cart</button> : <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => addToCart(isProduct)}>Add to cart</button>}
+                         {cart?.find((eachProduct) => eachProduct._id === isProduct._id) ? <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => navigate('/cart')}>Go to cart</button> : <button className="btn btn-primary btn-move-cart text-sm center" onClick={() => token ?  addToCart(isProduct) : navigate("/login ")}>Add to cart</button>}
                     </div>
 
-                    {wishlist?.find((eachProduct) => eachProduct._id === isProduct._id) ? <button className="btn-wishlist" ><FaIcons.FaHeart  className="wishlist-icon"  style={{ color: "red" }} onClick={() => {removeFromWishlist(isProduct)}}/></button> : <button className="btn-wishlist" onClick={() => addToWishlist(isProduct)}>
+                    {wishlist?.find((eachProduct) => eachProduct._id === isProduct._id) ? <button className="btn-wishlist" ><FaIcons.FaHeart  className="wishlist-icon"  style={{ color: "red" }} onClick={() => {removeFromWishlist(isProduct)}}/></button> : <button className="btn-wishlist" onClick={() =>  token ? addToWishlist(isProduct) : navigate("/login")}>
                         <FaIcons.FaHeart className="wishlist-icon" />
                     </button>}
                 </div>

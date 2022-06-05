@@ -22,11 +22,10 @@ const ProductCard = ({ eachProduct }) => {
         eachProduct;
     
     const singleProductHandler = () => {
-         if(token){
+         
             navigate(`/sp/${_id}`)
-         }else{
-             navigate('/login')
-         }
+          
+        
     }
 
     return (
