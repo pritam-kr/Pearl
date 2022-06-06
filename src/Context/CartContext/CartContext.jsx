@@ -3,31 +3,26 @@ import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "./CartReducer";
 import { useAuthContext } from "../../Context/index";
 import { useEffect, useState } from "react";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 const CartContext = createContext();
 
 const initialState = {
   cart: [],
-  loader: false, 
-  error: null,
+  loader: false,
+  error: "",
   coupon: [20, 30, 50, 60],
-  orderDetails: ""
+  orderDetails: "",
 };
-
- 
-
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { cart,} = state;
+  const { cart } = state;
   const { token, user } = useAuthContext();
 
- 
-  
   // Getting data from cart and dispatching to initial state
   useEffect(() => {
-     if(token){
+    if (token) {
       (async () => {
         try {
           const {
@@ -43,17 +38,18 @@ const CartContextProvider = ({ children }) => {
           console.log(error);
         }
       })();
-     }
+    }
   }, []);
 
   // Now do post request with for a single project with the help of token
   const addToCart = (product) => {
-    
     if (cart.find((eachProduct) => eachProduct._id === product._id)) {
       return;
     } else {
       (async () => {
         try {
+          dispatch({ type: "SET_LOADING", payload: true });
+
           const {
             status,
             data: { cart },
@@ -67,17 +63,17 @@ const CartContextProvider = ({ children }) => {
             }
           );
 
-          // show ing toast on add to cart
-            status === 201 ? toast.success("Product Added to Cart") : null
-
-          dispatch({
-            type: "ADD_TO_CART",
-            payload: cart,
-            productId: product._id,
-            loading: true
-          });
+          if (status === 201) {
+            dispatch({ type: "SET_LOADING", payload: false });
+            dispatch({
+              type: "ADD_TO_CART",
+              payload: cart,
+              productId: product._id,
+            });
+            toast.success("Product Added to Cart");
+          }
         } catch (error) {
-           console.log(error)
+          dispatch({ type: "SET_LOADING", loading: false });
         }
       })();
     }
@@ -109,7 +105,7 @@ const CartContextProvider = ({ children }) => {
 
         dispatch({ type: "DECREMENT_QUANTITY", payload: cart });
       } catch (error) {
-         console.log(error)
+        console.log(error);
       }
     }
   };
@@ -137,7 +133,7 @@ const CartContextProvider = ({ children }) => {
 
       dispatch({ type: "INCREMENT_QUANTITY", payload: cart });
     } catch (error) {
-       console.log(error)
+      console.log(error);
     }
   };
 
@@ -156,32 +152,30 @@ const CartContextProvider = ({ children }) => {
       });
 
       // showing toast on deleting product from cart
-       status === 200 ? toast.success("Product Delete from cart") : null
+      status === 200 ? toast.success("Product Delete from cart") : null;
 
       dispatch({ type: "DELETE_PRODUCT", payload: cart });
     } catch (error) {
-       console.log(error)
-
+      console.log(error);
     }
   };
 
   return (
     <>
-  
-    <CartContext.Provider
-      value={{
-        state,
-        dispatch,
-        addToCart,
-        incrementQuantity,
-        decrementQuantity,
-        deleteCartItem,
-      }}
-    >
-      {children}
-    </CartContext.Provider> </> 
+      <CartContext.Provider
+        value={{
+          state,
+          dispatch,
+          addToCart,
+          incrementQuantity,
+          decrementQuantity,
+          deleteCartItem,
+        }}
+      >
+        {children}
+      </CartContext.Provider>{" "}
+    </>
   );
- 
 };
 
 const useCartContext = () => useContext(CartContext);

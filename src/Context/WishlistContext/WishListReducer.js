@@ -1,6 +1,10 @@
 import {ADD_TO_WISHLIST} from "../Action/actions"
 export const wishListReducer = (state, action) => {
     switch (action.type) {
+
+      case "SET_LOADING": 
+      return {...state, loading: action.payload}
+
       case ADD_TO_WISHLIST:
         return {
           ...state,

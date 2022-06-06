@@ -68,3 +68,8 @@
 .wishlist-icon:hover{
   color: var(--wishlist-icon-hover);
 }
+
+.btn-wishlist{
+  background-color: transparent;
+  border: 0;
+}

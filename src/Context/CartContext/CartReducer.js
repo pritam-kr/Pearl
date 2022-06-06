@@ -9,6 +9,10 @@ import {
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
+
+    case "SET_LOADING": 
+    return {...state, loader: action.payload}
+
     case GET_CART_FROM_DATABASE:
       return {
         ...state,
@@ -19,7 +23,6 @@ export const cartReducer = (state, action) => {
       return {
         ...state,
         cart: action.payload,
-        loader: action.loading,
       };
 
     case INCREMENT_QUANTITY:
