@@ -4,15 +4,14 @@ import { CartCard, Empty } from "../../component/index";
 import "./MyCart.css";
 import { productQuantity, totalPrice, totalMRP } from "./PriceDetails";
 import { priceFormatter } from "../../utils/priceFormatter";
-// import { displayRazorpay } from "../../utils/razorPayPopup";
 import { usePayment } from "../../Hooks/usePayment";
  
 
 
 const MyCart = () => {
-  const {
-    state: { cart },
-  } = useCartContext();
+  const {state: { cart }} = useCartContext();
+
+ 
 
   //get total Product quantity
   const getTotalQuantity = cart.reduce(productQuantity, 0);

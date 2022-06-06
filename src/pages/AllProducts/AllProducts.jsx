@@ -51,7 +51,7 @@ const AllProducts = () => {
             <h1 className="center text-md">No Products Found</h1>
           ) : (
             <div className="products-container">
-              {getSearchedProducts?.map((eachProduct) => {
+              { getSearchedProducts?.map((eachProduct) => {
                 return (
                   <ProductCard
                     eachProduct={eachProduct}

@@ -6,7 +6,7 @@ import { useCartContext } from "../../Context";
 import { useWishListContext } from "../../Context/";
 import { useEffect } from "react";
 
-const CartCard = ({getTotalQuantity}) => {
+const CartCard = ({ getTotalQuantity }) => {
   useEffect(() => (document.title = "Cart"), []);
 
   const {
@@ -16,9 +16,17 @@ const CartCard = ({getTotalQuantity}) => {
     deleteCartItem,
   } = useCartContext();
 
-  const { addToWishlist } = useWishListContext();
+  const {
+    addToWishlist, removeFromWishlist,
+    state: { loading, wishlist },
+  } = useWishListContext();
 
-
+  // Product remove at Zero
+  const productRemove = (quantity, product) => {
+    if (quantity <= 0) {
+      deleteCartItem(product);
+    }
+  };
 
   return (
     <>
@@ -44,19 +52,25 @@ const CartCard = ({getTotalQuantity}) => {
               </span>
             </h2>
 
-            <div className="quantity">
+            <div className="quantity product-info">
               <p className="text-md">Quantity: {eachProduct.qty}</p>
               <p className="text-md space-between">
                 Rating: <BiIcons.BiStar /> {eachProduct.rating}/5
               </p>
               <p>
                 <BiIcons.BiMinusCircle
-                  className="icons" style={eachProduct.qty === 1? {opacity: 0.3, cursor: "none"} : {opacity: 1} }
+                  className="icons"
+                  style={
+                    eachProduct.qty === 1 ||
+                    productRemove(eachProduct.qty, eachProduct)
+                      ? { opacity: 0.3, cursor: "none" }
+                      : { opacity: 1 }
+                  }
                   onClick={() => decrementQuantity(eachProduct, "decrement")}
                 />
 
                 <BiIcons.BiPlusCircle
-                  className="icons" 
+                  className="icons"
                   onClick={() => incrementQuantity(eachProduct, "increment")}
                 />
               </p>
@@ -64,12 +78,27 @@ const CartCard = ({getTotalQuantity}) => {
 
             <div className="card-footer">
               <div className="btn-wishlist myCart-wishlist-button">
-                <FaIcons.FaHeart
-                  className="wishlist-icon"
-                  onClick={() => {
-                    addToWishlist(eachProduct);
-                  }}
-                />
+                {wishlist.find(
+                  (eachItem) => eachItem._id === eachProduct._id
+                ) ? (
+                  <FaIcons.FaHeart
+                    className="wishlist-icon"
+                    style={{ color: "red" }}
+                    onClick={() => {
+                      removeFromWishlist(eachProduct);
+                    }}
+                  />
+                ) : (
+                  <button
+                    className="btn-wishlist"
+                    disabled={loading}
+                    onClick={() =>
+                      addToWishlist(eachProduct)  
+                    }
+                  >
+                    <FaIcons.FaHeart className="wishlist-icon" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
