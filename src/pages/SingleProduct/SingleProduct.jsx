@@ -95,10 +95,7 @@ const SingleProduct = () => {
             )}
           </div>
 
-          {/* {wishlist?.find((eachProduct) => eachProduct._id === isProduct._id) ? <button className="btn-wishlist" ><FaIcons.FaHeart  className="wishlist-icon"  style={{ color: "red" }} onClick={() => {removeFromWishlist(isProduct)}}/></button> : <button className="btn-wishlist" onClick={() =>  token ? addToWishlist(isProduct) : navigate("/login")}>
-                        <FaIcons.FaHeart className="wishlist-icon" />
-                    </button>} */}
-
+     
           {token &&
           wishlist.find((eachItem) => eachItem._id === isProduct._id) ? (
             <button className="btn-wishlist">

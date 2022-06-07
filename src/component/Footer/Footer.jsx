@@ -4,7 +4,6 @@ import * as RiIcons from "react-icons/ri";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
 
 const Footer = () => {
-  const { getUniqueCategory } = useStateContext();
 
   return (
     <footer>
@@ -13,11 +12,7 @@ const Footer = () => {
           <h1 className="large-heading footer-heading ">Pearl</h1>
           <p className="text-sm">Pearl is for Platinum Jewelry.</p>
 
-          <h1 className="large-heading footer-heading ">Payment Acceptable</h1>
-          <img
-            src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/payment-method_69e7ec.svg"
-            className="responsive-images payment-image"
-          />
+          
         </div>
         <div className="footer-content footer-middle">
           <h1 className="large-heading footer-heading">Phone</h1>

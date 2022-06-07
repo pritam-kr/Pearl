@@ -1,4 +1,5 @@
 import React from "react";
+import * as BiIcons from "react-icons/bi";
 import "./Filter.css";
 import { useStateContext } from "../../Context/GlobalContext/StateContext";
 
@@ -120,7 +121,7 @@ const Filter = () => {
                       dispatch({ type: "STAR_RATING", payload: 4 })
                     }
                   />
-                  4 Rating & Above
+                  <p>4  <BiIcons.BiStar className="rating-start" /></p>
                 </label>
               </li>
               <li className="lists">
@@ -135,7 +136,7 @@ const Filter = () => {
                       dispatch({ type: "STAR_RATING", payload: 3 })
                     }
                   />
-                  3 Rating & Above
+                  <p>3 <BiIcons.BiStar className="rating-start" /></p>
                 </label>
               </li>
               <li className="lists">
@@ -150,7 +151,7 @@ const Filter = () => {
                       dispatch({ type: "STAR_RATING", payload: 2 })
                     }
                   />
-                  2 Rating & Above
+                  <p>2  <BiIcons.BiStar className="rating-start" /></p>
                 </label>
               </li>
               <li className="lists">
@@ -165,7 +166,7 @@ const Filter = () => {
                       dispatch({ type: "STAR_RATING", payload: 1 })
                     }
                   />
-                  1 Rating & Above
+                  <p>1 <BiIcons.BiStar className="rating-start" /></p>
                 </label>
               </li>
             </ul>

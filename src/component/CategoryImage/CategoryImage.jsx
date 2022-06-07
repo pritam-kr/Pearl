@@ -1,24 +1,22 @@
 import React from "react";
 import "./CategoryImage.css";
-import {useNavigate} from "react-router-dom"
-import { useCategoryContext, useAuthContext, useStateContext} from "../../Context/index";
+import { useNavigate } from "react-router-dom";
+import {
+  useCategoryContext,
+  useAuthContext,
+  useStateContext,
+} from "../../Context/index";
 
 const CategoryImage = () => {
   const { category } = useCategoryContext();
-  const {token} = useAuthContext()
-  const navigate = useNavigate()
-  const {dispatch} = useStateContext()
-
+  const { token } = useAuthContext();
+  const navigate = useNavigate();
+  const { dispatch } = useStateContext();
 
   const categoryHandler = (name) => {
-       
-    if(token){
-        dispatch({type: "CHECKED_CATEGORY", payload: name})
-        navigate("/allProducts")
-    }else{
-        navigate("/login")
-    }
-  }
+    dispatch({ type: "CHECKED_CATEGORY", payload: name });
+    navigate("/allProducts");
+  };
 
   return (
     <>
@@ -27,7 +25,8 @@ const CategoryImage = () => {
           <img
             src={eachCategory.image}
             className="responsive-images featured-product-image"
-            alt="featured-product" onClick={() => categoryHandler(eachCategory.categoryName)}
+            alt="featured-product"
+            onClick={() => categoryHandler(eachCategory.categoryName)}
           />
 
           <div className="card-content">

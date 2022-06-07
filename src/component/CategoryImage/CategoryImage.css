@@ -12,6 +12,7 @@
     filter: grayscale(100%);
     border: none;
     transition: .3s all;
+    cursor: pointer;
  }
 .category-card img:hover{
   filter: grayscale(0);
