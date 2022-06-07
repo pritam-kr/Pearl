@@ -16,7 +16,7 @@ const initialState = {
     products: [],
     filters: {
         sortBy: "",
-        priceRange: 0,
+        priceRange: 9600,
         categoryName: [],
         rating: null,
         maxPrice: "",

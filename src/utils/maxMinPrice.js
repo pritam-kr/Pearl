@@ -4,4 +4,4 @@
 
  
 
-// export const gettingMinPrice = (productData) => Math.min(...productData.map((eachProduct) => eachProduct.currentPrice))
+ export const gettingMinPrice = (productData) => Math.min(...productData.map((eachProduct) => eachProduct.currentPrice))

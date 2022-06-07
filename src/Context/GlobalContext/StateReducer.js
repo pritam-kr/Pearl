@@ -84,7 +84,7 @@ export const stateReducerFun = (state, action) => {
             return {
                 ...state, filters: {
                     ...state.filters, sortBy: "",
-                    priceRange: 0,
+                    priceRange: 9600,
                     categoryName: [],
                     rating: null,
                     search: ""
